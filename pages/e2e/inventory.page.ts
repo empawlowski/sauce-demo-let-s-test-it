@@ -16,9 +16,14 @@ export class InventoryPage {
   desc = this.page.getByTestId('inventory-item-desc');
   price = this.page.getByTestId('inventory-item-price');
   bAddToCart = this.page.getByRole('button', { name: inventoryData.bAddToCart, exact: true });
+  //? Products section
+  titleFirst = this.title.first();
+  titleSecond = this.title.nth(1);
+  priceFirst = this.price.first();
+  priceSecond = this.price.nth(1);
 
   async addToCart(title: string): Promise<void> {
-    await this.page.locator(`#add-to-cart-${title}`);
+    await this.page.locator(`#add-to-cart-${title}`).click();
   }
 
   async sortProduct(sort: string): Promise<void> {
@@ -32,30 +37,27 @@ export class InventoryPage {
     await expect(this.tableInventoryList).toBeVisible();
   }
 
-  async expectSortProduct(): Promise<void> {
-    const titleFirst = await this.title.first().innerText();
-    const titleSecond = await this.title.nth(1).innerText();
-    const priceFirst = await this.price.first().innerText();
-    const priceSecond = await this.price.nth(1).innerText();
+  async expectSortProductByName(): Promise<void> {
+    const titleFirst = await this.titleFirst.innerText();
+    const titleSecond = await this.titleSecond.innerText();
 
     if (await this.activeSortOption.getByText(inventoryData.az).isVisible()) {
-      const sorting = titleFirst.localeCompare(titleSecond) <= 0;
-      expect(sorting).toBeTruthy();
+      expect(titleFirst.localeCompare(titleSecond)).toBeLessThanOrEqual(0);
     }
-
     if (await this.activeSortOption.getByText(inventoryData.za).isVisible()) {
-      const sorting = titleFirst.localeCompare(titleSecond) >= 0;
-      expect(sorting).toBeTruthy();
+      expect(titleFirst.localeCompare(titleSecond)).toBeGreaterThanOrEqual(0);
     }
+  }
+
+  async expectSortProductByPrice(): Promise<void> {
+    const priceFirst = parseFloat((await this.priceFirst.innerText()).slice(1));
+    const priceSecond = parseFloat((await this.priceSecond.innerText()).slice(1));
 
     if (await this.activeSortOption.getByText(inventoryData.lowHi).isVisible()) {
-      const summary = parseFloat(priceFirst.slice(1)) <= parseFloat(priceSecond.slice(1));
-      expect(summary).toBeTruthy();
+      expect(priceFirst).toBeLessThanOrEqual(priceSecond);
     }
-
     if (await this.activeSortOption.getByText(inventoryData.hiLow).isVisible()) {
-      const summary = parseFloat(priceFirst.slice(1)) >= parseFloat(priceSecond.slice(1));
-      expect(summary).toBeTruthy();
+      expect(priceFirst).toBeGreaterThanOrEqual(priceSecond);
     }
   }
 }

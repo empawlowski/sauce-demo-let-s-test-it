@@ -6,9 +6,18 @@ export class HeaderComponent {
 
   bSidebarMenu = this.page.locator('#menu_button_container');
   appLogo = this.page.locator('.app_logo');
-  bShoppingCart = this.page.locator('#shopping_cart_container');
+  bShoppingCart = this.page.getByTestId('shopping-cart-link');
+  badgeShoppingCart = this.page.getByTestId('shopping-cart-badge');
 
   async expectLogo(): Promise<void> {
     await expect(this.appLogo).toContainText(baseData.appLogo);
+  }
+
+  async clickShoppingCart(): Promise<void> {
+    await this.bShoppingCart.click();
+  }
+
+  async expectBadge(): Promise<void> {
+    await expect(this.badgeShoppingCart).toBeVisible();
   }
 }
