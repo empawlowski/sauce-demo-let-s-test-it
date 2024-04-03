@@ -20,7 +20,8 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html', { open: 'always' }]],
+  // reporter: 'dot',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Set test ID attribute for project*/
@@ -29,7 +30,7 @@ export default defineConfig({
     baseURL: 'https://www.saucedemo.com/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'retain-on-failure',
+    trace: 'on',
   },
 
   /* Configure projects for major browsers */
@@ -39,15 +40,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'Firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'Firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'Webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'Webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
