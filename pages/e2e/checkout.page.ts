@@ -7,6 +7,7 @@ export class CheckoutPage {
   base = new BasePage(this.page);
 
   //* Body
+  //? Step One
   fieldFirstName = this.page.locator('#first-name');
   fieldLastName = this.page.locator('#last-name');
   fieldPostalCode = this.page.locator('#postal-code');
@@ -14,6 +15,8 @@ export class CheckoutPage {
   //* Footer
   bCancel = this.page.locator('#cancel');
   bContinue = this.page.locator('#continue');
+  //? Step Two
+  bFinish = this.page.locator('#finish');
 
   //* Error
   error = this.page.getByTestId('error');
@@ -32,6 +35,10 @@ export class CheckoutPage {
 
   async clickContinue(): Promise<void> {
     await this.bContinue.click();
+  }
+
+  async clickCancel(): Promise<void> {
+    await this.bCancel.click();
   }
 
   async catchError(error: string): Promise<void> {

@@ -73,4 +73,42 @@ test.describe('Checkout', { tag: '@reg' }, () => {
       await checkout.catchError(error);
     });
   });
+
+  test.describe('Checkout process', { tag: '@smoke' }, () => {
+    test('Checkout process with Cancel', async ({ header, inventory, cart, checkout }) => {
+      // await allure.owner(report.owner.mrp);
+      await test.step('Add products to basket', async () => {
+        // Arrange
+        await inventory.titleFirst.isVisible();
+        const titleOne = (await inventory.titleFirst.innerText()).split(' ').join('-').toLowerCase();
+        await inventory.titleSecond.isVisible();
+        const titleTwo = (await inventory.titleSecond.innerText()).split(' ').join('-').toLowerCase();
+        const titles = [titleOne, titleTwo];
+        // Act
+        for (const title of titles) {
+          await inventory.addToCart(title);
+        }
+        // Assert
+        await header.expectBadge();
+      });
+      await test.step('Open basket and go to checkout', async () => {
+        await header.clickShoppingCart();
+        await cart.clickCheckout();
+      });
+      await test.step('Fill checkout step one', async () => {
+        // Arrange
+        const firstName = 'a';
+        const lastName = 'a';
+        const code = '1';
+        // Act
+        await checkout.fillFieldFirstName(firstName);
+        await checkout.fillFielLastName(lastName);
+        await checkout.fillFieldPostalCode(code);
+        await checkout.clickContinue();
+      });
+      await test.step('Fill checkout step one', async () => {
+        await checkout.clickCancel();
+      });
+    });
+  });
 });

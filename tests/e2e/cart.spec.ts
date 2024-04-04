@@ -29,7 +29,7 @@ test.describe('Cart', { tag: '@reg' }, () => {
     await cart.expectCartPage();
   });
 
-  test('Add product to basket', async ({ header, inventory, page }) => {
+  test('Add product to basket', async ({ header, inventory }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
     //Act
