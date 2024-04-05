@@ -1,6 +1,7 @@
 import { test } from '../../components/fixtures/base';
 import { authData } from '../../.env/.auth/auth.data';
 import { checkoutData } from '../../data/tests/e2e/checkout.data';
+import { faker } from '@faker-js/faker';
 
 let user: string = authData.standard;
 let password: string = authData.password;
@@ -50,7 +51,7 @@ test.describe('Checkout', { tag: '@reg' }, () => {
     test('Empty Last Name field', async ({ checkout }) => {
       // await allure.owner(report.owner.mrp);
       // Arrange
-      const firstName = 'a';
+      const firstName = faker.person.firstName();
       const error = checkoutData.errorLastName;
       // Act
       await checkout.fillFieldFirstName(firstName);
@@ -62,8 +63,8 @@ test.describe('Checkout', { tag: '@reg' }, () => {
     test('Empty Postal Code field', async ({ checkout }) => {
       // await allure.owner(report.owner.mrp);
       // Arrange
-      const firstName = 'a';
-      const lastName = 'a';
+      const firstName = faker.person.firstName();
+      const lastName = faker.person.lastName();
       const error = checkoutData.errorPostalCode;
       // Act
       await checkout.fillFieldFirstName(firstName);
@@ -97,9 +98,9 @@ test.describe('Checkout', { tag: '@reg' }, () => {
       });
       await test.step('Fill checkout step one', async () => {
         // Arrange
-        const firstName = 'a';
-        const lastName = 'a';
-        const code = '1';
+        const firstName = faker.person.firstName();
+        const lastName = faker.person.lastName();
+        const code = faker.location.zipCode();
         // Act
         await checkout.fillFieldFirstName(firstName);
         await checkout.fillFielLastName(lastName);
