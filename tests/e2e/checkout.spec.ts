@@ -111,5 +111,82 @@ test.describe('Checkout', { tag: '@reg' }, () => {
         await checkout.clickCancel();
       });
     });
+    test('Checkout process with Success', async ({ header, inventory, cart, checkout }) => {
+      // await allure.owner(report.owner.mrp);
+      // Act
+      const products = 3;
+
+      await test.step('Add products to basket', async () => {
+        // Arrange
+        for (let i = 0; i < products; i++) {
+          await inventory.clickAddToCartNotFirst(i);
+        }
+      });
+      await test.step('Open basket and go to checkout', async () => {
+        // Arrange
+        await header.clickShoppingCart();
+        await header.expectBadgeWithNumber(products.toString());
+        await cart.clickCheckout();
+      });
+      await test.step('Fill checkout step one', async () => {
+        // Act
+        const firstName = faker.person.firstName();
+        const lastName = faker.person.lastName();
+        const code = faker.location.zipCode();
+
+        // Arrange
+        await checkout.fillFieldFirstName(firstName);
+        await checkout.fillFielLastName(lastName);
+        await checkout.fillFieldPostalCode(code);
+        await checkout.clickContinue();
+      });
+      await test.step('Check payment summary', async () => {
+        await checkout.expectCheckoutStepTwoPage();
+        await checkout.clickFinish();
+      });
+      await test.step('Verify your order', async () => {
+        await checkout.expectCheckoutCompletePage();
+        await checkout.clickBackHome();
+      });
+    });
+    test('Checkout process with verify payment', async ({ header, inventory, cart, checkout }) => {
+      // await allure.owner(report.owner.mrp);
+      // Arrange
+      const products = 3;
+
+      await test.step('Add products to basket', async () => {
+        // Act
+        for (let i = 0; i < products; i++) {
+          await inventory.clickAddToCartNotFirst(i);
+        }
+      });
+      await test.step('Open basket and go to checkout', async () => {
+        // Act
+        await header.clickShoppingCart();
+        await header.expectBadgeWithNumber(products.toString());
+        await cart.clickCheckout();
+      });
+      await test.step('Fill checkout step one', async () => {
+        // Arrange
+        const firstName = faker.person.firstName();
+        const lastName = faker.person.lastName();
+        const code = faker.location.zipCode();
+        // Act
+        await checkout.fillFieldFirstName(firstName);
+        await checkout.fillFielLastName(lastName);
+        await checkout.fillFieldPostalCode(code);
+        await checkout.clickContinue();
+      });
+      await test.step('Verify the payment', async () => {
+        // Arrange
+        const sub = parseFloat((await checkout.labelSubTotalValue.innerText()).slice(13));
+        const tax = parseFloat((await checkout.labelTaxValue.innerText()).slice(6));
+        const total = parseFloat((await checkout.labelTotalValue.innerText()).slice(8));
+        // Act
+        await checkout.summaryTotalValue(sub, tax, total);
+        // Assert
+        console.log(`Item total: $${sub} + Tax: $${tax} = Total: $${total}`);
+      });
+    });
   });
 });

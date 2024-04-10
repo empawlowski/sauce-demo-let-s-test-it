@@ -9,4 +9,5 @@ export const inventoryData = {
   hiLow: 'Price (high to low)',
 
   bAddToCart: 'Add to cart',
+  bRemove: 'Remove',
 };

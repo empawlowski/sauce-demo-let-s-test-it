@@ -20,4 +20,13 @@ export class HeaderComponent {
   async expectBadge(): Promise<void> {
     await expect(this.badgeShoppingCart).toBeVisible();
   }
+
+  async expectBadgeWithNumber(number: string): Promise<void> {
+    await expect(this.badgeShoppingCart).toBeVisible();
+    await expect(this.badgeShoppingCart).toContainText(number);
+  }
+
+  async expectNoBadge(): Promise<void> {
+    await expect(this.badgeShoppingCart).toBeHidden();
+  }
 }
