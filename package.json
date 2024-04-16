@@ -11,5 +11,8 @@
     "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.42.1",
     "@types/node": "^20.11.30"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.9.0"
   }
 }
