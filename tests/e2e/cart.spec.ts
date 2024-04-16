@@ -35,7 +35,7 @@ test.describe('Cart', { tag: '@reg' }, () => {
       // Arrange
       //Act
       await inventory.titleFirst.isVisible();
-      const title = (await inventory.titleFirst.innerText()).split(' ').join('-').toLowerCase();
+      const title = (await inventory.titleFirst.innerText()).replaceAll(' ', '-').toLowerCase();
       await inventory.addToCart(title);
       // Assert
       await header.expectBadge();

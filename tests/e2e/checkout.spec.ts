@@ -81,9 +81,9 @@ test.describe('Checkout', { tag: '@reg' }, () => {
       await test.step('Add products to basket', async () => {
         // Arrange
         await inventory.titleFirst.isVisible();
-        const titleOne = (await inventory.titleFirst.innerText()).split(' ').join('-').toLowerCase();
+        const titleOne = (await inventory.titleFirst.innerText()).replaceAll(' ', '-').toLowerCase();
         await inventory.titleSecond.isVisible();
-        const titleTwo = (await inventory.titleSecond.innerText()).split(' ').join('-').toLowerCase();
+        const titleTwo = (await inventory.titleSecond.innerText()).replaceAll(' ', '-').toLowerCase();
         const titles = [titleOne, titleTwo];
         // Act
         for (const title of titles) {
@@ -149,7 +149,7 @@ test.describe('Checkout', { tag: '@reg' }, () => {
         await checkout.clickBackHome();
       });
     });
-    test('Checkout process with verify payment', async ({ header, inventory, cart, checkout }) => {
+    test('Checkout process with payment verification', async ({ header, inventory, cart, checkout }) => {
       // await allure.owner(report.owner.mrp);
       // Arrange
       const products = 3;
