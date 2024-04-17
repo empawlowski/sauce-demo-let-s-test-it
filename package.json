@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "[E2E] Automation tests for Sauce Labs shop - 🎭Playwright.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "format": "npx prettier --write ."
+  },
   "keywords": [],
   "author": "Marcin P.",
   "license": "ISC",
