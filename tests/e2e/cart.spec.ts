@@ -57,18 +57,5 @@ test.describe('Cart', { tag: '@reg' }, () => {
         await header.expectNoBadge();
       });
     });
-    test('Add all products', async ({ header, inventory }) => {
-      //! It not possible to add more than 3 products, strange.
-      // await allure.owner(report.owner.mrp);
-      // Arrange
-      let products = await inventory.bAddToCart.count();
-      console.log('Number of product/s on page:', products);
-      // Act
-      for (let i = 0; i < products - 3; i++) {
-        await inventory.clickAddToCartNotFirst(i);
-      }
-      // Assert
-      await header.expectBadgeWithNumber((products - 3).toString());
-    });
   });
 });

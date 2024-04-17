@@ -60,7 +60,6 @@ export class CheckoutPage {
     // const sub = parseFloat((await this.labelSubTotalValue.innerText()).slice(13));
     // const tax = parseFloat((await this.labelTaxValue.innerText()).slice(6));
     // const total = parseFloat((await this.labelTotalValue.innerText()).slice(8));
-
     expect(sub + tax).toEqual(total);
   }
 

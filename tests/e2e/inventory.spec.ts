@@ -70,4 +70,59 @@ test.describe('Inventory', { tag: '@reg' }, () => {
       await inventory.expectSortProductByPrice();
     });
   });
+
+  test.describe('Add products - different methods', { tag: '@smoke' }, () => {
+    test('Adding by Title - all', async ({ header, inventory }) => {
+      // await allure.owner(report.owner.mrp);
+      // Arrange
+      let products = await inventory.title.count();
+
+      // Act
+      for (let i = 0; i < products; i++) {
+        const title = (await inventory.title.nth(i).innerText()).replaceAll(' ', '-').replace(/[(.)]/g, '\\$&').toLowerCase();
+        await inventory.addToCart(title);
+      }
+
+      // Assert
+      await header.expectBadgeWithNumber(products.toString());
+    });
+
+    test('Adding by Title - one', async ({ header, inventory }) => {
+      // await allure.owner(report.owner.mrp);
+      // Arrange
+      const name = 'Test.allTheThings() T-Shirt (Red)';
+      // Act
+      await inventory.addToCart(name.replaceAll(' ', '-').replace(/[(.)]/g, '\\$&').toLowerCase());
+
+      // Assert
+      await header.expectBadgeWithNumber('1');
+    });
+
+    test('Adding by button "Add to cart" - first', async ({ header, inventory }) => {
+      // await allure.owner(report.owner.mrp);
+      // Arrange
+      const products = await inventory.bAddToCart.count();
+      console.log('Number of product/s on page:', products);
+      // Act
+      for (let i = 0; i < products; i++) {
+        await inventory.clickAddToCartFirst();
+      }
+      // Assert
+      await header.expectBadgeWithNumber(products.toString());
+    });
+
+    test('Adding by button "Add to cart" - all', async ({ header, inventory }) => {
+      //! It not possible to add more than 3 products, strange.
+      // await allure.owner(report.owner.mrp);
+      // Arrange
+      const products = await inventory.bAddToCart.count();
+      console.log('Number of product/s on page:', products);
+      // Act
+      for (let i = 0; i < products - 3; i++) {
+        await inventory.clickAddToCartNotFirst(i);
+      }
+      // Assert
+      await header.expectBadgeWithNumber((products - 3).toString());
+    });
+  });
 });
