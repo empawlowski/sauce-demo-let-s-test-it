@@ -114,12 +114,12 @@ test.describe('Checkout', { tag: '@reg' }, () => {
     test('Checkout process with Success', async ({ header, inventory, cart, checkout }) => {
       // await allure.owner(report.owner.mrp);
       // Act
-      const products = 3;
+      let products = await inventory.bAddToCart.count();
 
       await test.step('Add products to basket', async () => {
         // Arrange
         for (let i = 0; i < products; i++) {
-          await inventory.clickAddToCartNotFirst(i);
+          await inventory.clickAddToCartFirst();
         }
       });
       await test.step('Open basket and go to checkout', async () => {
@@ -152,12 +152,12 @@ test.describe('Checkout', { tag: '@reg' }, () => {
     test('Checkout process with payment verification', async ({ header, inventory, cart, checkout }) => {
       // await allure.owner(report.owner.mrp);
       // Arrange
-      const products = 3;
+      let products = await inventory.bAddToCart.count();
 
       await test.step('Add products to basket', async () => {
         // Act
         for (let i = 0; i < products; i++) {
-          await inventory.clickAddToCartNotFirst(i);
+          await inventory.clickAddToCartFirst();
         }
       });
       await test.step('Open basket and go to checkout', async () => {
