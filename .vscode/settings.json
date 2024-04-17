@@ -1,5 +1,9 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "typescript.tsserver.experimental.enableProjectDiagnostics": false
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
+  "cSpell.words": ["trivago"]
 }

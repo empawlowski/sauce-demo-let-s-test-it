@@ -4,6 +4,7 @@
     "streetsidesoftware.code-spell-checker",
     "esbenp.prettier-vscode",
     "ms-playwright.playwright",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens"
   ]
 }
