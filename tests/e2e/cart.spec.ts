@@ -1,5 +1,5 @@
-import { test } from '../../components/fixtures/base';
 import { authData } from '../../.env/.auth/auth.data';
+import { test } from '../../components/fixtures/base';
 
 let user: string = authData.standard;
 let password: string = authData.password;

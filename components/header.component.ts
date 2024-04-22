@@ -1,5 +1,5 @@
-import { Page, expect } from '@playwright/test';
 import { baseData } from '../data/tests/e2e/base.data';
+import { Page, expect } from '@playwright/test';
 
 export class HeaderComponent {
   constructor(private page: Page) {}

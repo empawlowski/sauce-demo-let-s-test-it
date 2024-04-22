@@ -1,10 +1,10 @@
-import { test as baseTest } from '@playwright/test';
+import { CartPage } from '../../pages/e2e/cart.page';
+import { CheckoutPage } from '../../pages/e2e/checkout.page';
+import { InventoryPage } from '../../pages/e2e/inventory.page';
 import { LoginPage } from '../../pages/e2e/login.page';
 import { HeaderComponent } from '../header.component';
 import { SideBarComponent } from '../sidebar.component';
-import { InventoryPage } from '../../pages/e2e/inventory.page';
-import { CartPage } from '../../pages/e2e/cart.page';
-import { CheckoutPage } from '../../pages/e2e/checkout.page';
+import { test as baseTest } from '@playwright/test';
 
 type pages = {
   login: LoginPage;

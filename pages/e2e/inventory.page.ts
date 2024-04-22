@@ -1,6 +1,6 @@
-import { expect, Page } from '@playwright/test';
-import { BasePage } from './base.page';
 import { inventoryData } from '../../data/tests/e2e/inventory.data';
+import { BasePage } from './base.page';
+import { Page, expect } from '@playwright/test';
 
 export class InventoryPage {
   constructor(private page: Page) {}

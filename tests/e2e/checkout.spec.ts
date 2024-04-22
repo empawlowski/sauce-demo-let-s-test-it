@@ -1,5 +1,5 @@
-import { test } from '../../components/fixtures/base';
 import { authData } from '../../.env/.auth/auth.data';
+import { test } from '../../components/fixtures/base';
 import { checkoutData } from '../../data/tests/e2e/checkout.data';
 import { faker } from '@faker-js/faker';
 

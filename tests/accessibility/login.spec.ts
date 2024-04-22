@@ -1,5 +1,5 @@
-import { test, expect } from '../../components/fixtures/base';
 import { authData } from '../../.env/.auth/auth.data';
+import { expect, test } from '../../components/fixtures/base';
 import AxeBuilder from '@axe-core/playwright';
 
 let user: string = authData.standard;

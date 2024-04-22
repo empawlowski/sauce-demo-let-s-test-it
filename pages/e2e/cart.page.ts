@@ -1,6 +1,6 @@
-import { expect, Page } from '@playwright/test';
-import { BasePage } from './base.page';
 import { cartData } from '../../data/tests/e2e/cart.data';
+import { BasePage } from './base.page';
+import { Page, expect } from '@playwright/test';
 
 export class CartPage {
   constructor(private page: Page) {}
