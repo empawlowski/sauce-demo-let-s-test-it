@@ -1,3 +1,4 @@
+import { BasePage } from '../../pages/e2e/base.page';
 import { CartPage } from '../../pages/e2e/cart.page';
 import { CheckoutPage } from '../../pages/e2e/checkout.page';
 import { InventoryPage } from '../../pages/e2e/inventory.page';
@@ -8,6 +9,7 @@ import { test as baseTest } from '@playwright/test';
 
 type pages = {
   login: LoginPage;
+  base: BasePage;
   header: HeaderComponent;
   sidebar: SideBarComponent;
   inventory: InventoryPage;
@@ -18,6 +20,9 @@ type pages = {
 const basePages = baseTest.extend<pages>({
   login: async ({ page }, use) => {
     await use(new LoginPage(page));
+  },
+  base: async ({ page }, use) => {
+    await use(new BasePage(page));
   },
   header: async ({ page }, use) => {
     await use(new HeaderComponent(page));

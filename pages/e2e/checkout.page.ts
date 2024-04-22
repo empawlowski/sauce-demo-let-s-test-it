@@ -52,10 +52,6 @@ export class CheckoutPage {
     await this.bCancel.click();
   }
 
-  async catchError(error: string): Promise<void> {
-    await expect(this.error).toContainText(error);
-  }
-
   async summaryTotalValue(sub: number, tax: number, total: number): Promise<void> {
     // const sub = parseFloat((await this.labelSubTotalValue.innerText()).slice(13));
     // const tax = parseFloat((await this.labelTaxValue.innerText()).slice(6));

@@ -39,16 +39,16 @@ test.describe('Checkout', { tag: '@reg' }, () => {
       await cart.clickCheckout();
     });
 
-    test('Empty Fist Name field', async ({ checkout }) => {
+    test('Empty Fist Name field', async ({ checkout, base }) => {
       // await allure.owner(report.owner.mrp);
       // Arrange
       const error = checkoutData.errorFirstName;
       // Act
       await checkout.clickContinue();
       // Assert
-      await checkout.catchError(error);
+      await base.catchError(error);
     });
-    test('Empty Last Name field', async ({ checkout }) => {
+    test('Empty Last Name field', async ({ checkout, base }) => {
       // await allure.owner(report.owner.mrp);
       // Arrange
       const firstName = faker.person.firstName();
@@ -57,10 +57,10 @@ test.describe('Checkout', { tag: '@reg' }, () => {
       await checkout.fillFieldFirstName(firstName);
       await checkout.clickContinue();
       // Assert
-      await checkout.catchError(error);
+      await base.catchError(error);
     });
 
-    test('Empty Postal Code field', async ({ checkout }) => {
+    test('Empty Postal Code field', async ({ checkout, base }) => {
       // await allure.owner(report.owner.mrp);
       // Arrange
       const firstName = faker.person.firstName();
@@ -71,7 +71,7 @@ test.describe('Checkout', { tag: '@reg' }, () => {
       await checkout.fillFielLastName(lastName);
       await checkout.clickContinue();
       // Assert
-      await checkout.catchError(error);
+      await base.catchError(error);
     });
   });
 
