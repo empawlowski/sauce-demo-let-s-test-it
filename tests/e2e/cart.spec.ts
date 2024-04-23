@@ -17,7 +17,8 @@ test.describe('Cart', { tag: '@reg' }, () => {
     await header.expectLogo();
   });
 
-  test.afterEach('Close the page', async ({ page }) => {
+  test.afterEach('Close the page', async ({ page, base }) => {
+    await base.resetApp();
     await page.close();
   });
   test('Validation Cart page', async ({ cart, header }) => {

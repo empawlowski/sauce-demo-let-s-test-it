@@ -1,7 +1,11 @@
+import { HeaderComponent } from '../../components/header.component';
+import { SideBarComponent } from '../../components/sidebar.component';
 import { Page, expect } from '@playwright/test';
 
 export class BasePage {
   constructor(private page: Page) {}
+  headerComponent = new HeaderComponent(this.page);
+  sidebar = new SideBarComponent(this.page);
 
   //* Header
   header = this.page.getByTestId('title');
@@ -11,5 +15,10 @@ export class BasePage {
 
   async catchError(error: string): Promise<void> {
     await expect(this.error).toContainText(error);
+  }
+
+  async resetApp(): Promise<void> {
+    await this.headerComponent.clickSideBarMenu();
+    await this.sidebar.clickLinkResetAppState();
   }
 }
