@@ -1,10 +1,11 @@
 import { authData } from '../../.env/.auth/auth.data';
 import { test } from '../../components/fixtures/base';
+import * as report from '../../data/report/playwright.data.json';
 
 let user: string = authData.standard;
 let password: string = authData.password;
 
-test.describe('Cart', { tag: '@reg' }, () => {
+test.describe('Cart', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }) => {
     // await allure.epic(report.epic.analysis);
     // await allure.feature(report.feature.tm);
@@ -22,7 +23,8 @@ test.describe('Cart', { tag: '@reg' }, () => {
     await base.logoutFromApp();
     await page.close();
   });
-  test('Validation Cart page', async ({ cart, header }) => {
+
+  test('Validation Cart page', { tag: [report.tags.smoke] }, async ({ cart, header }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
     // Act

@@ -1,12 +1,13 @@
 import { authData } from '../../.env/.auth/auth.data';
 import { test } from '../../components/fixtures/base';
+import * as report from '../../data/report/playwright.data.json';
 import { checkoutData } from '../../data/tests/e2e/checkout.data';
 import { faker } from '@faker-js/faker';
 
 let user: string = authData.standard;
 let password: string = authData.password;
 
-test.describe('Checkout', { tag: '@reg' }, () => {
+test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }) => {
     // await allure.epic(report.epic.analysis);
     // await allure.feature(report.feature.tm);
@@ -25,7 +26,8 @@ test.describe('Checkout', { tag: '@reg' }, () => {
     await base.logoutFromApp();
     await page.close();
   });
-  test('Validation Checkout page', async ({ header, cart, checkout }) => {
+
+  test('Validation Checkout page', { tag: [report.tags.smoke] }, async ({ header, cart, checkout }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
     // Act
@@ -35,7 +37,7 @@ test.describe('Checkout', { tag: '@reg' }, () => {
     await checkout.expectCheckoutPage();
   });
 
-  test.describe('Empty fields - error validation', { tag: '@smoke' }, () => {
+  test.describe('Empty fields - error validation', { tag: [report.tags.smoke] }, () => {
     test.beforeEach('Open Cart page', async ({ header, cart }) => {
       await header.clickShoppingCart();
       await cart.clickCheckout();
@@ -77,7 +79,7 @@ test.describe('Checkout', { tag: '@reg' }, () => {
     });
   });
 
-  test.describe('Checkout process', { tag: '@smoke' }, () => {
+  test.describe('Checkout process', { tag: [report.tags.smoke] }, () => {
     test('Checkout process with Cancel', async ({ header, inventory, cart, checkout }) => {
       // await allure.owner(report.owner.mrp);
       await test.step('Add products to basket', async () => {

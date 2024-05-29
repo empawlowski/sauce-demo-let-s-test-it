@@ -1,5 +1,6 @@
 import { authData } from '../../.env/.auth/auth.data';
 import { test } from '../../components/fixtures/base';
+import * as report from '../../data/report/playwright.data.json';
 import { loginData } from '../../data/tests/e2e/login.data';
 
 let user: string = authData.standard;
@@ -11,7 +12,7 @@ let visual: string = authData.visual;
 
 let password: string = authData.password;
 
-test.describe('Login', { tag: '@reg' }, () => {
+test.describe('Login', { tag: [report.tags.regression] }, () => {
   test.afterEach('Close the page', async ({ base, page }) => {
     await base.resetApp();
     await base.logoutFromApp();
