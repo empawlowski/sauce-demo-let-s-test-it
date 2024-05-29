@@ -13,7 +13,7 @@ let visual: string = authData.visual;
 let password: string = authData.password;
 
 test.describe('Login', { tag: [report.tags.regression] }, () => {
-  test.afterEach('Close the page', async ({ base, page }) => {
+  test.afterEach('Close the page', async ({ page }) => {
     await page.close();
   });
 
@@ -43,7 +43,7 @@ test.describe('Login', { tag: [report.tags.regression] }, () => {
     test('Performance user', async ({ login, header }) => {
       // Arrange
       // Act
-      await login.logIn(user, password);
+      await login.logIn(performance, password);
       // Assert
       await header.expectLogo(); //?
     });
