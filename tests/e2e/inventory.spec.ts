@@ -19,9 +19,12 @@ test.describe('Inventory', { tag: '@reg' }, () => {
     await header.expectLogo();
   });
 
-  test.afterEach('Close the page', async ({ page }) => {
+  test.afterEach('Close the page', async ({ base, page }) => {
+    await base.resetApp();
+    await base.logoutFromApp();
     await page.close();
   });
+
   test('Validation Inventory page', async ({ inventory }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange

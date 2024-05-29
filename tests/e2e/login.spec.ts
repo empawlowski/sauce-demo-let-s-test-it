@@ -12,7 +12,9 @@ let visual: string = authData.visual;
 let password: string = authData.password;
 
 test.describe('Login', { tag: '@reg' }, () => {
-  test.afterEach('Close the page', async ({ page }) => {
+  test.afterEach('Close the page', async ({ base, page }) => {
+    await base.resetApp();
+    await base.logoutFromApp();
     await page.close();
   });
 
