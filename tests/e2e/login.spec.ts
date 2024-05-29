@@ -14,8 +14,6 @@ let password: string = authData.password;
 
 test.describe('Login', { tag: [report.tags.regression] }, () => {
   test.afterEach('Close the page', async ({ base, page }) => {
-    await base.resetApp();
-    await base.logoutFromApp();
     await page.close();
   });
 
