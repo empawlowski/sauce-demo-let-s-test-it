@@ -4,9 +4,9 @@ import { Page, expect } from '@playwright/test';
 export class HeaderComponent {
   constructor(private page: Page) {}
 
-  bSideBarMenu = this.page.locator('#menu_button_container');
+  bSideBarMenu = this.page.locator('#react-burger-menu-btn');
   appLogo = this.page.locator('.app_logo');
-  bShoppingCart = this.page.getByTestId('shopping-cart-link');
+  bShoppingCart = this.page.locator('#shopping_cart_container');
   badgeShoppingCart = this.page.getByTestId('shopping-cart-badge');
 
   async clickSideBarMenu(): Promise<void> {

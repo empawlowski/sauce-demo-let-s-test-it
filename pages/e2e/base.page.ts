@@ -20,5 +20,11 @@ export class BasePage {
   async resetApp(): Promise<void> {
     await this.headerComponent.clickSideBarMenu();
     await this.sidebar.clickLinkResetAppState();
+    await this.sidebar.clickButtonCrossMenu();
+  }
+
+  async logoutFromApp(): Promise<void> {
+    await this.headerComponent.clickSideBarMenu();
+    await this.sidebar.clickLinkLogout();
   }
 }
