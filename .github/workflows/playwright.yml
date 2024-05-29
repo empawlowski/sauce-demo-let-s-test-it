@@ -17,8 +17,8 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
-      - name: Run Playwright tests --grep @smoke
-        run: npx playwright test
+      - name: Run Playwright smoke tests
+        run: npx playwright test --grep @smoke
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
