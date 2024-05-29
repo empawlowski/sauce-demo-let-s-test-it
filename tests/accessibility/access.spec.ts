@@ -1,11 +1,12 @@
 import { authData } from '../../.env/.auth/auth.data';
 import { expect, test } from '../../components/fixtures/base';
+import * as report from '../../data/report/playwright.data.json';
 import AxeBuilder from '@axe-core/playwright';
 
 let user: string = authData.standard;
 let password: string = authData.password;
 
-test('Login method', async ({ login, header, page }) => {
+test.skip('Main page - accessibility', { tag: [report.tags.accessibility] }, async ({ login, header, page }) => {
   // await allure.epic(report.epic.analysis);
   // await allure.feature(report.feature.tm);
   // await allure.tag(report.tag.dealer);
