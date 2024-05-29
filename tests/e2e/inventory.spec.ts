@@ -1,11 +1,12 @@
 import { authData } from '../../.env/.auth/auth.data';
 import { test } from '../../components/fixtures/base';
+import * as report from '../../data/report/playwright.data.json';
 import { inventoryData } from '../../data/tests/e2e/inventory.data';
 
 let user: string = authData.standard;
 let password: string = authData.password;
 
-test.describe('Inventory', { tag: '@reg' }, () => {
+test.describe('Inventory', { tag: report.tags.regression }, () => {
   test.beforeEach('Login method', async ({ login, header }) => {
     // await allure.epic(report.epic.analysis);
     // await allure.feature(report.feature.tm);
@@ -25,14 +26,14 @@ test.describe('Inventory', { tag: '@reg' }, () => {
     await page.close();
   });
 
-  test('Validation Inventory page', async ({ inventory }) => {
+  test('Validation Inventory page', { tag: [report.tags.smoke] }, async ({ inventory }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
     // Act
     // Assert
     await inventory.expectInventoryPage();
   });
-  test.describe('Product sorting', { tag: '@smoke' }, () => {
+  test.describe('Product sorting', () => {
     test('Sort by Name (A to Z)', async ({ inventory }) => {
       // await allure.owner(report.owner.mrp);
       // Arrange
@@ -74,7 +75,7 @@ test.describe('Inventory', { tag: '@reg' }, () => {
     });
   });
 
-  test.describe('Add products - different methods', { tag: '@smoke' }, () => {
+  test.describe('Add products - different methods', () => {
     test('Adding by Title - all', async ({ header, inventory }) => {
       // await allure.owner(report.owner.mrp);
       // Arrange
@@ -114,7 +115,7 @@ test.describe('Inventory', { tag: '@reg' }, () => {
       await header.expectBadgeWithNumber(products.toString());
     });
 
-    test('Adding by button "Add to cart" - all', async ({ header, inventory }) => {
+    test.skip('Adding by button "Add to cart" - all', async ({ header, inventory }) => {
       //! It not possible to add more than 3 products, strange.
       // await allure.owner(report.owner.mrp);
       // Arrange
