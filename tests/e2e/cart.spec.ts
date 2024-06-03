@@ -18,10 +18,10 @@ test.describe('Cart', { tag: [report.tags.regression] }, () => {
     await header.expectLogo();
   });
 
-  test.afterEach('Close the page', async ({ page, base }) => {
+  test.afterEach('Close the page', async ({ base }) => {
     await base.resetApp();
     await base.logoutFromApp();
-    await page.close();
+    await base.closePage();
   });
 
   test('Validation Cart page', { tag: [report.tags.smoke] }, async ({ cart, header }) => {

@@ -20,10 +20,10 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     await header.expectLogo();
   });
 
-  test.afterEach('Close the page', async ({ base, page }) => {
+  test.afterEach('Close the page', async ({ base }) => {
     await base.resetApp();
     await base.logoutFromApp();
-    await page.close();
+    await base.closePage();
   });
 
   test('Validation Inventory page', { tag: [report.tags.smoke] }, async ({ inventory }) => {

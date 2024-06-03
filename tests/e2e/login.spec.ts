@@ -13,8 +13,8 @@ let visual: string = authData.visual;
 let password: string = authData.password;
 
 test.describe('Login', { tag: [report.tags.regression] }, () => {
-  test.afterEach('Close the page', async ({ page }) => {
-    await page.close();
+  test.afterEach('Close the page', async ({ base }) => {
+    await base.closePage();
   });
 
   test.describe('Login to specific user', () => {
