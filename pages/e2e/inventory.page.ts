@@ -10,6 +10,7 @@ export class InventoryPage {
   fProductSort = this.page.getByTestId('product-sort-container');
   activeSortOption = this.page.getByTestId('active-option');
 
+  //* Inventory page
   //* Product body
   tableInventoryList = this.page.getByTestId('inventory-list');
   title = this.page.getByTestId('inventory-item-name');
@@ -22,6 +23,14 @@ export class InventoryPage {
   titleSecond = this.title.nth(1);
   priceFirst = this.price.first();
   priceSecond = this.price.nth(1);
+
+  //* Inventory item page
+  linkBackToProducts = this.page.locator('#back-to-products');
+  img = this.page.locator('.inventory_details_img');
+
+  async clickOnProductTitleFirst(): Promise<void> {
+    await this.title.first().click();
+  }
 
   async addToCart(title: string): Promise<void> {
     await this.page.locator(`#add-to-cart-${title}`).click();
@@ -73,5 +82,15 @@ export class InventoryPage {
     if (await this.activeSortOption.getByText(inventoryData.hiLow).isVisible()) {
       expect(priceFirst).toBeGreaterThanOrEqual(priceSecond);
     }
+  }
+
+  async expectSingleProductPage(title: string, desc: string, price: string, link: string): Promise<void> {
+    await expect(this.page).toHaveURL(/.*inventory-item.html/);
+    await expect(this.linkBackToProducts).toBeVisible();
+    await expect(this.title).toContainText(title);
+    await expect(this.desc).toContainText(desc);
+    await expect(this.price).toContainText(price);
+    await expect(this.img).toHaveAttribute('src', link);
+    await expect(this.bAddToCart.or(this.bRemove)).toBeVisible();
   }
 }
