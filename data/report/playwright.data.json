@@ -1,3 +1,9 @@
 {
-  "tags": { "smoke": "@smoke", "regression": "@reg", "accessibility": "@accessibility", "load": "@load" }
+  "tags": {
+    "smoke": "@smoke",
+    "regression": "@reg",
+    "accessibility": "@accessibility",
+    "load": "@load",
+    "visual": "@visual"
+  }
 }

@@ -17,6 +17,10 @@ export class BasePage {
     await expect(this.error).toContainText(error);
   }
 
+  async takeScreenshot(page: string): Promise<void> {
+    await this.page.screenshot({ path: `${page}`, fullPage: true });
+  }
+
   async resetApp(): Promise<void> {
     await this.headerComponent.clickSideBarMenu();
     await this.sidebar.clickLinkResetAppState();
