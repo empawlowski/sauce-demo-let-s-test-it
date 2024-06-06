@@ -27,4 +27,8 @@ export class BasePage {
     await this.headerComponent.clickSideBarMenu();
     await this.sidebar.clickLinkLogout();
   }
+
+  async closePage(): Promise<void> {
+    await this.page.close();
+  }
 }

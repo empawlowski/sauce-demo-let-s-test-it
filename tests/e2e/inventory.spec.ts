@@ -1,6 +1,7 @@
 import { authData } from '../../.env/.auth/auth.data';
 import { test } from '../../components/fixtures/base';
 import * as report from '../../data/report/playwright.data.json';
+import * as product from '../../data/tests/e2e/inventory-item.data.json';
 import { inventoryData } from '../../data/tests/e2e/inventory.data';
 
 let user: string = authData.standard;
@@ -20,10 +21,10 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     await header.expectLogo();
   });
 
-  test.afterEach('Close the page', async ({ base, page }) => {
+  test.afterEach('Close the page', async ({ base }) => {
     await base.resetApp();
     await base.logoutFromApp();
-    await page.close();
+    await base.closePage();
   });
 
   test('Validation Inventory page', { tag: [report.tags.smoke] }, async ({ inventory }) => {
@@ -33,7 +34,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     // Assert
     await inventory.expectInventoryPage();
   });
-  test.describe('Product sorting', () => {
+  test.describe('Products sorting', () => {
     test('Sort by Name (A to Z)', async ({ inventory }) => {
       // await allure.owner(report.owner.mrp);
       // Arrange
@@ -83,7 +84,10 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
 
       // Act
       for (let i = 0; i < products; i++) {
-        const title = (await inventory.title.nth(i).innerText()).replaceAll(' ', '-').replace(/[(.)]/g, '\\$&').toLowerCase();
+        const title = (await inventory.title.nth(i).innerText())
+          .replaceAll(' ', '-')
+          .replace(/[(.)]/g, '\\$&')
+          .toLowerCase();
         await inventory.addToCart(title);
       }
 
@@ -115,7 +119,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
       await header.expectBadgeWithNumber(products.toString());
     });
 
-    test.skip('Adding by button "Add to cart" - all', async ({ header, inventory }) => {
+    test('Adding by button "Add to cart" - all', async ({ header, inventory }) => {
       //! It not possible to add more than 3 products, strange.
       // await allure.owner(report.owner.mrp);
       // Arrange
@@ -128,5 +132,17 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
       // Assert
       await header.expectBadgeWithNumber((products - 3).toString());
     });
+  });
+  test('Single product view', async ({ inventory }) => {
+    // await allure.owner(report.owner.mrp);
+    // Arrange
+    const title = product[4].title;
+    const desc = product[4].desc;
+    const price = product[4].price;
+    const link = product[4].link;
+    // Act
+    await inventory.clickOnProductTitleFirst();
+    // Assert
+    await inventory.expectSingleProductPage(title, desc, price, link);
   });
 });
