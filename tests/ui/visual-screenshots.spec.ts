@@ -27,30 +27,30 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, asyn
   test('Inventory', async ({ base }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
-    const page = visualData.inventory;
+    const screenshot = visualData.inventory;
     // Act
     // Assert
-    await base.takeScreenshot(page);
+    await base.takeScreenshot(screenshot);
   });
 
   test('Cart', async ({ base, header }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
-    const page = visualData.cart;
+    const screenshot = visualData.cart;
     // Act
     await header.clickShoppingCart();
     // Assert
-    await base.takeScreenshot(page);
+    await base.takeScreenshot(screenshot);
   });
 
   test('Checkout', async ({ base, header, cart }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
-    const page = visualData.checkout;
+    const screenshot = visualData.checkout;
     // Act
     await header.clickShoppingCart();
     await cart.clickCheckout();
     // Assert
-    await base.takeScreenshot(page);
+    await base.takeScreenshot(screenshot);
   });
 });
