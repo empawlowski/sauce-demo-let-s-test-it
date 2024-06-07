@@ -16,6 +16,7 @@ export class InventoryPage {
   title = this.page.getByTestId('inventory-item-name');
   desc = this.page.getByTestId('inventory-item-desc');
   price = this.page.getByTestId('inventory-item-price');
+  img = this.page.locator('img.inventory_item_img');
   bAddToCart = this.page.getByRole('button', { name: inventoryData.bAddToCart, exact: true });
   bRemove = this.page.getByRole('button', { name: inventoryData.bRemove, exact: true });
   //? Products section
@@ -26,7 +27,7 @@ export class InventoryPage {
 
   //* Inventory item page
   linkBackToProducts = this.page.locator('#back-to-products');
-  img = this.page.locator('.inventory_details_img');
+  imgDetail = this.page.locator('.inventory_details_img');
 
   async clickOnProductTitleFirst(): Promise<void> {
     await this.title.first().click();
@@ -90,7 +91,12 @@ export class InventoryPage {
     await expect(this.title).toContainText(title);
     await expect(this.desc).toContainText(desc);
     await expect(this.price).toContainText(price);
-    await expect(this.img).toHaveAttribute('src', link);
+    await expect(this.imgDetail).toHaveAttribute('src', link);
     await expect(this.bAddToCart.or(this.bRemove)).toBeVisible();
+  }
+
+  async expectIncorrectImageOnProduct(link: string): Promise<void> {
+    await expect(this.page).toHaveURL(/.*inventory.html/);
+    await expect(this.img.first()).toHaveAttribute('src', link);
   }
 }

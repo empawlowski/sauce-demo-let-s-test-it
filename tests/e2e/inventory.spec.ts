@@ -3,8 +3,11 @@ import { test } from '../../components/fixtures/base';
 import * as report from '../../data/report/playwright.data.json';
 import * as product from '../../data/tests/e2e/inventory-item.data.json';
 import { inventoryData } from '../../data/tests/e2e/inventory.data';
+import { visualData } from '../../data/tests/ui/visual.data';
 
 let user: string = authData.standard;
+let problem_user: string = authData.problem;
+let visual_user: string = authData.visual;
 let password: string = authData.password;
 
 test.describe('Inventory', { tag: report.tags.regression }, () => {
@@ -144,5 +147,34 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     await inventory.clickOnProductTitleFirst();
     // Assert
     await inventory.expectSingleProductPage(title, desc, price, link);
+  });
+});
+
+test.describe('Inventory with errors', { tag: report.tags.regression }, () => {
+  test.afterEach('Close the page', async ({ base }) => {
+    await base.resetApp();
+    await base.logoutFromApp();
+    await base.closePage();
+  });
+
+  test('Wrong image link for product', async ({ login, inventory }) => {
+    // await allure.owner(report.owner.mrp);
+    // Arrange
+    const link = product[6].link;
+    // Act
+    await login.logIn(problem_user, password);
+    // Assert
+    await inventory.expectIncorrectImageOnProduct(link);
+  });
+
+  test.only('Visual effect for page', async ({ login, base }) => {
+    // await allure.owner(report.owner.mrp);
+    // Arrange
+    test.fail(); //? added to not create a failure report
+    const screenshot = visualData.inventory;
+    // Act
+    await login.logIn(visual_user, password);
+    // Assert
+    await base.expectHaveScreenshot(screenshot);
   });
 });
