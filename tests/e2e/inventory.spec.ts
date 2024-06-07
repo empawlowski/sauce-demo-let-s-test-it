@@ -167,7 +167,7 @@ test.describe('Inventory with errors', { tag: report.tags.regression }, () => {
     await inventory.expectIncorrectImageOnProduct(link);
   });
 
-  test.only('Visual effect for page', async ({ login, base }) => {
+  test('Visual effect for page', async ({ login, base }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
