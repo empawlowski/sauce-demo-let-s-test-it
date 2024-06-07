@@ -2,9 +2,11 @@ import { authData } from '../../.env/.auth/auth.data';
 import { test } from '../../components/fixtures/base';
 import * as report from '../../data/report/playwright.data.json';
 import { checkoutData } from '../../data/tests/e2e/checkout.data';
+import { visualData } from '../../data/tests/ui/visual.data';
 import { faker } from '@faker-js/faker';
 
 let user: string = authData.standard;
+let visual_user: string = authData.visual;
 let password: string = authData.password;
 
 test.describe('Checkout', { tag: [report.tags.regression] }, () => {
@@ -192,5 +194,26 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         console.log(`Item total: $${sub} + Tax: $${tax} = Total: $${total}`);
       });
     });
+  });
+});
+
+test.describe('Checkout with errors', { tag: report.tags.regression }, () => {
+  test.afterEach('Close the page', async ({ base }) => {
+    await base.resetApp();
+    await base.logoutFromApp();
+    await base.closePage();
+  });
+
+  test('Visual effect for page', async ({ login, header, cart, base }) => {
+    // await allure.owner(report.owner.mrp);
+    // Arrange
+    test.fail(); //? added to not create a failure report
+    const screenshot = visualData.checkout;
+    // Act
+    await login.logIn(visual_user, password);
+    await header.clickShoppingCart();
+    await cart.clickCheckout();
+    // Assert
+    await base.expectHaveScreenshot(screenshot);
   });
 });
