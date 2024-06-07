@@ -39,7 +39,7 @@ export class InventoryPage {
 
   async clickAddToCartNotFirst(index: number): Promise<void> {
     await this.bAddToCart.nth(index).click();
-    console.log('Added product number:', index + 1);
+    // console.log('Added product number:', index + 1);
   }
 
   async clickAddToCartFirst(): Promise<void> {
