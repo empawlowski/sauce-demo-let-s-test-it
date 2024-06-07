@@ -1,5 +1,6 @@
 import { HeaderComponent } from '../../components/header.component';
 import { SideBarComponent } from '../../components/sidebar.component';
+import { screenshotPath } from '../../utils/screenshotPath';
 import { Page, expect } from '@playwright/test';
 
 export class BasePage {
@@ -15,6 +16,14 @@ export class BasePage {
 
   async catchError(error: string): Promise<void> {
     await expect(this.error).toContainText(error);
+  }
+
+  async takeScreenshot(screenshot: string): Promise<void> {
+    await this.page.screenshot({ path: `${screenshotPath}${screenshot}`, fullPage: true });
+  }
+
+  async expectHaveScreenshot(screenshot: string): Promise<void> {
+    await expect(this.page).toHaveScreenshot(screenshot, { fullPage: true });
   }
 
   async resetApp(): Promise<void> {
