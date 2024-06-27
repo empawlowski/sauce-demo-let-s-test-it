@@ -14,9 +14,24 @@ export class BasePage {
   //* Error
   error = this.page.getByTestId('error');
 
+  //* Page
   async catchError(error: string): Promise<void> {
     await expect(this.error).toContainText(error);
   }
+
+  async scrollDown(): Promise<void> {
+    await this.page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+  }
+
+  async scrollUp(): Promise<void> {
+    await this.page.evaluate(() => {
+      window.scrollTo(0, 0);
+    });
+  }
+
+  //* Screenshot
 
   async takeScreenshot(screenshot: string): Promise<void> {
     await this.page.screenshot({ path: `${screenshotPath}${screenshot}`, fullPage: true });
@@ -25,6 +40,8 @@ export class BasePage {
   async expectHaveScreenshot(screenshot: string): Promise<void> {
     await expect(this.page).toHaveScreenshot(screenshot, { fullPage: true });
   }
+
+  //* Sidebar
 
   async resetApp(): Promise<void> {
     await this.headerComponent.clickSideBarMenu();

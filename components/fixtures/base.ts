@@ -3,6 +3,7 @@ import { CartPage } from '../../pages/e2e/cart.page';
 import { CheckoutPage } from '../../pages/e2e/checkout.page';
 import { InventoryPage } from '../../pages/e2e/inventory.page';
 import { LoginPage } from '../../pages/e2e/login.page';
+import { FooterComponent } from '../footer.component';
 import { HeaderComponent } from '../header.component';
 import { SideBarComponent } from '../sidebar.component';
 import { test as baseTest } from '@playwright/test';
@@ -15,6 +16,7 @@ type pages = {
   inventory: InventoryPage;
   cart: CartPage;
   checkout: CheckoutPage;
+  footer: FooterComponent;
 };
 
 const basePages = baseTest.extend<pages>({
@@ -38,6 +40,9 @@ const basePages = baseTest.extend<pages>({
   },
   checkout: async ({ page }, use) => {
     await use(new CheckoutPage(page));
+  },
+  footer: async ({ page }, use) => {
+    await use(new FooterComponent(page));
   },
 });
 

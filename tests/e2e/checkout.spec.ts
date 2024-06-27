@@ -10,20 +10,22 @@ let visual_user: string = authData.visual;
 let password: string = authData.password;
 
 test.describe('Checkout', { tag: [report.tags.regression] }, () => {
-  test.beforeEach('Login method', async ({ login, header }) => {
+  test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     // await allure.epic(report.epic.analysis);
     // await allure.feature(report.feature.tm);
     // await allure.tag(report.tag.dealer);
 
     // Arrange
-
+    console.log(`Running ${testInfo.title}`);
     // Act
     await login.logIn(user, password);
     // Assert
     await header.expectLogo();
   });
 
-  test.afterEach('Close the page', async ({ base }) => {
+  test.afterEach('Close the page', async ({ base }, testInfo) => {
+    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+
     await base.resetApp();
     await base.logoutFromApp();
     await base.closePage();
@@ -82,6 +84,32 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   });
 
   test.describe('Checkout process', { tag: [report.tags.smoke] }, () => {
+    test('Continue process from Checkout', async ({ header, inventory, cart }) => {
+      // await allure.owner(report.owner.mrp);
+      await test.step('Add products to basket', async () => {
+        // Arrange
+        await inventory.titleFirst.isVisible();
+        const titleOne = (await inventory.titleFirst.innerText()).replaceAll(' ', '-').toLowerCase();
+        await inventory.titleSecond.isVisible();
+        const titleTwo = (await inventory.titleSecond.innerText()).replaceAll(' ', '-').toLowerCase();
+        const titles = [titleOne, titleTwo];
+        // Act
+        for (const title of titles) {
+          await inventory.addToCart(title);
+        }
+        // Assert
+        await header.expectBadge();
+      });
+      await test.step('Open basket and click Continue Shopping button', async () => {
+        await header.clickShoppingCart();
+        await cart.expectCartPage();
+        await cart.clickContinueShopping();
+      });
+      await test.step('Check redirect to Inventory page', async () => {
+        await inventory.expectInventoryPage();
+      });
+    });
+
     test('Checkout process with Cancel', async ({ header, inventory, cart, checkout }) => {
       // await allure.owner(report.owner.mrp);
       await test.step('Add products to basket', async () => {
@@ -117,6 +145,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         await checkout.clickCancel();
       });
     });
+
     test('Checkout process with Success', async ({ header, inventory, cart, checkout }) => {
       // await allure.owner(report.owner.mrp);
       // Act
@@ -155,6 +184,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         await checkout.clickBackHome();
       });
     });
+
     test('Checkout process with payment verification', async ({ header, inventory, cart, checkout }) => {
       // await allure.owner(report.owner.mrp);
       // Arrange
@@ -198,7 +228,12 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
 });
 
 test.describe('Checkout with errors', { tag: report.tags.regression }, () => {
-  test.afterEach('Close the page', async ({ base }) => {
+  test.beforeEach('Add running test title', async ({}, testInfo) => {
+    console.log(`Running ${testInfo.title}`);
+  });
+  test.afterEach('Close the page', async ({ base }, testInfo) => {
+    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+
     await base.resetApp();
     await base.logoutFromApp();
     await base.closePage();

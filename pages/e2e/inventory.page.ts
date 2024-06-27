@@ -33,13 +33,12 @@ export class InventoryPage {
     await this.title.first().click();
   }
 
-  async addToCart(title: string): Promise<void> {
-    await this.page.locator(`#add-to-cart-${title}`).click();
+  async clickOnProductTitleName(name: string): Promise<void> {
+    await this.title.getByText(name, { exact: true }).click();
   }
 
-  async clickAddToCartNotFirst(index: number): Promise<void> {
-    await this.bAddToCart.nth(index).click();
-    // console.log('Added product number:', index + 1);
+  async addToCart(title: string): Promise<void> {
+    await this.page.locator(`#add-to-cart-${title}`).click();
   }
 
   async clickAddToCartFirst(): Promise<void> {

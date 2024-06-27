@@ -13,6 +13,10 @@ export class CartPage {
   bContinueShopping = this.page.locator('#continue-shopping');
   bCheckout = this.page.locator('#checkout');
 
+  async clickContinueShopping(): Promise<void> {
+    await this.bContinueShopping.click();
+  }
+
   async clickCheckout(): Promise<void> {
     await this.bCheckout.click();
   }
