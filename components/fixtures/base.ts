@@ -1,3 +1,4 @@
+import { AccessibilityPage } from '../../pages/accessibility/accessibility.page';
 import { BasePage } from '../../pages/e2e/base.page';
 import { CartPage } from '../../pages/e2e/cart.page';
 import { CheckoutPage } from '../../pages/e2e/checkout.page';
@@ -17,6 +18,7 @@ type pages = {
   cart: CartPage;
   checkout: CheckoutPage;
   footer: FooterComponent;
+  accessibility: AccessibilityPage;
 };
 
 const basePages = baseTest.extend<pages>({
@@ -43,6 +45,9 @@ const basePages = baseTest.extend<pages>({
   },
   footer: async ({ page }, use) => {
     await use(new FooterComponent(page));
+  },
+  accessibility: async ({ page }, use) => {
+    await use(new AccessibilityPage(page));
   },
 });
 
