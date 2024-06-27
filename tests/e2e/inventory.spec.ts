@@ -11,20 +11,22 @@ let visual_user: string = authData.visual;
 let password: string = authData.password;
 
 test.describe('Inventory', { tag: report.tags.regression }, () => {
-  test.beforeEach('Login method', async ({ login, header }) => {
+  test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     // await allure.epic(report.epic.analysis);
     // await allure.feature(report.feature.tm);
     // await allure.tag(report.tag.dealer);
 
     // Arrange
-
+    console.log(`Running ${testInfo.title}`);
     // Act
     await login.logIn(user, password);
     // Assert
     await header.expectLogo();
   });
 
-  test.afterEach('Close the page', async ({ base }) => {
+  test.afterEach('Close the page', async ({ base }, testInfo) => {
+    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+
     await base.resetApp();
     await base.logoutFromApp();
     await base.closePage();
@@ -123,19 +125,19 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     });
 
     test('Adding by button "Add to cart" - all', async ({ header, inventory }) => {
-      //! It not possible to add more than 3 products, strange.
       // await allure.owner(report.owner.mrp);
       // Arrange
       const products = await inventory.bAddToCart.count();
-      console.log('Number of product/s on page:', products);
       // Act
-      for (let i = 0; i < products - 3; i++) {
-        await inventory.clickAddToCartNotFirst(i);
+      for (let i = 0; i < products; i++) {
+        await inventory.clickAddToCartFirst();
       }
+
       // Assert
-      await header.expectBadgeWithNumber((products - 3).toString());
+      await header.expectBadgeWithNumber(products.toString());
     });
   });
+
   test('Single product view', async ({ inventory }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
@@ -151,7 +153,12 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
 });
 
 test.describe('Inventory with errors', { tag: report.tags.regression }, () => {
-  test.afterEach('Close the page', async ({ base }) => {
+  test.beforeEach('Add running test title', async ({}, testInfo) => {
+    console.log(`Running ${testInfo.title}`);
+  });
+  test.afterEach('Close the page', async ({ base }, testInfo) => {
+    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+
     await base.resetApp();
     await base.logoutFromApp();
     await base.closePage();

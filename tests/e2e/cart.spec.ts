@@ -8,19 +8,22 @@ let visual_user: string = authData.visual;
 let password: string = authData.password;
 
 test.describe('Cart', { tag: [report.tags.regression] }, () => {
-  test.beforeEach('Login method', async ({ login, header }) => {
+  test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     // await allure.epic(report.epic.analysis);
     // await allure.feature(report.feature.tm);
     // await allure.tag(report.tag.dealer);
 
     // Arrange
+    console.log(`Running ${testInfo.title}`);
     // Act
     await login.logIn(user, password);
     // Assert
     await header.expectLogo();
   });
 
-  test.afterEach('Close the page', async ({ base }) => {
+  test.afterEach('Close the page', async ({ base }, testInfo) => {
+    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+
     await base.resetApp();
     await base.logoutFromApp();
     await base.closePage();
@@ -67,7 +70,12 @@ test.describe('Cart', { tag: [report.tags.regression] }, () => {
 });
 
 test.describe('Cart with errors', { tag: report.tags.regression }, () => {
-  test.afterEach('Close the page', async ({ base }) => {
+  test.beforeEach('Add running test title', async ({}, testInfo) => {
+    console.log(`Running ${testInfo.title}`);
+  });
+  test.afterEach('Close the page', async ({ base }, testInfo) => {
+    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+
     await base.resetApp();
     await base.logoutFromApp();
     await base.closePage();

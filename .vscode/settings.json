@@ -5,5 +5,5 @@
     "source.organizeImports": "explicit"
   },
   "typescript.tsserver.experimental.enableProjectDiagnostics": false,
-  "cSpell.words": ["trivago"]
+  "cSpell.words": ["sadface", "trivago"]
 }
