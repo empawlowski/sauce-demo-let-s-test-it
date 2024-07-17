@@ -20,8 +20,37 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
+
+  timeout: 45 * 1000, //? default: 30 * 1000,
+  expect: {
+    /**
+     * Maximum time expect() should wait for the condition to be met.
+     * For example in `await expect(locator).toHaveText();`
+     */
+    timeout: 5000,
+  },
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html', { open: 'always' }]],
+
+  // reporter: [
+  //   ['html'],
+  //   [
+  //     'allure-playwright',
+  //     {
+  //       detail: true,
+  //       outputFolder: 'allure-results',
+  //       suiteTitle: true,
+  //       environmentInfo: {
+  //         framework: 'Playwright',
+  //         os_platform: os.platform(),
+  //         os_release: os.release(),
+  //         os_version: os.version(),
+  //         node_version: process.version,
+  //       },
+  //     },
+  //   ],
+  // ],
+
   // reporter: 'dot',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -31,7 +60,10 @@ export default defineConfig({
     baseURL: 'https://www.saucedemo.com/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    actionTimeout: 0,
     trace: 'retain-on-failure',
+    // video: 'retain-on-failure',
+    // screenshot: 'only-on-failure',
   },
 
   /* Configure projects for major browsers */
