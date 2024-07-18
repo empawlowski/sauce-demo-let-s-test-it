@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "format": "npx prettier --write .",
-    "lint": "npx eslint . --max-warnings=0",
-    "prepare": "husky"
+    "format:check": "npx prettier . --check \"!**.ts\"",
+    "lint": "npx eslint . --ext .ts --max-warnings=0",
+    "prepare": "husky",
+    "test": "npx playwright test",
+    "test:ui": "npm run test -- --ui",
+    "show-report": "npx playwright show-report"
   },
   "keywords": [],
   "author": "Marcin P.",
