@@ -10,7 +10,8 @@
     "prepare": "husky",
     "test": "npx playwright test",
     "test:ui": "npm run test -- --ui",
-    "show-report": "npx playwright show-report"
+    "show-report": "npx playwright show-report",
+    "test:tags": "npx playwright test --grep \"@smoke|@reg\""
   },
   "keywords": [],
   "author": "Marcin P.",
