@@ -10,7 +10,9 @@
     "prepare": "husky",
     "test": "npx playwright test",
     "test:ui": "npm run test -- --ui",
-    "show-report": "npx playwright show-report"
+    "show-report": "npx playwright show-report",
+    "test:tags": "npx playwright test --grep \"@smoke|@reg\"",
+    "test:env": "npx playwright test --grep \"@env\""
   },
   "keywords": [],
   "author": "Marcin P.",
@@ -20,6 +22,7 @@
     "@playwright/test": "^1.44.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20.11.30",
+    "dotenv": "^16.4.5",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",

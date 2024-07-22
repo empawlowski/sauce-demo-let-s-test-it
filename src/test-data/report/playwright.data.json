@@ -4,6 +4,7 @@
     "regression": "@reg",
     "accessibility": "@accessibility",
     "load": "@load",
-    "visual": "@visual"
+    "visual": "@visual",
+    "env": "@env"
   }
 }

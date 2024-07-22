@@ -1,8 +1,8 @@
-import { authData } from '../../.env/.auth/auth.data';
-import { test } from '../../components/fixtures/base';
-import * as report from '../../data/report/playwright.data.json';
-import { checkoutData } from '../../data/tests/e2e/checkout.data';
-import { visualData } from '../../data/tests/ui/visual.data';
+import { test } from '../../src/components/fixtures/base';
+import * as report from '../../src/test-data/report/playwright.data.json';
+import { authData } from '../../src/test-data/tests/e2e/auth.data';
+import { checkoutData } from '../../src/test-data/tests/e2e/checkout.data';
+import { visualData } from '../../src/test-data/tests/ui/visual.data';
 import { faker } from '@faker-js/faker';
 
 let user: string = authData.standard;

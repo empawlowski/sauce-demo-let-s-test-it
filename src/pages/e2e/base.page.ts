@@ -1,12 +1,12 @@
+import { screenshotPath } from '../../../utils/screenshotPath';
 import { HeaderComponent } from '../../components/header.component';
 import { SideBarComponent } from '../../components/sidebar.component';
-import { screenshotPath } from '../../utils/screenshotPath';
 import { Page, expect } from '@playwright/test';
 
 export class BasePage {
-  constructor(private page: Page) {}
+  constructor(protected page: Page) {}
   headerComponent = new HeaderComponent(this.page);
-  sidebar = new SideBarComponent(this.page);
+  sidebarComponent = new SideBarComponent(this.page);
 
   //* Header
   header = this.page.getByTestId('title');
@@ -45,13 +45,13 @@ export class BasePage {
 
   async resetApp(): Promise<void> {
     await this.headerComponent.clickSideBarMenu();
-    await this.sidebar.clickLinkResetAppState();
-    await this.sidebar.clickButtonCrossMenu();
+    await this.sidebarComponent.clickLinkResetAppState();
+    await this.sidebarComponent.clickButtonCrossMenu();
   }
 
   async logoutFromApp(): Promise<void> {
     await this.headerComponent.clickSideBarMenu();
-    await this.sidebar.clickLinkLogout();
+    await this.sidebarComponent.clickLinkLogout();
   }
 
   async closePage(): Promise<void> {

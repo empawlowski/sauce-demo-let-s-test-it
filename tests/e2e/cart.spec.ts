@@ -1,7 +1,7 @@
-import { authData } from '../../.env/.auth/auth.data';
-import { test } from '../../components/fixtures/base';
-import * as report from '../../data/report/playwright.data.json';
-import { visualData } from '../../data/tests/ui/visual.data';
+import { test } from '../../src/components/fixtures/base';
+import * as report from '../../src/test-data/report/playwright.data.json';
+import { authData } from '../../src/test-data/tests/e2e/auth.data';
+import { visualData } from '../../src/test-data/tests/ui/visual.data';
 
 let user: string = authData.standard;
 let visual_user: string = authData.visual;
@@ -29,7 +29,7 @@ test.describe('Cart', { tag: [report.tags.regression] }, () => {
     await base.closePage();
   });
 
-  test('Validation Cart page', { tag: [report.tags.smoke] }, async ({ cart, header }) => {
+  test('Validation Cart page', { tag: [report.tags.smoke, report.tags.env] }, async ({ cart, header }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
     // Act

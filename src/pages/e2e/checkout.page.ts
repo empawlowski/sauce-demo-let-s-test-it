@@ -1,10 +1,12 @@
-import { checkoutData } from '../../data/tests/e2e/checkout.data';
+import { checkoutData } from '../../test-data/tests/e2e/checkout.data';
 import { BasePage } from './base.page';
 import { Page, expect } from '@playwright/test';
 
-export class CheckoutPage {
-  constructor(private page: Page) {}
+export class CheckoutPage extends BasePage {
   base = new BasePage(this.page);
+  constructor(page: Page) {
+    super(page);
+  }
 
   //* Body
   //? Step One
@@ -69,7 +71,7 @@ export class CheckoutPage {
 
   async expectCheckoutPage(): Promise<void> {
     await expect(this.page).toHaveURL(/.*checkout-step-one.html/);
-    await expect(this.base.header).toContainText(checkoutData.header);
+    await expect(this.header).toContainText(checkoutData.header);
     await expect(this.fieldFirstName).toBeVisible();
     await expect(this.fieldLastName).toBeEditable();
     await expect(this.fieldPostalCode).toBeEditable();
@@ -79,7 +81,7 @@ export class CheckoutPage {
 
   async expectCheckoutStepTwoPage(): Promise<void> {
     await expect(this.page).toHaveURL(/.*checkout-step-two.html/);
-    await expect(this.base.header).toContainText(checkoutData.headerStepTwo);
+    await expect(this.header).toContainText(checkoutData.headerStepTwo);
     await expect(this.labelPaymentValue).toContainText(checkoutData.paymentInformation);
     await expect(this.labelShippingValue).toContainText(checkoutData.shippingInformation);
     await expect(this.labelSubTotalValue).toContainText(checkoutData.priceTotal);
@@ -90,7 +92,7 @@ export class CheckoutPage {
 
   async expectCheckoutCompletePage(): Promise<void> {
     await expect(this.page).toHaveURL(/.*checkout-complete.html/);
-    await expect(this.base.header).toContainText(checkoutData.headerComplete);
+    await expect(this.header).toContainText(checkoutData.headerComplete);
     await expect(this.completeHeader).toContainText(checkoutData.completeHeader);
     await expect(this.completeText).toContainText(checkoutData.completeText);
     await expect(this.bBackHome).toBeEnabled();

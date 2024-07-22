@@ -1,10 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import path from 'path';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config();
+dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, `.env.${process.env.ENV}`) });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -12,6 +11,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   snapshotPathTemplate: '{testDir}/ui/{arg}{ext}',
+  globalSetup: './src/global-setup.ts',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -57,13 +57,13 @@ export default defineConfig({
     /* Set test ID attribute for project*/
     testIdAttribute: 'data-test',
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://www.saucedemo.com',
+    baseURL: process.env.BASE_URL ?? 'https://www.saucedemo.com',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     actionTimeout: 0,
     trace: 'retain-on-failure',
-    // video: 'retain-on-failure',
-    // screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    screenshot: 'only-on-failure',
   },
 
   /* Configure projects for major browsers */
