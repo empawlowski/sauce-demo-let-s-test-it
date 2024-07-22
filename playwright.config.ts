@@ -12,6 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   snapshotPathTemplate: '{testDir}/ui/{arg}{ext}',
+  globalSetup: './src/global-setup.ts',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -57,7 +58,8 @@ export default defineConfig({
     /* Set test ID attribute for project*/
     testIdAttribute: 'data-test',
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://www.saucedemo.com',
+    // baseURL: 'https://www.saucedemo.com',
+    baseURL: process.env.BASE_URL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     actionTimeout: 0,

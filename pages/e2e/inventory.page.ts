@@ -2,9 +2,12 @@ import { inventoryData } from '../../data/tests/e2e/inventory.data';
 import { BasePage } from './base.page';
 import { Page, expect } from '@playwright/test';
 
-export class InventoryPage {
-  constructor(private page: Page) {}
+export class InventoryPage extends BasePage {
   base = new BasePage(this.page);
+
+  constructor(page: Page) {
+    super(page);
+  }
 
   //* Header
   fProductSort = this.page.getByTestId('product-sort-container');
@@ -55,7 +58,7 @@ export class InventoryPage {
 
   async expectInventoryPage(): Promise<void> {
     await expect(this.page).toHaveURL(/.*inventory.html/);
-    await expect(this.base.header).toContainText(inventoryData.header);
+    await expect(this.header).toContainText(inventoryData.header);
     await expect(this.fProductSort).toBeVisible();
     await expect(this.tableInventoryList).toBeVisible();
   }
