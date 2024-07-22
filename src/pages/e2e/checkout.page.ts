@@ -1,4 +1,4 @@
-import { checkoutData } from '../../data/tests/e2e/checkout.data';
+import { checkoutData } from '../../test-data/tests/e2e/checkout.data';
 import { BasePage } from './base.page';
 import { Page, expect } from '@playwright/test';
 

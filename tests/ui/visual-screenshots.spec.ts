@@ -1,7 +1,7 @@
-import { test } from '../../components/fixtures/base';
-import * as report from '../../data/report/playwright.data.json';
-import { visualData } from '../../data/tests/ui/visual.data';
-import { authData } from '../../src/test-data/auth.data';
+import { test } from '../../src/components/fixtures/base';
+import * as report from '../../src/test-data/report/playwright.data.json';
+import { authData } from '../../src/test-data/tests/e2e/auth.data';
+import { visualData } from '../../src/test-data/tests/ui/visual.data';
 
 let user: string = authData.standard;
 let password: string = authData.password;

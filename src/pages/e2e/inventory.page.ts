@@ -1,4 +1,4 @@
-import { inventoryData } from '../../data/tests/e2e/inventory.data';
+import { inventoryData } from '../../test-data/tests/e2e/inventory.data';
 import { BasePage } from './base.page';
 import { Page, expect } from '@playwright/test';
 

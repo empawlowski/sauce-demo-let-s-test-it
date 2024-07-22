@@ -1,9 +1,9 @@
-import { test } from '../../components/fixtures/base';
-import * as report from '../../data/report/playwright.data.json';
-import * as product from '../../data/tests/e2e/inventory-item.data.json';
-import { inventoryData } from '../../data/tests/e2e/inventory.data';
-import { visualData } from '../../data/tests/ui/visual.data';
-import { authData } from '../../src/test-data/auth.data';
+import { test } from '../../src/components/fixtures/base';
+import * as report from '../../src/test-data/report/playwright.data.json';
+import { authData } from '../../src/test-data/tests/e2e/auth.data';
+import * as product from '../../src/test-data/tests/e2e/inventory-item.data.json';
+import { inventoryData } from '../../src/test-data/tests/e2e/inventory.data';
+import { visualData } from '../../src/test-data/tests/ui/visual.data';
 
 let user: string = authData.standard;
 let problem_user: string = authData.problem;
