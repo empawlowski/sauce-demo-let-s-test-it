@@ -1,6 +1,6 @@
-import { authData } from '../../.env/.auth/auth.data';
 import { test } from '../../components/fixtures/base';
 import * as report from '../../data/report/playwright.data.json';
+import { authData } from '../../src/test-data/auth.data';
 
 test.describe('Load tests', { tag: [report.tags.load] }, async () => {
   test('Simple login to page', async ({ login, header }) => {

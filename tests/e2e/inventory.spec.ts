@@ -1,9 +1,9 @@
-import { authData } from '../../.env/.auth/auth.data';
 import { test } from '../../components/fixtures/base';
 import * as report from '../../data/report/playwright.data.json';
 import * as product from '../../data/tests/e2e/inventory-item.data.json';
 import { inventoryData } from '../../data/tests/e2e/inventory.data';
 import { visualData } from '../../data/tests/ui/visual.data';
+import { authData } from '../../src/test-data/auth.data';
 
 let user: string = authData.standard;
 let problem_user: string = authData.problem;

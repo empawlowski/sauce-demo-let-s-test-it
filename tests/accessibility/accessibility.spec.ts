@@ -1,7 +1,7 @@
-import { authData } from '../../.env/.auth/auth.data';
 import { expect, test } from '../../components/fixtures/base';
 import * as report from '../../data/report/playwright.data.json';
 import * as product from '../../data/tests/e2e/inventory-item.data.json';
+import { authData } from '../../src/test-data/auth.data';
 import AxeBuilder from '@axe-core/playwright';
 
 let user: string = authData.standard;

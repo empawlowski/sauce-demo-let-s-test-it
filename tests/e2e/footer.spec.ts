@@ -1,7 +1,7 @@
-import { authData } from '../../.env/.auth/auth.data';
 import { expect, test } from '../../components/fixtures/base';
 import * as report from '../../data/report/playwright.data.json';
 import { footerData } from '../../data/tests/e2e/footer.data';
+import { authData } from '../../src/test-data/auth.data';
 
 let user: string = authData.standard;
 let password: string = authData.password;

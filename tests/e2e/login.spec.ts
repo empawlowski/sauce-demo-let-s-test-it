@@ -1,7 +1,7 @@
-import { authData } from '../../.env/.auth/auth.data';
 import { test } from '../../components/fixtures/base';
 import * as report from '../../data/report/playwright.data.json';
 import { loginData } from '../../data/tests/e2e/login.data';
+import { authData } from '../../src/test-data/auth.data';
 
 let user: string = authData.standard;
 let locked: string = authData.locked;
