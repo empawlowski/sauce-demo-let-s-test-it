@@ -1,3 +1,4 @@
+import { CheckoutUser } from '../../models/user.model';
 import { checkoutData } from '../../test-data/tests/e2e/checkout.data';
 import { BasePage } from './base.page';
 import { Page, expect } from '@playwright/test';
@@ -53,6 +54,13 @@ export class CheckoutPage extends BasePage {
 
   async clickCancel(): Promise<void> {
     await this.bCancel.click();
+  }
+
+  async fillCheckout(userCheckout: CheckoutUser): Promise<void> {
+    await this.fillFieldFirstName(userCheckout.firstName);
+    await this.fillFielLastName(userCheckout.lastName);
+    await this.fillFieldPostalCode(userCheckout.postalCode);
+    await this.clickContinue();
   }
 
   async summaryTotalValue(sub: number, tax: number, total: number): Promise<void> {
