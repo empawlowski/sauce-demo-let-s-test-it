@@ -1,5 +1,5 @@
 import { test } from '../../src/components/fixtures/base';
-import { CheckoutUser } from '../../src/models/user.model';
+import { createRandomCheckoutUser } from '../../src/factories/user.factory';
 import * as report from '../../src/test-data/report/playwright.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import { checkoutData } from '../../src/test-data/tests/e2e/checkout.data';
@@ -135,16 +135,13 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
       });
       await test.step('Fill checkout step one', async () => {
         // Arrange
-        const firstName = faker.person.firstName();
-        const lastName = faker.person.lastName();
-        const code = faker.location.zipCode();
+        const userCheckoutModel = createRandomCheckoutUser();
+
         // Act
-        await checkout.fillFieldFirstName(firstName);
-        await checkout.fillFielLastName(lastName);
-        await checkout.fillFieldPostalCode(code);
-        await checkout.clickContinue();
+        await checkout.fillCheckoutFields(userCheckoutModel);
       });
       await test.step('Fill checkout step one', async () => {
+        // Act
         await checkout.clickCancel();
       });
     });
@@ -168,14 +165,10 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
       });
       await test.step('Fill checkout step one', async () => {
         // Arrange
-        const userCheckout: CheckoutUser = {
-          firstName: faker.person.firstName(),
-          lastName: faker.person.lastName(),
-          postalCode: faker.location.zipCode(),
-        };
+        const userCheckoutModel = createRandomCheckoutUser();
 
         // Act
-        await checkout.fillCheckout(userCheckout);
+        await checkout.fillCheckoutFields(userCheckoutModel);
       });
       await test.step('Check payment summary', async () => {
         // Act

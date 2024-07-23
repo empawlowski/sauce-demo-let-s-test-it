@@ -56,10 +56,10 @@ export class CheckoutPage extends BasePage {
     await this.bCancel.click();
   }
 
-  async fillCheckout(userCheckout: CheckoutUser): Promise<void> {
-    await this.fillFieldFirstName(userCheckout.firstName);
-    await this.fillFielLastName(userCheckout.lastName);
-    await this.fillFieldPostalCode(userCheckout.postalCode);
+  async fillCheckoutFields(userCheckoutModel: CheckoutUser): Promise<void> {
+    await this.fillFieldFirstName(userCheckoutModel.firstName);
+    await this.fillFielLastName(userCheckoutModel.lastName);
+    await this.fillFieldPostalCode(userCheckoutModel.postalCode);
     await this.clickContinue();
   }
 
