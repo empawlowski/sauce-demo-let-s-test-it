@@ -1,4 +1,5 @@
 import { test } from '../../src/components/fixtures/base';
+import { createRandomCheckoutUser } from '../../src/factories/user.factory';
 import * as report from '../../src/test-data/report/playwright.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import { checkoutData } from '../../src/test-data/tests/e2e/checkout.data';
@@ -134,55 +135,50 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
       });
       await test.step('Fill checkout step one', async () => {
         // Arrange
-        const firstName = faker.person.firstName();
-        const lastName = faker.person.lastName();
-        const code = faker.location.zipCode();
+        const userCheckoutModel = createRandomCheckoutUser();
+
         // Act
-        await checkout.fillFieldFirstName(firstName);
-        await checkout.fillFielLastName(lastName);
-        await checkout.fillFieldPostalCode(code);
-        await checkout.clickContinue();
+        await checkout.fillCheckoutFields(userCheckoutModel);
       });
       await test.step('Fill checkout step one', async () => {
+        // Act
         await checkout.clickCancel();
       });
     });
 
     test('Checkout process with Success', async ({ header, inventory, cart, checkout }) => {
       // await allure.owner(report.owner.mrp);
-      // Act
+      // Arrange
       let products = await inventory.bAddToCart.count();
 
       await test.step('Add products to basket', async () => {
-        // Arrange
+        // Act
         for (let i = 0; i < products; i++) {
           await inventory.clickAddToCartFirst();
         }
       });
       await test.step('Open basket and go to checkout', async () => {
-        // Arrange
+        // Act
         await header.clickShoppingCart();
         await header.expectBadgeWithNumber(products.toString());
         await cart.clickCheckout();
       });
       await test.step('Fill checkout step one', async () => {
-        // Act
-        const firstName = faker.person.firstName();
-        const lastName = faker.person.lastName();
-        const code = faker.location.zipCode();
-
         // Arrange
-        await checkout.fillFieldFirstName(firstName);
-        await checkout.fillFielLastName(lastName);
-        await checkout.fillFieldPostalCode(code);
-        await checkout.clickContinue();
+        const userCheckoutModel = createRandomCheckoutUser();
+
+        // Act
+        await checkout.fillCheckoutFields(userCheckoutModel);
       });
       await test.step('Check payment summary', async () => {
+        // Act
         await checkout.expectCheckoutStepTwoPage(checkoutData.urlStepTwo);
         await checkout.clickFinish();
       });
       await test.step('Verify your order', async () => {
+        // Assert
         await checkout.expectCheckoutCompletePage(checkoutData.urlComplete);
+        // Act
         await checkout.clickBackHome();
       });
     });
