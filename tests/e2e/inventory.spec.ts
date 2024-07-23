@@ -35,9 +35,10 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
   test('Validation Inventory page', { tag: [report.tags.smoke] }, async ({ inventory }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
+    const url = inventoryData.url;
     // Act
     // Assert
-    await inventory.expectInventoryPage();
+    await inventory.expectInventoryPage(url);
   });
   test.describe('Products sorting', () => {
     test('Sort by Name (A to Z)', async ({ inventory }) => {
@@ -141,6 +142,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
   test('Single product view', async ({ inventory }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
+    const url = inventoryData.urlItem;
     const title = product[4].title;
     const desc = product[4].desc;
     const price = product[4].price;
@@ -148,7 +150,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     // Act
     await inventory.clickOnProductTitleFirst();
     // Assert
-    await inventory.expectSingleProductPage(title, desc, price, link);
+    await inventory.expectSingleProductPage(url, title, desc, price, link);
   });
 });
 
@@ -167,11 +169,12 @@ test.describe('Inventory with errors', { tag: report.tags.regression }, () => {
   test('Wrong image link for product', async ({ login, inventory }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
+    const url = inventoryData.url;
     const link = product[6].link;
     // Act
     await login.logIn(problem_user, password);
     // Assert
-    await inventory.expectIncorrectImageOnProduct(link);
+    await inventory.expectIncorrectImageOnProduct(url, link);
   });
 
   test('Visual effect for page', async ({ login, base }) => {

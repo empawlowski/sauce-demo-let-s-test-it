@@ -2,6 +2,7 @@ import { test } from '../../src/components/fixtures/base';
 import * as report from '../../src/test-data/report/playwright.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import { checkoutData } from '../../src/test-data/tests/e2e/checkout.data';
+import { inventoryData } from '../../src/test-data/tests/e2e/inventory.data';
 import { visualData } from '../../src/test-data/tests/ui/visual.data';
 import { faker } from '@faker-js/faker';
 
@@ -34,11 +35,12 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   test('Validation Checkout page', { tag: [report.tags.smoke] }, async ({ header, cart, checkout }) => {
     // await allure.owner(report.owner.mrp);
     // Arrange
+    const url = checkoutData.urlStepOne;
     // Act
     await header.clickShoppingCart();
     await cart.clickCheckout();
     // Assert
-    await checkout.expectCheckoutPage();
+    await checkout.expectCheckoutPage(url);
   });
 
   test.describe('Empty fields - error validation', { tag: [report.tags.smoke] }, () => {
@@ -106,7 +108,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         await cart.clickContinueShopping();
       });
       await test.step('Check redirect to Inventory page', async () => {
-        await inventory.expectInventoryPage();
+        await inventory.expectInventoryPage(inventoryData.url);
       });
     });
 
@@ -176,11 +178,11 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         await checkout.clickContinue();
       });
       await test.step('Check payment summary', async () => {
-        await checkout.expectCheckoutStepTwoPage();
+        await checkout.expectCheckoutStepTwoPage(checkoutData.urlStepTwo);
         await checkout.clickFinish();
       });
       await test.step('Verify your order', async () => {
-        await checkout.expectCheckoutCompletePage();
+        await checkout.expectCheckoutCompletePage(checkoutData.urlComplete);
         await checkout.clickBackHome();
       });
     });

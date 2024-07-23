@@ -15,6 +15,11 @@ export class BasePage {
   error = this.page.getByTestId('error');
 
   //* Page
+
+  async toHaveURL(url: string): Promise<void> {
+    await expect(this.page).toHaveURL(url);
+  }
+
   async catchError(error: string): Promise<void> {
     await expect(this.error).toContainText(error);
   }

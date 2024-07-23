@@ -4,6 +4,7 @@ import { Page, expect } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {
   base = new BasePage(this.page);
+
   constructor(page: Page) {
     super(page);
   }
@@ -69,8 +70,8 @@ export class CheckoutPage extends BasePage {
     await this.bBackHome.click();
   }
 
-  async expectCheckoutPage(): Promise<void> {
-    await expect(this.page).toHaveURL(/.*checkout-step-one.html/);
+  async expectCheckoutPage(url: string): Promise<void> {
+    await this.toHaveURL(url);
     await expect(this.header).toContainText(checkoutData.header);
     await expect(this.fieldFirstName).toBeVisible();
     await expect(this.fieldLastName).toBeEditable();
@@ -79,8 +80,8 @@ export class CheckoutPage extends BasePage {
     await expect(this.bContinue).toBeVisible();
   }
 
-  async expectCheckoutStepTwoPage(): Promise<void> {
-    await expect(this.page).toHaveURL(/.*checkout-step-two.html/);
+  async expectCheckoutStepTwoPage(url: string): Promise<void> {
+    await this.toHaveURL(url);
     await expect(this.header).toContainText(checkoutData.headerStepTwo);
     await expect(this.labelPaymentValue).toContainText(checkoutData.paymentInformation);
     await expect(this.labelShippingValue).toContainText(checkoutData.shippingInformation);
@@ -90,8 +91,8 @@ export class CheckoutPage extends BasePage {
     await expect(this.bFinish).toBeEnabled();
   }
 
-  async expectCheckoutCompletePage(): Promise<void> {
-    await expect(this.page).toHaveURL(/.*checkout-complete.html/);
+  async expectCheckoutCompletePage(url: string): Promise<void> {
+    await this.toHaveURL(url);
     await expect(this.header).toContainText(checkoutData.headerComplete);
     await expect(this.completeHeader).toContainText(checkoutData.completeHeader);
     await expect(this.completeText).toContainText(checkoutData.completeText);
