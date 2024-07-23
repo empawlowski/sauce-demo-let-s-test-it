@@ -56,8 +56,9 @@ export class InventoryPage extends BasePage {
     await this.fProductSort.selectOption(sort);
   }
 
-  async expectInventoryPage(): Promise<void> {
-    await expect(this.page).toHaveURL(/.*inventory.html/);
+  async expectInventoryPage(url: string): Promise<void> {
+    await this.toHaveURL(url);
+    // await expect(this.page).toHaveURL(/.*inventory.html/);
     await expect(this.header).toContainText(inventoryData.header);
     await expect(this.fProductSort).toBeVisible();
     await expect(this.tableInventoryList).toBeVisible();
@@ -87,8 +88,9 @@ export class InventoryPage extends BasePage {
     }
   }
 
-  async expectSingleProductPage(title: string, desc: string, price: string, link: string): Promise<void> {
-    await expect(this.page).toHaveURL(/.*inventory-item.html/);
+  async expectSingleProductPage(url: string, title: string, desc: string, price: string, link: string): Promise<void> {
+    await this.toHaveURL(url);
+    // await expect(this.page).toHaveURL(/.*inventory-item.html/);
     await expect(this.linkBackToProducts).toBeVisible();
     await expect(this.title).toContainText(title);
     await expect(this.desc).toContainText(desc);
@@ -97,8 +99,9 @@ export class InventoryPage extends BasePage {
     await expect(this.bAddToCart.or(this.bRemove)).toBeVisible();
   }
 
-  async expectIncorrectImageOnProduct(link: string): Promise<void> {
-    await expect(this.page).toHaveURL(/.*inventory.html/);
+  async expectIncorrectImageOnProduct(url: string, link: string): Promise<void> {
+    await this.toHaveURL(url);
+    // await expect(this.page).toHaveURL(/.*inventory.html/);
     await expect(this.img.first()).toHaveAttribute('src', link);
   }
 }

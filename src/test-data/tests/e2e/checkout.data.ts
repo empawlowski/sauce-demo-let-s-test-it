@@ -1,4 +1,8 @@
 export const checkoutData = {
+  urlStepOne: '/checkout-step-one.html',
+  urlStepTwo: '/checkout-step-two.html',
+  urlComplete: '/checkout-complete.html',
+
   header: 'Checkout: Your Information',
   headerStepTwo: 'Checkout: Overview',
   headerComplete: 'Checkout: Complete!',

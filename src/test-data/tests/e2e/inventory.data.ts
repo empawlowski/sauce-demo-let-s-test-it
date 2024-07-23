@@ -1,4 +1,7 @@
 export const inventoryData = {
+  url: '/inventory.html',
+  urlItem: '/inventory-item.html',
+
   header: 'Products',
 
   //* Product sort container
