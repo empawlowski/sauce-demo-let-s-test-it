@@ -11,7 +11,7 @@ dotenv.config({ path: path.resolve(__dirname, `.env.${process.env.ENV}`) });
 export default defineConfig({
   testDir: './tests',
   snapshotPathTemplate: '{testDir}/ui/{arg}{ext}',
-  globalSetup: './src/global-setup.ts',
+  globalSetup: './src/config/global-setup.ts',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

@@ -3,7 +3,6 @@ import { createRandomCheckoutUser } from '../../src/factories/user.factory';
 import * as report from '../../src/test-data/report/playwright.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import { checkoutData } from '../../src/test-data/tests/e2e/checkout.data';
-import { inventoryData } from '../../src/test-data/tests/e2e/inventory.data';
 import { visualData } from '../../src/test-data/tests/ui/visual.data';
 import { faker } from '@faker-js/faker';
 
@@ -109,7 +108,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         await cart.clickContinueShopping();
       });
       await test.step('Check redirect to Inventory page', async () => {
-        await inventory.expectInventoryPage(inventoryData.url);
+        await inventory.expectInventoryPage();
       });
     });
 

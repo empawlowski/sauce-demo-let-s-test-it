@@ -1,40 +1,45 @@
 import { CheckoutUser } from '../../models/user.model';
 import { checkoutData } from '../../test-data/tests/e2e/checkout.data';
 import { BasePage } from './base.page';
-import { Page, expect } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {
-  base = new BasePage(this.page);
+  readonly fieldFirstName: Locator;
+  readonly fieldLastName: Locator;
+  readonly fieldPostalCode: Locator;
+  readonly labelPaymentValue: Locator;
+  readonly labelShippingValue: Locator;
+  readonly labelSubTotalValue: Locator;
+  readonly labelTaxValue: Locator;
+  readonly labelTotalValue: Locator;
+  readonly completeHeader: Locator;
+  readonly completeText: Locator;
+
+  readonly bCancel: Locator;
+  readonly bContinue: Locator;
+  readonly bFinish: Locator;
+  readonly bBackHome: Locator;
+
+  readonly error = this.page.getByTestId('error');
 
   constructor(page: Page) {
     super(page);
+    this.fieldFirstName = this.page.locator('#first-name');
+    this.fieldLastName = this.page.locator('#last-name');
+    this.fieldPostalCode = this.page.locator('#postal-code');
+    this.labelPaymentValue = this.page.getByTestId('payment-info-value');
+    this.labelShippingValue = this.page.getByTestId('shipping-info-value');
+    this.labelSubTotalValue = this.page.getByTestId('subtotal-label');
+    this.labelTaxValue = this.page.getByTestId('tax-label');
+    this.labelTotalValue = this.page.getByTestId('total-label');
+    this.completeHeader = this.page.getByTestId('complete-header');
+    this.completeText = this.page.getByTestId('complete-text');
+    this.bCancel = this.page.locator('#cancel');
+    this.bContinue = this.page.locator('#continue');
+    this.bFinish = this.page.locator('#finish');
+    this.bBackHome = this.page.locator('#back-to-products');
+    this.error = this.page.getByTestId('error');
   }
-
-  //* Body
-  //? Step One
-  fieldFirstName = this.page.locator('#first-name');
-  fieldLastName = this.page.locator('#last-name');
-  fieldPostalCode = this.page.locator('#postal-code');
-  //? Step Two
-  labelPaymentValue = this.page.getByTestId('payment-info-value');
-  labelShippingValue = this.page.getByTestId('shipping-info-value');
-  labelSubTotalValue = this.page.getByTestId('subtotal-label');
-  labelTaxValue = this.page.getByTestId('tax-label');
-  labelTotalValue = this.page.getByTestId('total-label');
-  //? Complete
-  completeHeader = this.page.getByTestId('complete-header');
-  completeText = this.page.getByTestId('complete-text');
-
-  //* Footer
-  bCancel = this.page.locator('#cancel');
-  bContinue = this.page.locator('#continue');
-  //? Step Two
-  bFinish = this.page.locator('#finish');
-  //? Complete
-  bBackHome = this.page.locator('#back-to-products');
-
-  //* Error
-  error = this.page.getByTestId('error');
 
   async fillFieldFirstName(firstName: string): Promise<void> {
     await this.fieldFirstName.fill(firstName);
@@ -67,7 +72,7 @@ export class CheckoutPage extends BasePage {
     // const sub = parseFloat((await this.labelSubTotalValue.innerText()).slice(13));
     // const tax = parseFloat((await this.labelTaxValue.innerText()).slice(6));
     // const total = parseFloat((await this.labelTotalValue.innerText()).slice(8));
-    expect(sub + tax).toEqual(total);
+    await expect(sub + tax).toEqual(total);
   }
 
   async clickFinish(): Promise<void> {

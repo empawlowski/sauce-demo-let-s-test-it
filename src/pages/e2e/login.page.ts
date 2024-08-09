@@ -1,11 +1,15 @@
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 
 export class LoginPage {
-  constructor(private page: Page) {}
+  readonly fieldUsername: Locator;
+  readonly fieldPassword: Locator;
+  readonly bLogin: Locator;
 
-  fieldUsername = this.page.locator('#user-name');
-  fieldPassword = this.page.locator('#password');
-  bLogin = this.page.locator('#login-button');
+  constructor(private page: Page) {
+    this.fieldUsername = this.page.locator('#user-name');
+    this.fieldPassword = this.page.locator('#password');
+    this.bLogin = this.page.locator('#login-button');
+  }
 
   async goto(): Promise<void> {
     await this.page.goto('/');
