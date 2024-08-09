@@ -1,20 +1,23 @@
 import { screenshotPath } from '../../../utils/screenshotPath';
 import { HeaderComponent } from '../../components/header.component';
 import { SideBarComponent } from '../../components/sidebar.component';
-import { Page, expect } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 
 export class BasePage {
-  constructor(protected page: Page) {}
-  headerComponent = new HeaderComponent(this.page);
-  sidebarComponent = new SideBarComponent(this.page);
+  readonly headerComponent: HeaderComponent;
+  readonly sidebarComponent: SideBarComponent;
 
-  //* Header
-  header = this.page.getByTestId('title');
+  readonly header: Locator;
+  readonly error: Locator;
 
-  //* Error
-  error = this.page.getByTestId('error');
-
-  //* Page
+  constructor(protected page: Page) {
+    this.headerComponent = new HeaderComponent(this.page);
+    this.sidebarComponent = new SideBarComponent(this.page);
+    //* Header
+    this.header = this.page.getByTestId('title');
+    //* Error
+    this.error = this.page.getByTestId('error');
+  }
 
   async toHaveURL(url: string): Promise<void> {
     await expect(this.page).toHaveURL(url);
