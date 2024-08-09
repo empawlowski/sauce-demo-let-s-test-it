@@ -19,7 +19,7 @@ export class BasePage {
     this.error = this.page.getByTestId('error');
   }
 
-  async toHaveURL(url: string): Promise<void> {
+  async toHaveURL(url: string | RegExp): Promise<void> {
     await expect(this.page).toHaveURL(url);
   }
 
