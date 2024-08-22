@@ -1,16 +1,18 @@
 import { expect, test } from '../../src/components/fixtures/base';
-import * as report from '../../src/test-data/report/playwright.data.json';
+import * as report from '../../src/test-data/report/allure.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import { footerData } from '../../src/test-data/tests/e2e/footer.data';
+
+const { allure } = require('allure-playwright');
 
 let user: string = authData.standard;
 let password: string = authData.password;
 
 test.describe('Footer', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
-    // await allure.epic(report.epic.analysis);
-    // await allure.feature(report.feature.tm);
-    // await allure.tag(report.tag.dealer);
+    await allure.epic(report.epic.application);
+    await allure.feature(report.feature.footer);
+    await allure.owner(report.owner.mrp);
 
     // Arrange
     console.log(`Running ${testInfo.title}`);

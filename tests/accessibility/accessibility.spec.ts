@@ -1,16 +1,18 @@
 import { expect, test } from '../../src/components/fixtures/base';
-import * as report from '../../src/test-data/report/playwright.data.json';
+import * as report from '../../src/test-data/report/allure.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import * as product from '../../src/test-data/tests/e2e/inventory-item.data.json';
 import AxeBuilder from '@axe-core/playwright';
+
+const { allure } = require('allure-playwright');
 
 let user: string = authData.standard;
 let password: string = authData.password;
 
 test.skip('Main page - accessibility', { tag: [report.tags.accessibility] }, async ({ login, header, page }) => {
-  // await allure.epic(report.epic.analysis);
-  // await allure.feature(report.feature.tm);
-  // await allure.tag(report.tag.dealer);
+  await allure.epic(report.epic.application);
+  await allure.feature(report.feature.accessibility);
+  await allure.owner(report.owner.mrp);
 
   // Arrange
   // Act
@@ -32,9 +34,9 @@ test.skip('Main page - accessibility', { tag: [report.tags.accessibility] }, asy
 
 test.describe('Inventory', { tag: report.tags.accessibility }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
-    // await allure.epic(report.epic.analysis);
-    // await allure.feature(report.feature.tm);
-    // await allure.tag(report.tag.dealer);
+    await allure.epic(report.epic.application);
+    await allure.feature(report.feature.accessibility);
+    await allure.story(report.story.gunning);
 
     // Arrange
     console.log(`Running ${testInfo.title}`);
@@ -53,7 +55,7 @@ test.describe('Inventory', { tag: report.tags.accessibility }, () => {
   });
 
   test('Gunning fog index - product describe', async ({ inventory, accessibility }) => {
-    // await allure.owner(report.owner.mrp);
+    await allure.owner(report.owner.mrp);
     // Arrange
     const title = product[3].title;
     // Act

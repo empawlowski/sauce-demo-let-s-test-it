@@ -1,10 +1,12 @@
 import { test } from '../../src/components/fixtures/base';
 import { createRandomCheckoutUser } from '../../src/factories/user.factory';
-import * as report from '../../src/test-data/report/playwright.data.json';
+import * as report from '../../src/test-data/report/allure.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import { checkoutData } from '../../src/test-data/tests/e2e/checkout.data';
 import { visualData } from '../../src/test-data/tests/ui/visual.data';
 import { faker } from '@faker-js/faker';
+
+const { allure } = require('allure-playwright');
 
 let user: string = authData.standard;
 let visual_user: string = authData.visual;
@@ -12,9 +14,8 @@ let password: string = authData.password;
 
 test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
-    // await allure.epic(report.epic.analysis);
-    // await allure.feature(report.feature.tm);
-    // await allure.tag(report.tag.dealer);
+    await allure.epic(report.epic.application);
+    await allure.feature(report.feature.checkout);
 
     // Arrange
     console.log(`Running ${testInfo.title}`);
@@ -33,7 +34,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   });
 
   test('Validation Checkout page', { tag: [report.tags.smoke] }, async ({ header, cart, checkout }) => {
-    // await allure.owner(report.owner.mrp);
+    await allure.owner(report.owner.mrp);
     // Arrange
     const url = checkoutData.urlStepOne;
     // Act
@@ -50,7 +51,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     });
 
     test('Empty Fist Name field', async ({ checkout, base }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       const error = checkoutData.errorFirstName;
       // Act
@@ -59,7 +60,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
       await base.catchError(error);
     });
     test('Empty Last Name field', async ({ checkout, base }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       const firstName = faker.person.firstName();
       const error = checkoutData.errorLastName;
@@ -71,7 +72,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     });
 
     test('Empty Postal Code field', async ({ checkout, base }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       const firstName = faker.person.firstName();
       const lastName = faker.person.lastName();
@@ -87,7 +88,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
 
   test.describe('Checkout process', { tag: [report.tags.smoke] }, () => {
     test('Continue process from Checkout', async ({ header, inventory, cart }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       await test.step('Add products to basket', async () => {
         // Arrange
         await inventory.titleFirst.isVisible();
@@ -113,7 +114,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     });
 
     test('Checkout process with Cancel', async ({ header, inventory, cart, checkout }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       await test.step('Add products to basket', async () => {
         // Arrange
         await inventory.titleFirst.isVisible();
@@ -146,7 +147,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     });
 
     test('Checkout process with Success', async ({ header, inventory, cart, checkout }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       let products = await inventory.bAddToCart.count();
 
@@ -183,7 +184,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     });
 
     test('Checkout process with payment verification', async ({ header, inventory, cart, checkout }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       let products = await inventory.bAddToCart.count();
 
@@ -237,7 +238,7 @@ test.describe('Checkout with errors', { tag: report.tags.regression }, () => {
   });
 
   test('Visual effect for page', async ({ login, header, cart, base }) => {
-    // await allure.owner(report.owner.mrp);
+    await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
     const screenshot = visualData.checkout;
