@@ -1,0 +1,2 @@
+Running Validation Inventory page
+Finished Validation Inventory page with status passed

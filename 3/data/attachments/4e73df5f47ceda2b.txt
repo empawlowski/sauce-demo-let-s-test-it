@@ -1,0 +1,2 @@
+Running Checkout process with Cancel
+Finished Checkout process with Cancel with status passed
