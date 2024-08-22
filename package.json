@@ -10,9 +10,11 @@
     "prepare": "husky",
     "test": "npx playwright test",
     "test:ui": "npm run test -- --ui",
-    "show-report": "npx playwright show-report",
     "test:tags": "npx playwright test --grep \"@smoke|@reg\"",
-    "test:env": "npx playwright test --grep \"@env\""
+    "test:env": "npx playwright test --grep \"@env\"",
+    "show-report": "npx playwright show-report",
+    "generate-report": "npx allure generate allure-results -o allure-report --clean",
+    "allure-report": "npx allure open ./allure-report"
   },
   "keywords": [],
   "author": "Marcin P.",

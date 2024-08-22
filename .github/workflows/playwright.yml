@@ -15,10 +15,10 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm ci
-      - name: Install Playwright Browsers
+      - name: Install Playwright Browser
         run: npx playwright install --with-deps chromium
-      - name: Run Playwright smoke tests
-        run: npx playwright test --grep @smoke
+      - name: Run Playwright Regression tests
+        run: npx playwright test --grep @reg
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
