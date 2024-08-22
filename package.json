@@ -10,9 +10,11 @@
     "prepare": "husky",
     "test": "npx playwright test",
     "test:ui": "npm run test -- --ui",
-    "show-report": "npx playwright show-report",
     "test:tags": "npx playwright test --grep \"@smoke|@reg\"",
-    "test:env": "npx playwright test --grep \"@env\""
+    "test:env": "npx playwright test --grep \"@env\"",
+    "show-report": "npx playwright show-report",
+    "generate-report": "npx allure generate allure-results -o allure-report --clean",
+    "allure-report": "npx allure open ./allure-report"
   },
   "keywords": [],
   "author": "Marcin P.",
@@ -22,6 +24,8 @@
     "@playwright/test": "^1.44.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/node": "^20.11.30",
+    "allure-commandline": "^2.30.0",
+    "allure-playwright": "^3.0.0-beta.10",
     "dotenv": "^16.4.5",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",

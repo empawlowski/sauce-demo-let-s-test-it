@@ -1,7 +1,9 @@
 import { test } from '../../src/components/fixtures/base';
-import * as report from '../../src/test-data/report/playwright.data.json';
+import * as report from '../../src/test-data/report/allure.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import { visualData } from '../../src/test-data/tests/ui/visual.data';
+
+const { allure } = require('allure-playwright');
 
 let user: string = authData.standard;
 let visual_user: string = authData.visual;
@@ -9,9 +11,8 @@ let password: string = authData.password;
 
 test.describe('Cart', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
-    // await allure.epic(report.epic.analysis);
-    // await allure.feature(report.feature.tm);
-    // await allure.tag(report.tag.dealer);
+    await allure.epic(report.epic.application);
+    await allure.feature(report.feature.cart);
 
     // Arrange
     console.log(`Running ${testInfo.title}`);
@@ -29,8 +30,8 @@ test.describe('Cart', { tag: [report.tags.regression] }, () => {
     await base.closePage();
   });
 
-  test('Validation Cart page', { tag: [report.tags.smoke, report.tags.env] }, async ({ cart, header }) => {
-    // await allure.owner(report.owner.mrp);
+  test('Validation Cart page', { tag: [report.tags.smoke] }, async ({ cart, header }) => {
+    await allure.owner(report.owner.mrp);
     // Arrange
     // Act
     await header.clickShoppingCart();
@@ -40,7 +41,7 @@ test.describe('Cart', { tag: [report.tags.regression] }, () => {
 
   test.describe('Function with product', () => {
     test('Add product to basket', async ({ header, inventory }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       //Act
       await inventory.titleFirst.isVisible();
@@ -50,7 +51,7 @@ test.describe('Cart', { tag: [report.tags.regression] }, () => {
       await header.expectBadge();
     });
     test('Remove product from basket', async ({ header, inventory }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       await test.step('Add product to basket', async () => {
         // Act
@@ -82,7 +83,7 @@ test.describe('Cart with errors', { tag: report.tags.regression }, () => {
   });
 
   test('Visual effect for page', async ({ login, header, base }) => {
-    // await allure.owner(report.owner.mrp);
+    await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
     const screenshot = visualData.cart;

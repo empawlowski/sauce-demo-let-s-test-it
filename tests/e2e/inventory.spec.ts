@@ -1,9 +1,11 @@
 import { test } from '../../src/components/fixtures/base';
-import * as report from '../../src/test-data/report/playwright.data.json';
+import * as report from '../../src/test-data/report/allure.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import * as product from '../../src/test-data/tests/e2e/inventory-item.data.json';
 import { inventoryData } from '../../src/test-data/tests/e2e/inventory.data';
 import { visualData } from '../../src/test-data/tests/ui/visual.data';
+
+const { allure } = require('allure-playwright');
 
 let user: string = authData.standard;
 let problem_user: string = authData.problem;
@@ -12,9 +14,8 @@ let password: string = authData.password;
 
 test.describe('Inventory', { tag: report.tags.regression }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
-    // await allure.epic(report.epic.analysis);
-    // await allure.feature(report.feature.tm);
-    // await allure.tag(report.tag.dealer);
+    await allure.epic(report.epic.application);
+    await allure.feature(report.feature.inventory);
 
     // Arrange
     console.log(`Running ${testInfo.title}`);
@@ -33,15 +34,14 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
   });
 
   test('Validation Inventory page', { tag: [report.tags.smoke] }, async ({ inventory }) => {
-    // await allure.owner(report.owner.mrp);
-    // Arrange
-    // Act
+    await allure.owner(report.owner.mrp);
+
     // Assert
     await inventory.expectInventoryPage();
   });
   test.describe('Products sorting', () => {
     test('Sort by Name (A to Z)', async ({ inventory }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       const sort = inventoryData.az;
       // Act
@@ -51,7 +51,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     });
 
     test('Sort by Name (Z to A)', async ({ inventory }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       const sort = inventoryData.za;
       // Act
@@ -61,7 +61,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     });
 
     test('Sort by Price (low to high)', async ({ inventory }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       const sort = inventoryData.lowHi;
       // Act
@@ -71,7 +71,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     });
 
     test('Sort by Price (high to low)', async ({ inventory }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       const sort = inventoryData.hiLow;
       // Act
@@ -83,7 +83,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
 
   test.describe('Add products - different methods', () => {
     test('Adding by Title - all', async ({ header, inventory }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       let products = await inventory.title.count();
 
@@ -101,7 +101,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     });
 
     test('Adding by Title - one', async ({ header, inventory }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       const name = 'Test.allTheThings() T-Shirt (Red)';
       // Act
@@ -112,7 +112,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     });
 
     test('Adding by button "Add to cart" - first', async ({ header, inventory }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       const products = await inventory.bAddToCart.count();
       console.log('Number of product/s on page:', products);
@@ -125,7 +125,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     });
 
     test('Adding by button "Add to cart" - all', async ({ header, inventory }) => {
-      // await allure.owner(report.owner.mrp);
+      await allure.owner(report.owner.mrp);
       // Arrange
       const products = await inventory.bAddToCart.count();
       // Act
@@ -139,7 +139,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
   });
 
   test('Single product view', async ({ inventory }) => {
-    // await allure.owner(report.owner.mrp);
+    await allure.owner(report.owner.mrp);
     // Arrange
     const title = product[4].title;
     const desc = product[4].desc;
@@ -165,7 +165,7 @@ test.describe('Inventory with errors', { tag: report.tags.regression }, () => {
   });
 
   test('Wrong image link for product', async ({ login, inventory }) => {
-    // await allure.owner(report.owner.mrp);
+    await allure.owner(report.owner.mrp);
     // Arrange
     const link = product[6].link;
     // Act
@@ -175,7 +175,7 @@ test.describe('Inventory with errors', { tag: report.tags.regression }, () => {
   });
 
   test('Visual effect for page', async ({ login, base }) => {
-    // await allure.owner(report.owner.mrp);
+    await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
     const screenshot = visualData.inventory;

@@ -1,19 +1,17 @@
 import { test } from '../../src/components/fixtures/base';
-import * as report from '../../src/test-data/report/playwright.data.json';
+import * as report from '../../src/test-data/report/allure.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import { visualData } from '../../src/test-data/tests/ui/visual.data';
+
+const { allure } = require('allure-playwright');
 
 let user: string = authData.standard;
 let password: string = authData.password;
 
 test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, async () => {
   test.beforeEach('Login method', async ({ login, header }) => {
-    // await allure.epic(report.epic.analysis);
-    // await allure.feature(report.feature.tm);
-    // await allure.tag(report.tag.dealer);
-
-    // Arrange
-
+    await allure.epic(report.epic.application);
+    await allure.epic(report.feature.ui);
     // Act
     await login.logIn(user, password);
     // Assert
@@ -25,7 +23,7 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, asyn
   });
 
   test('Inventory', async ({ base }) => {
-    // await allure.owner(report.owner.mrp);
+    await allure.owner(report.owner.mrp);
     // Arrange
     const screenshot = visualData.inventory;
     // Act
@@ -34,7 +32,7 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, asyn
   });
 
   test('Cart', async ({ base, header }) => {
-    // await allure.owner(report.owner.mrp);
+    await allure.owner(report.owner.mrp);
     // Arrange
     const screenshot = visualData.cart;
     // Act
@@ -44,7 +42,7 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, asyn
   });
 
   test('Checkout', async ({ base, header, cart }) => {
-    // await allure.owner(report.owner.mrp);
+    await allure.owner(report.owner.mrp);
     // Arrange
     const screenshot = visualData.checkout;
     // Act

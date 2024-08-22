@@ -1,7 +1,9 @@
 import { test } from '../../src/components/fixtures/base';
-import * as report from '../../src/test-data/report/playwright.data.json';
+import * as report from '../../src/test-data/report/allure.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import { loginData } from '../../src/test-data/tests/e2e/login.data';
+
+const { allure } = require('allure-playwright');
 
 let user: string = authData.standard;
 let locked: string = authData.locked;
@@ -14,6 +16,10 @@ let password: string = authData.password;
 
 test.describe('Login', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Add running test title', async ({}, testInfo) => {
+    await allure.epic(report.epic.application);
+    await allure.feature(report.feature.authentication);
+    await allure.story(report.story.login);
+    await allure.owner(report.owner.mrp);
     console.log(`Running ${testInfo.title}`);
   });
 
@@ -69,6 +75,15 @@ test.describe('Login', { tag: [report.tags.regression] }, () => {
   });
 
   test.describe('Login with error status', () => {
+    test.beforeEach('Add running test title', async ({}, testInfo) => {
+      await allure.epic(report.epic.application);
+      await allure.feature(report.feature.authentication);
+      await allure.story(report.story.login);
+      await allure.owner(report.owner.mrp);
+
+      console.log(`Running ${testInfo.title}`);
+    });
+
     test('Missing credentials', async ({ login, base }) => {
       // Arrange
       const error = loginData.requiredUsername;

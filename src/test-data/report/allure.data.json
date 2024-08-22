@@ -1,0 +1,44 @@
+{
+  "epic": {
+    "api": "API",
+    "application": "Application"
+  },
+  "feature": {
+    "accessibility": "Accessibility",
+    "authentication": "Authentication",
+    "cart": "Cart",
+    "checkout": "Checkout",
+    "footer": "Footer",
+    "inventory": "Inventory",
+    "performance": "Performance",
+    "ui": "UI"
+  },
+  "story": {
+    "gunning": "Gunning fog index",
+    "load": "Load",
+    "login": "Login"
+  },
+  "parent_suite": { "uat": "UAT" },
+  "suite": {
+    "r001": "Release 0.0.1.",
+    "r100": "Release 1.0.0."
+  },
+  "sub_suite": { "uat": "UAT" },
+  "tag": {
+    "unstable": "Unstable",
+    "flaky": "Flaky",
+    "backend": "Backend",
+    "frontend": "Frontend"
+  },
+  "tags": {
+    "smoke": "@smoke",
+    "regression": "@reg",
+    "accessibility": "@accessibility",
+    "load": "@load",
+    "visual": "@visual",
+    "api": "@api",
+    "env": "@env"
+  },
+  "owner": { "mrp": "Marcin P" },
+  "link": { "story": "Story" }
+}

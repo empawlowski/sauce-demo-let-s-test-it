@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
+import * as os from 'os';
 import path from 'path';
 
 dotenv.config();
@@ -30,26 +31,33 @@ export default defineConfig({
     timeout: 5000,
   },
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { open: 'always' }]],
+  // reporter: [['line'], ['allure-playwright']],
+  // reporter: [['html', { open: 'always' }]],
 
-  // reporter: [
-  //   ['html'],
-  //   [
-  //     'allure-playwright',
-  //     {
-  //       detail: true,
-  //       outputFolder: 'allure-results',
-  //       suiteTitle: true,
-  //       environmentInfo: {
-  //         framework: 'Playwright',
-  //         os_platform: os.platform(),
-  //         os_release: os.release(),
-  //         os_version: os.version(),
-  //         node_version: process.version,
-  //       },
-  //     },
-  //   ],
-  // ],
+  reporter: [
+    ['line'],
+    [
+      'allure-playwright',
+      {
+        detail: true,
+        outputFolder: 'allure-results',
+        suiteTitle: true,
+        categories: [
+          {
+            name: 'Outdated tests',
+            messageRegex: '.*FileNotFound.*',
+          },
+        ],
+        environmentInfo: {
+          framework: 'Sauce Demo Playwright',
+          os_platform: os.platform(),
+          os_release: os.release(),
+          os_version: os.version(),
+          node_version: process.version,
+        },
+      },
+    ],
+  ],
 
   // reporter: 'dot',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
