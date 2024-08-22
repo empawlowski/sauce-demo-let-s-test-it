@@ -2,6 +2,7 @@ import { test } from '../../src/components/fixtures/base';
 import * as report from '../../src/test-data/report/allure.data.json';
 import { authData } from '../../src/test-data/tests/e2e/auth.data';
 import { loginData } from '../../src/test-data/tests/e2e/login.data';
+import { Severity } from 'allure-js-commons';
 
 const { allure } = require('allure-playwright');
 
@@ -19,6 +20,10 @@ test.describe('Login', { tag: [report.tags.regression] }, () => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.authentication);
     await allure.story(report.story.login);
+    await allure.severity(Severity.CRITICAL);
+    await allure.description(
+      'This test attempts to log into the website using a login and a password. Fails if any error happens.\n\nNote that this test does not test 2-Factor Authentication.',
+    );
     await allure.owner(report.owner.mrp);
     console.log(`Running ${testInfo.title}`);
   });
