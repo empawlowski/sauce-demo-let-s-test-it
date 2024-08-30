@@ -1,0 +1,3 @@
+Running Adding by button "Add to cart" - first
+Number of product/s on page: 6
+Finished Adding by button "Add to cart" - first with status passed
