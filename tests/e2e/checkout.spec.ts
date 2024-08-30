@@ -130,12 +130,13 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         await header.expectBadge();
       });
       await test.step('Open basket and go to checkout', async () => {
+        // Act
         await header.clickShoppingCart();
         await cart.clickCheckout();
       });
       await test.step('Fill checkout step one', async () => {
         // Arrange
-        const userCheckoutModel = createRandomCheckoutUser();
+        const userCheckoutModel = createRandomCheckoutUser('female');
 
         // Act
         await checkout.fillCheckoutFields(userCheckoutModel);
