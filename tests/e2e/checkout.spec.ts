@@ -226,8 +226,11 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   });
 });
 
-test.describe('Checkout with errors', { tag: report.tags.regression }, () => {
+test.describe('Checkout with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
   test.beforeEach('Add running test title', async ({}, testInfo) => {
+    await allure.epic(report.epic.application);
+    await allure.feature(report.feature.checkout);
+
     console.log(`Running ${testInfo.title}`);
   });
   test.afterEach('Close the page', async ({ base }, testInfo) => {

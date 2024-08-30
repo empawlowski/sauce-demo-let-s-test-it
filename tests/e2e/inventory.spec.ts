@@ -152,8 +152,11 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
   });
 });
 
-test.describe('Inventory with errors', { tag: report.tags.regression }, () => {
+test.describe('Inventory with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
   test.beforeEach('Add running test title', async ({}, testInfo) => {
+    await allure.epic(report.epic.application);
+    await allure.feature(report.feature.inventory);
+
     console.log(`Running ${testInfo.title}`);
   });
   test.afterEach('Close the page', async ({ base }, testInfo) => {

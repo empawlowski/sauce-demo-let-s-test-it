@@ -70,8 +70,11 @@ test.describe('Cart', { tag: [report.tags.regression] }, () => {
   });
 });
 
-test.describe('Cart with errors', { tag: report.tags.regression }, () => {
+test.describe('Cart with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
   test.beforeEach('Add running test title', async ({}, testInfo) => {
+    await allure.epic(report.epic.application);
+    await allure.feature(report.feature.cart);
+
     console.log(`Running ${testInfo.title}`);
   });
   test.afterEach('Close the page', async ({ base }, testInfo) => {
