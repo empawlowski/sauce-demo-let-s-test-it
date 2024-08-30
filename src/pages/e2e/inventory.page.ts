@@ -34,8 +34,14 @@ export class InventoryPage extends BasePage {
     this.desc = this.page.getByTestId('inventory-item-desc');
     this.price = this.page.getByTestId('inventory-item-price');
     this.img = this.page.locator('img.inventory_item_img');
-    this.bAddToCart = this.page.getByRole('button', { name: inventoryData.bAddToCart, exact: true });
-    this.bRemove = this.page.getByRole('button', { name: inventoryData.bRemove, exact: true });
+    this.bAddToCart = this.page.getByRole('button', {
+      name: inventoryData.bAddToCart,
+      exact: true,
+    });
+    this.bRemove = this.page.getByRole('button', {
+      name: inventoryData.bRemove,
+      exact: true,
+    });
 
     this.titleFirst = this.title.first();
     this.titleSecond = this.title.nth(1);

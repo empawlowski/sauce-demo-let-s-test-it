@@ -1,0 +1,14 @@
+    allure-report
+    allure-results
+    package-lock.json
+    playwright-report
+    playwright-results
+    test-download
+    test-results
+    test-upload
+    test-report
+
+
+
+
+
