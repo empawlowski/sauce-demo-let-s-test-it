@@ -1,6 +1,10 @@
 /allure-report/
 /allure-results/
 /node_modules/
-/playwright-report/
 /test-results/
-# .env
+/test-report/
+/playwright-report/  
+/playwright-results/  
+/blob-report/
+/playwright/.cache/
+/.env
