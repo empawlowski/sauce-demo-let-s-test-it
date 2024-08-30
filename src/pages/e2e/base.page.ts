@@ -42,7 +42,10 @@ export class BasePage {
   //* Screenshot
 
   async takeScreenshot(screenshot: string): Promise<void> {
-    await this.page.screenshot({ path: `${screenshotPath}${screenshot}`, fullPage: true });
+    await this.page.screenshot({
+      path: `${screenshotPath}${screenshot}`,
+      fullPage: true,
+    });
   }
 
   async expectHaveScreenshot(screenshot: string): Promise<void> {
