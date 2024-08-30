@@ -1,0 +1,2 @@
+Running Continue process from Checkout
+Finished Continue process from Checkout with status passed
