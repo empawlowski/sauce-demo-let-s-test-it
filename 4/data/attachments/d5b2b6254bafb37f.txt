@@ -1,2 +1,0 @@
-Running Validation Checkout page
-Finished Validation Checkout page with status passed
