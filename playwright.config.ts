@@ -1,7 +1,8 @@
+import { Configuration } from './src/config/configuration';
 import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
 import * as os from 'os';
-import path from 'path';
+import * as path from 'path';
 
 dotenv.config();
 dotenv.config({ path: path.resolve(__dirname, `.env.${process.env.ENV}`) });
@@ -32,7 +33,7 @@ export default defineConfig({
   },
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: [['line'], ['allure-playwright']],
-  // reporter: [['html', { open: 'always' }]],
+  // reporter: [['html', { open: 'never', outputFolder: 'e2e/output/test-reports' }]],
 
   reporter: [
     ['line'],
@@ -40,7 +41,9 @@ export default defineConfig({
       'allure-playwright',
       {
         detail: true,
-        outputFolder: 'allure-results',
+        // resultsDir: './e2e/output/allure-results',
+        // resultsDir: 'allure-results',
+        outputFolder: 'allure-reports',
         suiteTitle: true,
         categories: [
           {
@@ -53,6 +56,7 @@ export default defineConfig({
           os_platform: os.platform(),
           os_release: os.release(),
           os_version: os.version(),
+          os_architecture: os.arch(),
           node_version: process.version,
         },
       },
@@ -65,7 +69,7 @@ export default defineConfig({
     /* Set test ID attribute for project*/
     testIdAttribute: 'data-test',
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.BASE_URL ?? 'https://www.saucedemo.com',
+    baseURL: Configuration.baseURL ?? 'https://www.saucedemo.com',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     actionTimeout: 0,
