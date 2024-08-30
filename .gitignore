@@ -2,7 +2,9 @@
 /allure-results/
 /node_modules/
 /test-results/
-/playwright-report/
+/test-report/
+/playwright-report/  
+/playwright-results/  
 /blob-report/
 /playwright/.cache/
 /.env
