@@ -1,6 +1,6 @@
-import { CheckoutUserModel } from '../../models/user.model';
-import { checkoutData } from '../../test-data/tests/e2e/checkout.data';
-import { BasePage } from './base.page';
+import { CheckoutUserModel } from '@_src/models/user.model';
+import { BasePage } from '@_src/pages/e2e/base.page';
+import { checkoutData } from '@_src/test-data/tests/e2e/checkout.data';
 import { Locator, Page, expect } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {

@@ -1,7 +1,7 @@
-import { expect, test } from '../../src/components/fixtures/base';
-import * as report from '../../src/test-data/report/allure.data.json';
-import { authData } from '../../src/test-data/tests/e2e/auth.data';
-import * as product from '../../src/test-data/tests/e2e/inventory-item.data.json';
+import { expect, test } from '@_src/fixtures/base';
+import * as report from '@_src/test-data/report/allure.data.json';
+import { authData } from '@_src/test-data/tests/e2e/auth.data';
+import * as product from '@_src/test-data/tests/e2e/inventory-item.data.json';
 import AxeBuilder from '@axe-core/playwright';
 
 const { allure } = require('allure-playwright');

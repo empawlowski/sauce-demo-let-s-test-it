@@ -1,4 +1,4 @@
-import { baseData } from '../test-data/tests/e2e/base.data';
+import { baseData } from '@_src/test-data/tests/e2e/base.data';
 import { Page, expect } from '@playwright/test';
 
 export class HeaderComponent {

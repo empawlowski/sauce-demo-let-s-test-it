@@ -82,6 +82,17 @@ export default defineConfig({
   projects: [
     {
       name: 'Chromium',
+      grepInvert: /@user/,
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'setup',
+      testMatch: '*.setup.ts',
+    },
+    {
+      name: 'user',
+      grep: /@user/,
+      dependencies: ['setup'],
       use: { ...devices['Desktop Chrome'] },
     },
 

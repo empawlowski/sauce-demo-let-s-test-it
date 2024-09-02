@@ -37,7 +37,8 @@
     "load": "@load",
     "visual": "@visual",
     "api": "@api",
-    "env": "@env"
+    "env": "@env",
+    "user": "@user"
   },
   "owner": { "mrp": "Marcin P" },
   "link": { "story": "Story" }

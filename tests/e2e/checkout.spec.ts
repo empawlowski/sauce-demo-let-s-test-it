@@ -1,9 +1,9 @@
-import { test } from '../../src/components/fixtures/base';
-import { createRandomCheckoutUser } from '../../src/factories/user.factory';
-import * as report from '../../src/test-data/report/allure.data.json';
-import { authData } from '../../src/test-data/tests/e2e/auth.data';
-import { checkoutData } from '../../src/test-data/tests/e2e/checkout.data';
-import { visualData } from '../../src/test-data/tests/ui/visual.data';
+import { createCheckoutUser } from '@_src/factories/user.factory';
+import { test } from '@_src/fixtures/base';
+import * as report from '@_src/test-data/report/allure.data.json';
+import { authData } from '@_src/test-data/tests/e2e/auth.data';
+import { checkoutData } from '@_src/test-data/tests/e2e/checkout.data';
+import { visualData } from '@_src/test-data/tests/ui/visual.data';
 import { faker } from '@faker-js/faker';
 
 const { allure } = require('allure-playwright');
@@ -136,11 +136,12 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
       });
       await test.step('Fill checkout step one', async () => {
         // Arrange
-        const userCheckoutModel = createRandomCheckoutUser('female');
+        const userCheckoutModel = createCheckoutUser('female');
 
         // Act
         await checkout.fillCheckoutFields(userCheckoutModel);
       });
+
       await test.step('Fill checkout step one', async () => {
         // Act
         await checkout.clickCancel();
@@ -166,16 +167,18 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
       });
       await test.step('Fill checkout step one', async () => {
         // Arrange
-        const userCheckoutModel = createRandomCheckoutUser();
+        const userCheckoutModel = createCheckoutUser();
 
         // Act
         await checkout.fillCheckoutFields(userCheckoutModel);
       });
+
       await test.step('Check payment summary', async () => {
         // Act
         await checkout.expectCheckoutStepTwoPage(checkoutData.urlStepTwo);
         await checkout.clickFinish();
       });
+
       await test.step('Verify your order', async () => {
         // Assert
         await checkout.expectCheckoutCompletePage(checkoutData.urlComplete);
@@ -195,12 +198,14 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
           await inventory.clickAddToCartFirst();
         }
       });
+
       await test.step('Open basket and go to checkout', async () => {
         // Act
         await header.clickShoppingCart();
         await header.expectBadgeWithNumber(products.toString());
         await cart.clickCheckout();
       });
+
       await test.step('Fill checkout step one', async () => {
         // Arrange
         const firstName = faker.person.firstName();
@@ -212,6 +217,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         await checkout.fillFieldPostalCode(code);
         await checkout.clickContinue();
       });
+
       await test.step('Verify the payment', async () => {
         // Arrange
         const sub = parseFloat((await checkout.labelSubTotalValue.innerText()).slice(13));
@@ -241,7 +247,7 @@ test.describe('Checkout with errors', { tag: [report.tags.regression, report.tag
     await base.closePage();
   });
 
-  test('Visual effect for page', async ({ login, header, cart, base }) => {
+  test('Visual effect for page', async ({ login, header, cart, checkout }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
@@ -251,6 +257,6 @@ test.describe('Checkout with errors', { tag: [report.tags.regression, report.tag
     await header.clickShoppingCart();
     await cart.clickCheckout();
     // Assert
-    await base.expectHaveScreenshot(screenshot);
+    await checkout.expectHaveScreenshot(screenshot);
   });
 });

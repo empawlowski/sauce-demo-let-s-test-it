@@ -1,12 +1,12 @@
-import { AccessibilityPage } from '../../pages/accessibility/accessibility.page';
-import { BasePage } from '../../pages/e2e/base.page';
-import { CartPage } from '../../pages/e2e/cart.page';
-import { CheckoutPage } from '../../pages/e2e/checkout.page';
-import { InventoryPage } from '../../pages/e2e/inventory.page';
-import { LoginPage } from '../../pages/e2e/login.page';
-import { FooterComponent } from '../footer.component';
-import { HeaderComponent } from '../header.component';
-import { SideBarComponent } from '../sidebar.component';
+import { FooterComponent } from '@_src/components/footer.component';
+import { HeaderComponent } from '@_src/components/header.component';
+import { SideBarComponent } from '@_src/components/sidebar.component';
+import { AccessibilityPage } from '@_src/pages/accessibility/accessibility.page';
+import { BasePage } from '@_src/pages/e2e/base.page';
+import { CartPage } from '@_src/pages/e2e/cart.page';
+import { CheckoutPage } from '@_src/pages/e2e/checkout.page';
+import { InventoryPage } from '@_src/pages/e2e/inventory.page';
+import { LoginPage } from '@_src/pages/e2e/login.page';
 import { test as baseTest } from '@playwright/test';
 
 type pages = {

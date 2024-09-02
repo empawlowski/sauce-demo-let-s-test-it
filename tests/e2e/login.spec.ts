@@ -1,7 +1,7 @@
-import { test } from '../../src/components/fixtures/base';
-import * as report from '../../src/test-data/report/allure.data.json';
-import { authData } from '../../src/test-data/tests/e2e/auth.data';
-import { loginData } from '../../src/test-data/tests/e2e/login.data';
+import { test } from '@_src/fixtures/base';
+import * as report from '@_src/test-data/report/allure.data.json';
+import { authData } from '@_src/test-data/tests/e2e/auth.data';
+import { loginData } from '@_src/test-data/tests/e2e/login.data';
 import { Severity } from 'allure-js-commons';
 
 const { allure } = require('allure-playwright');
