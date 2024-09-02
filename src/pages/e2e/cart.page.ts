@@ -1,5 +1,5 @@
-import { cartData } from '../../test-data/tests/e2e/cart.data';
-import { BasePage } from './base.page';
+import { BasePage } from '@_src/pages/e2e/base.page';
+import { cartData } from '@_src/test-data/tests/e2e/cart.data';
 import { Locator, Page, expect } from '@playwright/test';
 
 export class CartPage extends BasePage {

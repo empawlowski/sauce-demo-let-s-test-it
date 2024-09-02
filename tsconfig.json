@@ -2,9 +2,11 @@
   "compilerOptions": {
     "lib": ["ES2021", "dom"],
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
     // "target": "ES2021",
     // "module": "CommonJS",
     // "sourceMap": true
+    "baseUrl": ".",
+    "paths": { "@_src/*": ["src/*"] }
   }
 }

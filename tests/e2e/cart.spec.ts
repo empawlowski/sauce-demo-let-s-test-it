@@ -1,7 +1,7 @@
-import { test } from '../../src/components/fixtures/base';
-import * as report from '../../src/test-data/report/allure.data.json';
-import { authData } from '../../src/test-data/tests/e2e/auth.data';
-import { visualData } from '../../src/test-data/tests/ui/visual.data';
+import { test } from '@_src/fixtures/base';
+import * as report from '@_src/test-data/report/allure.data.json';
+import { authData } from '@_src/test-data/tests/e2e/auth.data';
+import { visualData } from '@_src/test-data/tests/ui/visual.data';
 
 const { allure } = require('allure-playwright');
 
@@ -9,7 +9,7 @@ let user: string = authData.standard;
 let visual_user: string = authData.visual;
 let password: string = authData.password;
 
-test.describe('Cart', { tag: [report.tags.regression] }, () => {
+test.describe('Cart', { tag: [report.tags.regression, report.tags.user] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.cart);

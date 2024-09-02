@@ -1,6 +1,6 @@
-import { HeaderComponent } from '../../components/header.component';
-import { SideBarComponent } from '../../components/sidebar.component';
-import { screenshotPath } from '../../utils/screenshotPath';
+import { HeaderComponent } from '@_src/components/header.component';
+import { SideBarComponent } from '@_src/components/sidebar.component';
+import { screenshotPath } from '@_src/utils/screenshotPath.util';
 import { Locator, Page, expect } from '@playwright/test';
 
 export class BasePage {
