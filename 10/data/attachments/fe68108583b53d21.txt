@@ -1,0 +1,2 @@
+Running Validation Cart page
+Finished Validation Cart page with status passed
