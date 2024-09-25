@@ -1,3 +1,4 @@
+import { CartPage } from '@_src/pages/e2e/cart.page';
 import { baseData } from '@_src/test-data/tests/e2e/base.data';
 import { Page, expect } from '@playwright/test';
 
@@ -17,8 +18,9 @@ export class HeaderComponent {
     await expect(this.appLogo).toContainText(baseData.appLogo);
   }
 
-  async clickShoppingCart(): Promise<void> {
+  async clickShoppingCart(): Promise<CartPage> {
     await this.bShoppingCart.click();
+    return new CartPage(this.page);
   }
 
   async expectBadge(): Promise<void> {

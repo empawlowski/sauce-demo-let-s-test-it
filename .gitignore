@@ -2,6 +2,8 @@
 /allure-results/
 /node_modules/
 /test-results/
+src/output/test-results/
+src/output/test-reports/
 /test-report/
 /playwright-report/  
 /playwright-results/  

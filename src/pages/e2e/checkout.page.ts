@@ -1,5 +1,7 @@
 import { CheckoutUserModel } from '@_src/models/user.model';
 import { BasePage } from '@_src/pages/e2e/base.page';
+import { CartPage } from '@_src/pages/e2e/cart.page';
+import { InventoryPage } from '@_src/pages/e2e/inventory.page';
 import { checkoutData } from '@_src/test-data/tests/e2e/checkout.data';
 import { Locator, Page, expect } from '@playwright/test';
 
@@ -18,7 +20,7 @@ export class CheckoutPage extends BasePage {
   readonly bCancel: Locator;
   readonly bContinue: Locator;
   readonly bFinish: Locator;
-  readonly bBackHome: Locator;
+  // readonly bBackHome: Locator;
 
   readonly error = this.page.getByTestId('error');
 
@@ -32,12 +34,12 @@ export class CheckoutPage extends BasePage {
     this.labelSubTotalValue = this.page.getByTestId('subtotal-label');
     this.labelTaxValue = this.page.getByTestId('tax-label');
     this.labelTotalValue = this.page.getByTestId('total-label');
-    this.completeHeader = this.page.getByTestId('complete-header');
-    this.completeText = this.page.getByTestId('complete-text');
+    // this.completeHeader = this.page.getByTestId('complete-header');
+    // this.completeText = this.page.getByTestId('complete-text');
     this.bCancel = this.page.locator('#cancel');
     this.bContinue = this.page.locator('#continue');
     this.bFinish = this.page.locator('#finish');
-    this.bBackHome = this.page.locator('#back-to-products');
+    // this.bBackHome = this.page.locator('#back-to-products');
     this.error = this.page.getByTestId('error');
   }
 
@@ -53,12 +55,14 @@ export class CheckoutPage extends BasePage {
     await this.fieldPostalCode.fill(code);
   }
 
-  async clickContinue(): Promise<void> {
+  async clickContinue(): Promise<InventoryPage> {
     await this.bContinue.click();
+    return new InventoryPage(this.page);
   }
 
-  async clickCancel(): Promise<void> {
+  async clickCancel(): Promise<CartPage> {
     await this.bCancel.click();
+    return new CartPage(this.page);
   }
 
   async fillCheckoutFields(userCheckout: CheckoutUserModel): Promise<void> {
@@ -79,9 +83,10 @@ export class CheckoutPage extends BasePage {
     await this.bFinish.click();
   }
 
-  async clickBackHome(): Promise<void> {
-    await this.bBackHome.click();
-  }
+  // async clickBackHome(): Promise<InventoryPage> {
+  //   await this.bBackHome.click();
+  //   return new InventoryPage(this.page);
+  // }
 
   async expectCheckoutPage(url: string): Promise<void> {
     await this.toHaveURL(url);
@@ -104,11 +109,11 @@ export class CheckoutPage extends BasePage {
     await expect(this.bFinish).toBeEnabled();
   }
 
-  async expectCheckoutCompletePage(url: string): Promise<void> {
-    await this.toHaveURL(url);
-    await expect(this.header).toContainText(checkoutData.headerComplete);
-    await expect(this.completeHeader).toContainText(checkoutData.completeHeader);
-    await expect(this.completeText).toContainText(checkoutData.completeText);
-    await expect(this.bBackHome).toBeEnabled();
-  }
+  // async expectCheckoutCompletePage(url: string): Promise<void> {
+  //   await this.toHaveURL(url);
+  //   await expect(this.header).toContainText(checkoutData.headerComplete);
+  //   await expect(this.completeHeader).toContainText(checkoutData.completeHeader);
+  //   await expect(this.completeText).toContainText(checkoutData.completeText);
+  //   await expect(this.bBackHome).toBeEnabled();
+  // }
 }

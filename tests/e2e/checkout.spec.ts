@@ -148,7 +148,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
       });
     });
 
-    test('Checkout process with Success', async ({ header, inventory, cart, checkout }) => {
+    test('Checkout process with Success', async ({ header, inventory, cart, checkout, completed }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
       let products = await inventory.bAddToCart.count();
@@ -181,9 +181,9 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
 
       await test.step('Verify your order', async () => {
         // Assert
-        await checkout.expectCheckoutCompletePage(checkoutData.urlComplete);
+        await completed.expectCheckoutCompletePage(checkoutData.urlComplete);
         // Act
-        await checkout.clickBackHome();
+        await completed.clickBackHome();
       });
     });
 

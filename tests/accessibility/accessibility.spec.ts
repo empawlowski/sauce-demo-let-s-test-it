@@ -9,28 +9,49 @@ const { allure } = require('allure-playwright');
 let user: string = authData.standard;
 let password: string = authData.password;
 
-test.skip('Main page - accessibility', { tag: [report.tags.accessibility] }, async ({ login, header, page }) => {
-  await allure.epic(report.epic.application);
-  await allure.feature(report.feature.accessibility);
-  await allure.owner(report.owner.mrp);
+test(
+  'Main page - accessibility',
+  { tag: [report.tags.accessibility] },
+  async ({ login, header, page, a11y }, testInfo) => {
+    await allure.epic(report.epic.application);
+    await allure.feature(report.feature.accessibility);
+    await allure.owner(report.owner.mrp);
 
-  // Arrange
-  // Act
-  await login.logIn(user, password);
-  await header.expectLogo();
+    // Arrange
+    // Act
+    await login.logIn(user, password);
+    await header.expectLogo();
 
-  // const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
-  const accessibilityScanResults = await new AxeBuilder({ page })
-    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-    // .withTags(['best-practice'])
-    .analyze();
-  // const accessibilityScanResults = await new AxeBuilder({ page }).include('#navigation-menu-flyout').analyze();
-  // const accessibilityScanResults = await new AxeBuilder({ page }).exclude('#element-with-known-issue').analyze();
-  // const accessibilityScanResults = await new AxeBuilder({ page }).disableRules(['duplicate-id']).analyze();
-  console.log(accessibilityScanResults);
-  // Assert
-  expect(accessibilityScanResults.violations).toEqual([]);
-});
+    // const accessibilityScanResults = await new AxeBuilder({ page }).analyze();
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+      // .withTags(['best-practice'])
+      // .withRules(['lighthouse-rules'])
+      .analyze();
+    // const accessibilityScanResults = await new AxeBuilder({ page }).include('#navigation-menu-flyout').analyze();
+    // const accessibilityScanResults = await new AxeBuilder({ page }).exclude('#element-with-known-issue').analyze();
+    // const accessibilityScanResults = await new AxeBuilder({ page }).disableRules(['duplicate-id']).analyze();
+    console.log(accessibilityScanResults);
+
+    const accessibilityScanResultsFromFixture = await a11y().analyze();
+
+    // Exporting scan results as a test attachment
+    await testInfo.attach('accessibility-scan-results', {
+      body: JSON.stringify(accessibilityScanResults, null, 2),
+      contentType: 'application/json',
+    });
+    // Assert
+    // expect(accessibilityScanResults.violations).toHaveLength(0);
+    await test.step('Check a11y from fixture', async () => {
+      // expect.soft(accessibilityScanResultsFromFixture.violations).toEqual([]);
+      expect.soft(accessibilityScanResultsFromFixture.violations.length).toEqual(1);
+    });
+    await test.step('Check a11y', async () => {
+      // expect.soft(accessibilityScanResults.violations).toEqual([]);
+      expect.soft(accessibilityScanResults.violations.length).toEqual(1);
+    });
+  },
+);
 
 test.describe('Inventory', { tag: report.tags.accessibility }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {

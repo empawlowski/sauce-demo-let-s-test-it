@@ -1,0 +1,29 @@
+import { BasePage } from '@_src/pages/e2e/base.page';
+import { InventoryPage } from '@_src/pages/e2e/inventory.page';
+import { checkoutData } from '@_src/test-data/tests/e2e/checkout.data';
+import { Locator, Page, expect } from '@playwright/test';
+
+export class CheckoutCompletedPage extends BasePage {
+  readonly completeHeader: Locator;
+  readonly completeText: Locator;
+  readonly bBackHome: Locator;
+  constructor(page: Page) {
+    super(page);
+    this.completeHeader = this.page.getByTestId('complete-header');
+    this.completeText = this.page.getByTestId('complete-text');
+    this.bBackHome = this.page.locator('#back-to-products');
+  }
+
+  async clickBackHome(): Promise<InventoryPage> {
+    await this.bBackHome.click();
+    return new InventoryPage(this.page);
+  }
+
+  async expectCheckoutCompletePage(url: string): Promise<void> {
+    await this.toHaveURL(url);
+    await expect(this.header).toContainText(checkoutData.headerComplete);
+    await expect(this.completeHeader).toContainText(checkoutData.completeHeader);
+    await expect(this.completeText).toContainText(checkoutData.completeText);
+    await expect(this.bBackHome).toBeEnabled();
+  }
+}
