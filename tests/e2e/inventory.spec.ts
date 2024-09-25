@@ -138,7 +138,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     });
   });
 
-  test('Single product view', async ({ inventory }) => {
+  test('Single product view', async ({ inventory, item }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
     const title = product[4].title;
@@ -148,7 +148,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     // Act
     await inventory.clickOnProductTitleFirst();
     // Assert
-    await inventory.expectSingleProductPage(title, desc, price, link);
+    await item.expectSingleProductPage(title, desc, price, link);
   });
 });
 

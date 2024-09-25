@@ -1,3 +1,4 @@
+import { InventoryPage } from '@_src/pages/e2e/inventory.page';
 import { Locator, Page } from '@playwright/test';
 
 export class LoginPage {
@@ -27,11 +28,12 @@ export class LoginPage {
     await this.bLogin.click();
   }
 
-  async logIn(user: string, password: string): Promise<void> {
+  async logIn(user: string, password: string): Promise<InventoryPage> {
     await this.goto();
     await this.fillUsername(user);
     await this.fillPassword(password);
     await this.clickLogin();
+    return new InventoryPage(this.page);
   }
 
   async logInWithoutCredentials(): Promise<void> {

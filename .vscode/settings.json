@@ -5,5 +5,5 @@
     "source.organizeImports": "explicit"
   },
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "cSpell.words": ["commandline", "trivago"]
+  "cSpell.words": ["commandline", "trivago", "wcag"]
 }

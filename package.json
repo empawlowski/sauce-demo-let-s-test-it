@@ -12,7 +12,7 @@
     "test:ui": "npm run test -- --ui",
     "test:tags": "npx playwright test --grep \"@smoke|@reg\"",
     "test:env": "npx playwright test --grep \"@env\"",
-    "show-report": "npx playwright show-report",
+    "show-report": "npx playwright show-report src/output/test-reports",
     "generate-report": "npx allure generate allure-results -o allure-report --clean",
     "allure-report": "npx allure open ./allure-report"
   },

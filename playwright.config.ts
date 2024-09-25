@@ -12,6 +12,7 @@ dotenv.config({ path: path.resolve(__dirname, `.env.${process.env.ENV}`) });
  */
 export default defineConfig({
   testDir: './tests',
+  outputDir: './src/output/test-results',
   snapshotPathTemplate: '{testDir}/ui/{arg}{ext}',
   globalSetup: './src/config/global-setup.ts',
   /* Run tests in files in parallel */
@@ -32,11 +33,11 @@ export default defineConfig({
     timeout: 5000,
   },
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  // reporter: [['line'], ['allure-playwright']],
-  // reporter: [['html', { open: 'never', outputFolder: 'e2e/output/test-reports' }]],
+  /* Allure-Report configuration, see: https://allurereport.org/docs/playwright-configuration  */
 
   reporter: [
     ['line'],
+    ['html', { open: 'on-failure', outputFolder: 'src/output/test-reports' }],
     [
       'allure-playwright',
       {
