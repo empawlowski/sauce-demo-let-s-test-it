@@ -1,5 +1,5 @@
+import { baseData } from '@_src/assets/data/e2e/base.data';
 import { CartPage } from '@_src/pages/e2e/cart.page';
-import { baseData } from '@_src/test-data/tests/e2e/base.data';
 import { Page, expect } from '@playwright/test';
 
 export class HeaderComponent {

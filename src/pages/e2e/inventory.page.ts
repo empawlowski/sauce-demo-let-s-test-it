@@ -1,5 +1,5 @@
+import { inventoryData } from '@_src/assets/data/e2e/inventory.data';
 import { BasePage } from '@_src/pages/e2e/base.page';
-import { inventoryData } from '@_src/test-data/tests/e2e/inventory.data';
 import { Locator, Page, expect } from '@playwright/test';
 
 export class InventoryPage extends BasePage {

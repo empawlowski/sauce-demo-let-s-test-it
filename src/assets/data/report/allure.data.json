@@ -1,7 +1,8 @@
 {
   "epic": {
     "api": "API",
-    "application": "Application"
+    "application": "Application",
+    "performance": "Performance"
   },
   "feature": {
     "accessibility": "Accessibility",
@@ -16,7 +17,8 @@
   "story": {
     "gunning": "Gunning fog index",
     "load": "Load",
-    "login": "Login"
+    "login": "Login",
+    "ui": "UI"
   },
   "parent_suite": { "uat": "UAT" },
   "suite": {

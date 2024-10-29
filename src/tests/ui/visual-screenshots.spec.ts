@@ -1,19 +1,17 @@
+import * as report from '@_src/assets/data/report/allure.data.json';
+import { visualData } from '@_src/assets/data/ui/visual.data';
+import { Configuration } from '@_src/config/configuration';
 import { test } from '@_src/fixtures/base.fixture';
-import * as report from '@_src/test-data/report/allure.data.json';
-import { authData } from '@_src/test-data/tests/e2e/auth.data';
-import { visualData } from '@_src/test-data/tests/ui/visual.data';
 
 const { allure } = require('allure-playwright');
-
-let user: string = authData.standard;
-let password: string = authData.password;
 
 test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, async () => {
   test.beforeEach('Login method', async ({ login, header }) => {
     await allure.epic(report.epic.application);
     await allure.epic(report.feature.ui);
+    await allure.epic(report.story.ui);
     // Act
-    await login.logIn(user, password);
+    await login.logIn(Configuration.user, Configuration.password);
     // Assert
     await header.expectLogo();
   });

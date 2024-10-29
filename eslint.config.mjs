@@ -16,7 +16,18 @@ export default [
   },
   {
     files: ['**/*.ts'],
-    ignores: ['package-lock.json', 'playwright-report/**', 'test-results/**', 'test-download/**', 'test-upload/**'],
+    ignores: [
+      'package-lock.json',
+      'playwright-report/**',
+      'test-results/**',
+      'test-download/**',
+      'test-upload/**',
+      'src/assets/documents/**',
+      'src/assets/images/**',
+      'src/download/**',
+      'src/upload/**',
+      'src/output/**',
+    ],
 
     languageOptions: {
       ecmaVersion: 'latest',

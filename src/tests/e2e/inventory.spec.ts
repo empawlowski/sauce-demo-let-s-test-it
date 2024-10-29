@@ -1,16 +1,11 @@
+import * as product from '@_src/assets/data/e2e/inventory-item.data.json';
+import { inventoryData } from '@_src/assets/data/e2e/inventory.data';
+import * as report from '@_src/assets/data/report/allure.data.json';
+import { visualData } from '@_src/assets/data/ui/visual.data';
+import { Configuration } from '@_src/config/configuration';
 import { test } from '@_src/fixtures/base.fixture';
-import * as report from '@_src/test-data/report/allure.data.json';
-import { authData } from '@_src/test-data/tests/e2e/auth.data';
-import * as product from '@_src/test-data/tests/e2e/inventory-item.data.json';
-import { inventoryData } from '@_src/test-data/tests/e2e/inventory.data';
-import { visualData } from '@_src/test-data/tests/ui/visual.data';
 
 const { allure } = require('allure-playwright');
-
-let user: string = authData.standard;
-let problem_user: string = authData.problem;
-let visual_user: string = authData.visual;
-let password: string = authData.password;
 
 test.describe('Inventory', { tag: report.tags.regression }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
@@ -20,7 +15,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     // Arrange
     console.log(`Running ${testInfo.title}`);
     // Act
-    await login.logIn(user, password);
+    await login.logIn(Configuration.user, Configuration.password);
     // Assert
     await header.expectLogo();
   });
@@ -172,7 +167,7 @@ test.describe('Inventory with errors', { tag: [report.tags.regression, report.ta
     // Arrange
     const link = product[6].link;
     // Act
-    await login.logIn(problem_user, password);
+    await login.logIn(Configuration.userProblem, Configuration.password);
     // Assert
     await inventory.expectIncorrectImageOnProduct(link);
   });
@@ -183,7 +178,7 @@ test.describe('Inventory with errors', { tag: [report.tags.regression, report.ta
     test.fail(); //? added to not create a failure report
     const screenshot = visualData.inventory;
     // Act
-    await login.logIn(visual_user, password);
+    await login.logIn(Configuration.userVisual, Configuration.password);
     // Assert
     await base.expectHaveScreenshot(screenshot);
   });
