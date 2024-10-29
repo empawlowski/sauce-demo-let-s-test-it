@@ -1,0 +1,2 @@
+Running Standard user
+Finished Standard user with status passed

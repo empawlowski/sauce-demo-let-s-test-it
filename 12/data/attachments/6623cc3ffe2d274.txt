@@ -1,0 +1,2 @@
+Running Adding by button "Add to cart" - all
+Finished Adding by button "Add to cart" - all with status passed

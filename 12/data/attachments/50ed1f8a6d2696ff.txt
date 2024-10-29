@@ -1,0 +1,2 @@
+Running Visual user
+Finished Visual user with status passed
