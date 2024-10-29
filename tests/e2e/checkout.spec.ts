@@ -1,5 +1,5 @@
 import { createCheckoutUser } from '@_src/factories/user.factory';
-import { test } from '@_src/fixtures/base';
+import { test } from '@_src/fixtures/base.fixture';
 import * as report from '@_src/test-data/report/allure.data.json';
 import { authData } from '@_src/test-data/tests/e2e/auth.data';
 import { checkoutData } from '@_src/test-data/tests/e2e/checkout.data';

@@ -13,7 +13,8 @@ dotenv.config({ path: path.resolve(__dirname, `.env.${process.env.ENV}`) });
 export default defineConfig({
   testDir: './tests',
   outputDir: './src/output/test-results',
-  snapshotPathTemplate: '{testDir}/ui/{arg}{ext}',
+  // snapshotPathTemplate: '{testDir}/ui/{arg}{ext}',
+  snapshotPathTemplate: './src/assets/images/ui/{arg}{ext}',
   globalSetup: './src/config/global-setup.ts',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -31,6 +32,11 @@ export default defineConfig({
      * For example in `await expect(locator).toHaveText();`
      */
     timeout: 5000,
+
+    /* Based on: https://playwright.dev/docs/test-snapshots#options */
+    toHaveScreenshot: {
+      maxDiffPixels: 10,
+    },
   },
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   /* Allure-Report configuration, see: https://allurereport.org/docs/playwright-configuration  */
@@ -42,8 +48,8 @@ export default defineConfig({
       'allure-playwright',
       {
         detail: true,
-        // resultsDir: './e2e/output/allure-results',
-        // resultsDir: 'allure-results',
+        // resultsDir: './src/output/allure-results',
+        // outputFolder: './src/output/allure-reports',
         outputFolder: 'allure-reports',
         suiteTitle: true,
         categories: [
@@ -83,28 +89,30 @@ export default defineConfig({
   projects: [
     {
       name: 'Chromium',
-      grepInvert: /@user/,
+      // grepInvert: /@user/,
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'setup',
-      testMatch: '*.setup.ts',
-    },
-    {
-      name: 'user',
-      grep: /@user/,
-      dependencies: ['setup'],
-      use: { ...devices['Desktop Chrome'] },
-    },
+    // {
+    //   name: 'setup',
+    //   testMatch: '*.setup.ts',
+    // },
+    // {
+    //   name: 'user',
+    //   grep: /@user/,
+    //   dependencies: ['setup'],
+    //   use: { ...devices['Desktop Chrome'] },
+    // },
 
     // {
     //   name: 'Firefox',
     //   use: { ...devices['Desktop Firefox'] },
+    //   dependencies: ['Chromium'],
     // },
 
     // {
     //   name: 'Webkit',
     //   use: { ...devices['Desktop Safari'] },
+    //   dependencies: ['Firefox'],
     // },
 
     /* Test against mobile viewports. */

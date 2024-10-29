@@ -1,5 +1,5 @@
 import { Configuration } from '@_src/config/configuration';
-import { test as setup } from '@_src/fixtures/base';
+import { test as setup } from '@_src/fixtures/base.fixture';
 
 setup('Standard user', async ({ login, header }) => {
   // Act

@@ -1,4 +1,4 @@
-import { expect, test } from '@_src/fixtures/base';
+import { expect, test } from '@_src/fixtures/base.fixture';
 import * as report from '@_src/test-data/report/allure.data.json';
 import { authData } from '@_src/test-data/tests/e2e/auth.data';
 import { footerData } from '@_src/test-data/tests/e2e/footer.data';

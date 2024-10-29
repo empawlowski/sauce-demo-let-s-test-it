@@ -9,10 +9,9 @@ import { CheckoutPage } from '@_src/pages/e2e/checkout.page';
 import { InventoryItemPage } from '@_src/pages/e2e/inventory-item.page';
 import { InventoryPage } from '@_src/pages/e2e/inventory.page';
 import { LoginPage } from '@_src/pages/e2e/login.page';
-import AxeBuilder from '@axe-core/playwright';
-import { test as base } from '@playwright/test';
+import { test as pagesTest } from '@playwright/test';
 
-type pages = {
+interface Pages {
   login: LoginPage;
   base: BasePage;
   header: HeaderComponent;
@@ -25,10 +24,9 @@ type pages = {
   completed: CheckoutCompletedPage;
   footer: FooterComponent;
   accessibility: AccessibilityPage;
-  a11y: () => AxeBuilder;
-};
+}
 
-export const test = base.extend<pages>({
+export const pages = pagesTest.extend<Pages>({
   login: async ({ page }, use) => {
     await use(new LoginPage(page));
   },
@@ -62,15 +60,4 @@ export const test = base.extend<pages>({
   accessibility: async ({ page }, use) => {
     await use(new AccessibilityPage(page));
   },
-  a11y: async ({ page }, use, testInfo) => {
-    const a11y = () =>
-      new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-        .exclude('#commonly-reused-element-with-known-issue');
-    await use(a11y);
-  },
 });
-
-// export const test = basePages;
-// export const expect = basePages.expect;
-export { expect } from '@playwright/test';
