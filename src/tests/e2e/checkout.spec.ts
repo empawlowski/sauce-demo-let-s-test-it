@@ -1,16 +1,12 @@
+import { checkoutData } from '@_src/assets/data/e2e/checkout.data';
+import * as report from '@_src/assets/data/report/allure.data.json';
+import { visualData } from '@_src/assets/data/ui/visual.data';
+import { Configuration } from '@_src/config/configuration';
 import { createCheckoutUser } from '@_src/factories/user.factory';
 import { test } from '@_src/fixtures/base.fixture';
-import * as report from '@_src/test-data/report/allure.data.json';
-import { authData } from '@_src/test-data/tests/e2e/auth.data';
-import { checkoutData } from '@_src/test-data/tests/e2e/checkout.data';
-import { visualData } from '@_src/test-data/tests/ui/visual.data';
 import { faker } from '@faker-js/faker';
 
 const { allure } = require('allure-playwright');
-
-let user: string = authData.standard;
-let visual_user: string = authData.visual;
-let password: string = authData.password;
 
 test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
@@ -20,7 +16,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     // Arrange
     console.log(`Running ${testInfo.title}`);
     // Act
-    await login.logIn(user, password);
+    await login.logIn(Configuration.user, Configuration.password);
     // Assert
     await header.expectLogo();
   });
@@ -253,7 +249,7 @@ test.describe('Checkout with errors', { tag: [report.tags.regression, report.tag
     test.fail(); //? added to not create a failure report
     const screenshot = visualData.checkout;
     // Act
-    await login.logIn(visual_user, password);
+    await login.logIn(Configuration.userVisual, Configuration.password);
     await header.clickShoppingCart();
     await cart.clickCheckout();
     // Assert

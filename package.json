@@ -13,8 +13,8 @@
     "test:tags": "npx playwright test --grep \"@smoke|@reg\"",
     "test:env": "npx playwright test --grep \"@env\"",
     "show-report": "npx playwright show-report src/output/test-reports",
-    "generate-report": "npx allure generate allure-results -o allure-report --clean",
-    "allure-report": "npx allure open ./allure-report"
+    "generate-report": "npx allure generate src/output/allure-results -o src/output/allure-reports --clean",
+    "allure-report": "npx allure open ./src/output/allure-reports"
   },
   "keywords": [],
   "author": "Marcin P.",

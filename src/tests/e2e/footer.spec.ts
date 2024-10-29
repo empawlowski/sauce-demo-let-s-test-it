@@ -1,12 +1,9 @@
+import { footerData } from '@_src/assets/data/e2e/footer.data';
+import * as report from '@_src/assets/data/report/allure.data.json';
+import { Configuration } from '@_src/config/configuration';
 import { expect, test } from '@_src/fixtures/base.fixture';
-import * as report from '@_src/test-data/report/allure.data.json';
-import { authData } from '@_src/test-data/tests/e2e/auth.data';
-import { footerData } from '@_src/test-data/tests/e2e/footer.data';
 
 const { allure } = require('allure-playwright');
-
-let user: string = authData.standard;
-let password: string = authData.password;
 
 test.describe('Footer', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
@@ -17,7 +14,7 @@ test.describe('Footer', { tag: [report.tags.regression] }, () => {
     // Arrange
     console.log(`Running ${testInfo.title}`);
     // Act
-    await login.logIn(user, password);
+    await login.logIn(Configuration.user, Configuration.password);
     // Assert
     await header.expectLogo();
   });

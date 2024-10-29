@@ -4,6 +4,8 @@
 /test-results/
 src/output/test-results/
 src/output/test-reports/
+src/output/allure-results/
+src/output/allure-reports/
 /test-report/
 /playwright-report/  
 /playwright-results/  

@@ -1,19 +1,10 @@
+import { loginData } from '@_src/assets/data/e2e/login.data';
+import * as report from '@_src/assets/data/report/allure.data.json';
+import { Configuration } from '@_src/config/configuration';
 import { test } from '@_src/fixtures/base.fixture';
-import * as report from '@_src/test-data/report/allure.data.json';
-import { authData } from '@_src/test-data/tests/e2e/auth.data';
-import { loginData } from '@_src/test-data/tests/e2e/login.data';
 import { Severity } from 'allure-js-commons';
 
 const { allure } = require('allure-playwright');
-
-let user: string = authData.standard;
-let locked: string = authData.locked;
-let problem: string = authData.problem;
-let performance: string = authData.performance;
-let error: string = authData.error;
-let visual: string = authData.visual;
-
-let password: string = authData.password;
 
 test.describe('Login', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Add running test title', async ({}, testInfo) => {
@@ -37,7 +28,7 @@ test.describe('Login', { tag: [report.tags.regression] }, () => {
     test('Standard user', async ({ login, header }) => {
       // Arrange
       // Act
-      await login.logIn(user, password);
+      await login.logIn(Configuration.user, Configuration.password);
       // Assert
       await header.expectLogo();
     });
@@ -45,35 +36,35 @@ test.describe('Login', { tag: [report.tags.regression] }, () => {
       // Arrange
       const error = loginData.locked_user;
       // Act
-      await login.logIn(locked, password);
+      await login.logIn(Configuration.userLocked, Configuration.password);
       // Assert
       await base.catchError(error);
     });
     test('Problem user', async ({ login, header }) => {
       // Arrange
       // Act
-      await login.logIn(problem, password);
+      await login.logIn(Configuration.userProblem, Configuration.password);
       // Assert
       await header.expectLogo();
     });
     test('Performance user', async ({ login, header }) => {
       // Arrange
       // Act
-      await login.logIn(performance, password);
+      await login.logIn(Configuration.userPerformance, Configuration.password);
       // Assert
       await header.expectLogo(); //?
     });
     test('Error user', async ({ login, header }) => {
       // Arrange
       // Act
-      await login.logIn(error, password);
+      await login.logIn(Configuration.userError, Configuration.password);
       // Assert
       await header.expectLogo(); //?
     });
     test('Visual user', async ({ login, header }) => {
       // Arrange
       // Act
-      await login.logIn(visual, password);
+      await login.logIn(Configuration.userVisual, Configuration.password);
       // Assert
       await header.expectLogo(); //?
     });
@@ -102,7 +93,7 @@ test.describe('Login', { tag: [report.tags.regression] }, () => {
       // Arrange
       const error = loginData.requiredUsername;
       // Act
-      await login.logInWithoutUsername(user);
+      await login.logInWithoutUsername(Configuration.user);
       // Assert
       await base.catchError(error);
     });
@@ -111,7 +102,7 @@ test.describe('Login', { tag: [report.tags.regression] }, () => {
       // Arrange
       const error = loginData.requiredPassword;
       // Act
-      await login.logInWithoutPassword(password);
+      await login.logInWithoutPassword(Configuration.password);
       // Assert
       await base.catchError(error);
     });
@@ -129,7 +120,7 @@ test.describe('Login', { tag: [report.tags.regression] }, () => {
       // Arrange
       const error = loginData.incorrectCredentials;
       // Act
-      await login.logIn('username', password);
+      await login.logIn('username', Configuration.password);
       // Assert
       await base.catchError(error);
     });
@@ -138,7 +129,7 @@ test.describe('Login', { tag: [report.tags.regression] }, () => {
       // Arrange
       const error = loginData.incorrectCredentials;
       // Act
-      await login.logIn(user, 'password');
+      await login.logIn(Configuration.user, 'password');
       // Assert
       await base.catchError(error);
     });

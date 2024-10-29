@@ -11,7 +11,7 @@ dotenv.config({ path: path.resolve(__dirname, `.env.${process.env.ENV}`) });
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: './src/tests',
   outputDir: './src/output/test-results',
   // snapshotPathTemplate: '{testDir}/ui/{arg}{ext}',
   snapshotPathTemplate: './src/assets/images/ui/{arg}{ext}',
@@ -48,9 +48,8 @@ export default defineConfig({
       'allure-playwright',
       {
         detail: true,
-        // resultsDir: './src/output/allure-results',
-        // outputFolder: './src/output/allure-reports',
-        outputFolder: 'allure-reports',
+        resultsDir: './src/output/allure-results',
+        outputFolder: './src/output/allure-reports',
         suiteTitle: true,
         categories: [
           {

@@ -1,8 +1,8 @@
+import { checkoutData } from '@_src/assets/data/e2e/checkout.data';
 import { CheckoutUserModel } from '@_src/models/user.model';
 import { BasePage } from '@_src/pages/e2e/base.page';
 import { CartPage } from '@_src/pages/e2e/cart.page';
 import { InventoryPage } from '@_src/pages/e2e/inventory.page';
-import { checkoutData } from '@_src/test-data/tests/e2e/checkout.data';
 import { Locator, Page, expect } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {

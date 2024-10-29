@@ -1,7 +1,7 @@
+import * as product from '@_src/assets/data/e2e/inventory-item.data.json';
+import * as report from '@_src/assets/data/report/allure.data.json';
 import { Configuration } from '@_src/config/configuration';
 import { expect, test } from '@_src/fixtures/base.fixture';
-import * as report from '@_src/test-data/report/allure.data.json';
-import * as product from '@_src/test-data/tests/e2e/inventory-item.data.json';
 import AxeBuilder from '@axe-core/playwright';
 
 const { allure } = require('allure-playwright');
