@@ -80,7 +80,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     test('Adding by Title - all', async ({ header, inventory }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      let products = await inventory.title.count();
+      let products: number = await inventory.title.count();
 
       // Act
       for (let i = 0; i < products; i++) {
@@ -89,7 +89,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
       }
 
       // Assert
-      await header.expectBadgeWithNumber(products.toString());
+      await header.expectBadgeWithNumber(products);
     });
 
     test('Adding by Title - one', async ({ header, inventory }) => {
@@ -100,20 +100,20 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
       await inventory.addToCart(name);
 
       // Assert
-      await header.expectBadgeWithNumber('1');
+      await header.expectBadgeWithNumber(1);
     });
 
     test('Adding by button "Add to cart" - all', async ({ header, inventory }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      const products = await inventory.bAddToCart.count();
+      const products: number = await inventory.bAddToCart.count();
       // Act
       for (let i = 0; i < products; i++) {
         await inventory.clickAddToCartFirst();
       }
 
       // Assert
-      await header.expectBadgeWithNumber(products.toString());
+      await header.expectBadgeWithNumber(products);
     });
   });
 

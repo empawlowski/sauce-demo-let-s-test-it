@@ -44,7 +44,7 @@ test.describe('Cart', { tag: [report.tags.regression, report.tags.user] }, () =>
       const title = (await inventory.titleFirst.innerText()).replaceAll(' ', '-').toLowerCase();
       await inventory.addToCart(title);
       // Assert
-      await header.expectBadge();
+      await header.isBadgeVisible();
     });
     test('Remove product from basket', async ({ header, inventory }) => {
       await allure.owner(report.owner.mrp);
@@ -53,14 +53,14 @@ test.describe('Cart', { tag: [report.tags.regression, report.tags.user] }, () =>
         // Act
         await inventory.clickAddToCartFirst();
         // Assert
-        await header.expectBadge();
+        await header.isBadgeVisible();
       });
       await test.step('Remove from basket', async () => {
         // Act
         await header.clickShoppingCart();
         await inventory.clickRemove();
         // Assert
-        await header.expectNoBadge();
+        await header.isBadgeHidden();
       });
     });
   });
