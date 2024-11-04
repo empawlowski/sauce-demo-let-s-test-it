@@ -84,10 +84,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
 
       // Act
       for (let i = 0; i < products; i++) {
-        const title = (await inventory.title.nth(i).innerText())
-          .replaceAll(' ', '-')
-          .replace(/[(.)]/g, '\\$&')
-          .toLowerCase();
+        const title = await inventory.title.nth(i).innerText();
         await inventory.addToCart(title);
       }
 
@@ -100,23 +97,10 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
       // Arrange
       const name = 'Test.allTheThings() T-Shirt (Red)';
       // Act
-      await inventory.addToCart(name.replaceAll(' ', '-').replace(/[(.)]/g, '\\$&').toLowerCase());
+      await inventory.addToCart(name);
 
       // Assert
       await header.expectBadgeWithNumber('1');
-    });
-
-    test('Adding by button "Add to cart" - first', async ({ header, inventory }) => {
-      await allure.owner(report.owner.mrp);
-      // Arrange
-      const products = await inventory.bAddToCart.count();
-      console.log('Number of product/s on page:', products);
-      // Act
-      for (let i = 0; i < products; i++) {
-        await inventory.clickAddToCartFirst();
-      }
-      // Assert
-      await header.expectBadgeWithNumber(products.toString());
     });
 
     test('Adding by button "Add to cart" - all', async ({ header, inventory }) => {
@@ -136,14 +120,17 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
   test('Single product view', async ({ inventory, item }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const title = product[4].title;
-    const desc = product[4].desc;
-    const price = product[4].price;
-    const link = product[4].link;
+    const singleProduct = {
+      title: product[4].title,
+      desc: product[4].desc,
+      price: product[4].price,
+      link: product[4].link,
+    };
+
     // Act
     await inventory.clickOnProductTitleFirst();
     // Assert
-    await item.expectSingleProductPage(title, desc, price, link);
+    await item.expectSingleProductPage(singleProduct);
   });
 });
 

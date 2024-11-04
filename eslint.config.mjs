@@ -15,7 +15,7 @@ export default [
     },
   },
   {
-    files: ['**/*.ts'],
+    files: ['**/*.ts', '**/*.tsx'],
     ignores: [
       'package-lock.json',
       'playwright-report/**',

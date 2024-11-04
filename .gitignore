@@ -1,14 +1,11 @@
 /allure-report/
 /allure-results/
+/blob-report/
 /node_modules/
 /test-results/
-src/output/test-results/
-src/output/test-reports/
-src/output/allure-results/
-src/output/allure-reports/
 /test-report/
+/src/output/**
 /playwright-report/  
 /playwright-results/  
-/blob-report/
 /playwright/.cache/
 /.env
