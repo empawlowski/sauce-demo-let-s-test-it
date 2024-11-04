@@ -42,12 +42,6 @@ jobs:
           allure_results: src/output/allure-results
           allure_report: src/output/allure-reports
 
-      - name: List Allure Results
-        run: ls -R src/output/allure-results
-
-      - name: List Allure Report
-        run: ls -R src/output/allure-reports
-
       - name: Publish test report on GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         if: always()
