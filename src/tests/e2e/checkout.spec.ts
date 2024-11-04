@@ -96,7 +96,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
           await inventory.addToCart(title);
         }
         // Assert
-        await header.expectBadge();
+        await header.isBadgeVisible();
       });
 
       await test.step('Step 2: Open basket and click Continue Shopping button', async () => {
@@ -127,7 +127,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
           await inventory.addToCart(title);
         }
         // Assert
-        await header.expectBadge();
+        await header.isBadgeVisible();
       });
 
       await test.step('Step 2: Open basket and go to checkout', async () => {
@@ -153,21 +153,21 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     test('Checkout process with Success', async ({ header, inventory, cart, checkout, completed }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      let products = await inventory.bAddToCart.count();
+      let products: number = await inventory.bAddToCart.count();
 
-      await test.step('Add products to basket', async () => {
+      await test.step('Step 1: Add products to basket', async () => {
         // Act
         for (let i = 0; i < products; i++) {
           await inventory.clickAddToCartFirst();
         }
       });
-      await test.step('Open basket and go to checkout', async () => {
+      await test.step('Step 2: Open basket and go to checkout', async () => {
         // Act
         await header.clickShoppingCart();
-        await header.expectBadgeWithNumber(products.toString());
+        await header.expectBadgeWithNumber(products);
         await cart.clickCheckout();
       });
-      await test.step('Fill checkout step one', async () => {
+      await test.step('Step 3: Fill checkout step one', async () => {
         // Arrange
         const userCheckoutModel = createCheckoutUser();
 
@@ -192,7 +192,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     test('Checkout process with payment verification', async ({ header, inventory, cart, checkout }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      let products = await inventory.bAddToCart.count();
+      let products: number = await inventory.bAddToCart.count();
 
       await test.step('Step 1: Add products to basket', async () => {
         // Act
@@ -204,7 +204,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
       await test.step('Step 2: Open basket and go to checkout', async () => {
         // Act
         await header.clickShoppingCart();
-        await header.expectBadgeWithNumber(products.toString());
+        await header.expectBadgeWithNumber(products);
         await cart.clickCheckout();
       });
 

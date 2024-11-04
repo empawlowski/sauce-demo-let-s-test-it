@@ -22,7 +22,7 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: test-results/
+          path: src/output/test-results/
           retention-days: 31
 
       - name: Load test report history
@@ -38,9 +38,9 @@ jobs:
         if: always()
         with:
           gh_pages: gh-pages
-          allure_history: allure-history
-          allure_results: allure-results
-          allure_report: allure-report
+          allure_history: src/output/allure-history
+          allure_results: src/output/allure-results
+          allure_report: src/output/allure-reports
 
       - name: Publish test report on GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -48,4 +48,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-history
+          publish_dir: src/output/allure-history
