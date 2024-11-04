@@ -12,9 +12,9 @@ export class CartPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.cartList = this.page.getByTestId('cart-list');
-    this.bContinueShopping = this.page.locator('#continue-shopping');
-    this.bCheckout = this.page.locator('#checkout');
+    this.cartList = page.getByTestId('cart-list');
+    this.bContinueShopping = page.locator('#continue-shopping');
+    this.bCheckout = page.locator('#checkout');
   }
 
   async clickContinueShopping(): Promise<InventoryPage> {

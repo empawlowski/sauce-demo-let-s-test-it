@@ -1,16 +1,11 @@
-    allure-report
-    allure-results
-    package-lock.json
-    playwright-report
-    playwright-results
-    test-download
-    test-results
-    test-upload
-    test-report
-    src/output/test-results
-    src/output/test-reports
-
-
-
-
-
+allure-report
+allure-results
+package-lock.json
+playwright-report
+playwright-results
+test-results
+test-report
+src/output/test-results
+src/output/test-reports
+src/output/allure-results
+src/output/allure-reports

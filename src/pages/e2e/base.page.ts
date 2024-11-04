@@ -11,6 +11,7 @@ export class BasePage {
   readonly error: Locator;
 
   constructor(protected page: Page) {
+    this.page = page;
     this.headerComponent = new HeaderComponent(this.page);
     this.sidebarComponent = new SideBarComponent(this.page);
     //* Header

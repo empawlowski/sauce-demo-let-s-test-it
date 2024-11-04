@@ -20,9 +20,8 @@ export class CheckoutPage extends BasePage {
   readonly bCancel: Locator;
   readonly bContinue: Locator;
   readonly bFinish: Locator;
-  // readonly bBackHome: Locator;
 
-  readonly error = this.page.getByTestId('error');
+  readonly error: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -34,12 +33,9 @@ export class CheckoutPage extends BasePage {
     this.labelSubTotalValue = this.page.getByTestId('subtotal-label');
     this.labelTaxValue = this.page.getByTestId('tax-label');
     this.labelTotalValue = this.page.getByTestId('total-label');
-    // this.completeHeader = this.page.getByTestId('complete-header');
-    // this.completeText = this.page.getByTestId('complete-text');
     this.bCancel = this.page.locator('#cancel');
     this.bContinue = this.page.locator('#continue');
     this.bFinish = this.page.locator('#finish');
-    // this.bBackHome = this.page.locator('#back-to-products');
     this.error = this.page.getByTestId('error');
   }
 
@@ -72,21 +68,16 @@ export class CheckoutPage extends BasePage {
     await this.clickContinue();
   }
 
-  async summaryTotalValue(sub: number, tax: number, total: number): Promise<void> {
-    // const sub = parseFloat((await this.labelSubTotalValue.innerText()).slice(13));
-    // const tax = parseFloat((await this.labelTaxValue.innerText()).slice(6));
-    // const total = parseFloat((await this.labelTotalValue.innerText()).slice(8));
-    await expect(sub + tax).toEqual(total);
+  async summaryTotalValue(sub: string, tax: string, total: string): Promise<void> {
+    const sliceSub = parseFloat(sub.slice(13));
+    const sliceTax = parseFloat(tax.slice(6));
+    const sliceTotal = parseFloat(total.slice(8));
+    await expect(sliceSub + sliceTax).toEqual(sliceTotal);
   }
 
   async clickFinish(): Promise<void> {
     await this.bFinish.click();
   }
-
-  // async clickBackHome(): Promise<InventoryPage> {
-  //   await this.bBackHome.click();
-  //   return new InventoryPage(this.page);
-  // }
 
   async expectCheckoutPage(url: string): Promise<void> {
     await this.toHaveURL(url);
@@ -108,12 +99,4 @@ export class CheckoutPage extends BasePage {
     await expect(this.labelTotalValue).toContainText(checkoutData.total);
     await expect(this.bFinish).toBeEnabled();
   }
-
-  // async expectCheckoutCompletePage(url: string): Promise<void> {
-  //   await this.toHaveURL(url);
-  //   await expect(this.header).toContainText(checkoutData.headerComplete);
-  //   await expect(this.completeHeader).toContainText(checkoutData.completeHeader);
-  //   await expect(this.completeText).toContainText(checkoutData.completeText);
-  //   await expect(this.bBackHome).toBeEnabled();
-  // }
 }

@@ -85,12 +85,11 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   test.describe('Checkout process', { tag: [report.tags.smoke] }, () => {
     test('Continue process from Checkout', async ({ header, inventory, cart }) => {
       await allure.owner(report.owner.mrp);
-      await test.step('Add products to basket', async () => {
+
+      await test.step('Step 1: Add products to basket', async () => {
         // Arrange
-        await inventory.titleFirst.isVisible();
-        const titleOne = (await inventory.titleFirst.innerText()).replaceAll(' ', '-').toLowerCase();
-        await inventory.titleSecond.isVisible();
-        const titleTwo = (await inventory.titleSecond.innerText()).replaceAll(' ', '-').toLowerCase();
+        const titleOne = await inventory.titleFirst.innerText();
+        const titleTwo = await inventory.titleSecond.innerText();
         const titles = [titleOne, titleTwo];
         // Act
         for (const title of titles) {
@@ -99,24 +98,29 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         // Assert
         await header.expectBadge();
       });
-      await test.step('Open basket and click Continue Shopping button', async () => {
+
+      await test.step('Step 2: Open basket and click Continue Shopping button', async () => {
+        // Act
         await header.clickShoppingCart();
+        // Assert
         await cart.expectCartPage();
+        // Act
         await cart.clickContinueShopping();
       });
-      await test.step('Check redirect to Inventory page', async () => {
+
+      await test.step('Step 3: Check redirect to Inventory page', async () => {
+        // Assert
         await inventory.expectInventoryPage();
       });
     });
 
     test('Checkout process with Cancel', async ({ header, inventory, cart, checkout }) => {
       await allure.owner(report.owner.mrp);
-      await test.step('Add products to basket', async () => {
+
+      await test.step('Step 1: Add products to basket', async () => {
         // Arrange
-        await inventory.titleFirst.isVisible();
-        const titleOne = (await inventory.titleFirst.innerText()).replaceAll(' ', '-').toLowerCase();
-        await inventory.titleSecond.isVisible();
-        const titleTwo = (await inventory.titleSecond.innerText()).replaceAll(' ', '-').toLowerCase();
+        const titleOne = await inventory.titleFirst.innerText();
+        const titleTwo = await inventory.titleSecond.innerText();
         const titles = [titleOne, titleTwo];
         // Act
         for (const title of titles) {
@@ -125,12 +129,14 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         // Assert
         await header.expectBadge();
       });
-      await test.step('Open basket and go to checkout', async () => {
+
+      await test.step('Step 2: Open basket and go to checkout', async () => {
         // Act
         await header.clickShoppingCart();
         await cart.clickCheckout();
       });
-      await test.step('Fill checkout step one', async () => {
+
+      await test.step('Step 3: Fill checkout step one', async () => {
         // Arrange
         const userCheckoutModel = createCheckoutUser('female');
 
@@ -138,7 +144,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         await checkout.fillCheckoutFields(userCheckoutModel);
       });
 
-      await test.step('Fill checkout step one', async () => {
+      await test.step('Step 4: Fill checkout step one', async () => {
         // Act
         await checkout.clickCancel();
       });
@@ -188,21 +194,21 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
       // Arrange
       let products = await inventory.bAddToCart.count();
 
-      await test.step('Add products to basket', async () => {
+      await test.step('Step 1: Add products to basket', async () => {
         // Act
         for (let i = 0; i < products; i++) {
           await inventory.clickAddToCartFirst();
         }
       });
 
-      await test.step('Open basket and go to checkout', async () => {
+      await test.step('Step 2: Open basket and go to checkout', async () => {
         // Act
         await header.clickShoppingCart();
         await header.expectBadgeWithNumber(products.toString());
         await cart.clickCheckout();
       });
 
-      await test.step('Fill checkout step one', async () => {
+      await test.step('Step 3: Fill checkout step one', async () => {
         // Arrange
         const firstName = faker.person.firstName();
         const lastName = faker.person.lastName();
@@ -214,15 +220,13 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         await checkout.clickContinue();
       });
 
-      await test.step('Verify the payment', async () => {
+      await test.step('Step 4: Verify the payment', async () => {
         // Arrange
-        const sub = parseFloat((await checkout.labelSubTotalValue.innerText()).slice(13));
-        const tax = parseFloat((await checkout.labelTaxValue.innerText()).slice(6));
-        const total = parseFloat((await checkout.labelTotalValue.innerText()).slice(8));
-        // Act
-        await checkout.summaryTotalValue(sub, tax, total);
+        const sub = await checkout.labelSubTotalValue.innerText();
+        const tax = await checkout.labelTaxValue.innerText();
+        const total = await checkout.labelTotalValue.innerText();
         // Assert
-        console.log(`Item total: $${sub} + Tax: $${tax} = Total: $${total}`);
+        await checkout.summaryTotalValue(sub, tax, total);
       });
     });
   });

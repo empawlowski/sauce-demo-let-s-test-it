@@ -5,7 +5,6 @@ import { Locator, Page, expect } from '@playwright/test';
 export class InventoryPage extends BasePage {
   readonly url: string = inventoryData.url;
   readonly urlItem: string = inventoryData.urlItem;
-  // readonly invItem: InventoryItemPage;
   readonly fProductSort: Locator;
   readonly activeSortOption: Locator;
   readonly tableInventoryList: Locator;
@@ -27,7 +26,6 @@ export class InventoryPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    // this.invItem = new InventoryItemPage(this.page);
     this.fProductSort = this.page.getByTestId('product-sort-container');
     this.activeSortOption = this.page.getByTestId('active-option');
     this.tableInventoryList = this.page.getByTestId('inventory-list');
@@ -50,20 +48,28 @@ export class InventoryPage extends BasePage {
     this.priceFirst = this.price.first();
     this.priceSecond = this.price.nth(1);
 
-    // this.linkBackToProducts = this.page.locator('#back-to-products');
     this.imgDetail = this.page.locator('.inventory_details_img');
   }
 
+  getProductTitle(name: string): Locator {
+    return this.title.getByText(name, { exact: true });
+  }
+
+  getTestIdReduceTitle(title: string): Locator {
+    const reduceTitle = title.replaceAll(' ', '-').replace(/[(.)]/g, '\\$&').toLowerCase();
+    return this.page.locator(`#add-to-cart-${reduceTitle}`);
+  }
+
   async clickOnProductTitleFirst(): Promise<void> {
-    await this.title.first().click();
+    await this.titleFirst.click();
   }
 
   async clickOnProductTitleName(name: string): Promise<void> {
-    await this.title.getByText(name, { exact: true }).click();
+    await this.getProductTitle(name).click();
   }
 
   async addToCart(title: string): Promise<void> {
-    await this.page.locator(`#add-to-cart-${title}`).click();
+    await this.getTestIdReduceTitle(title).click();
   }
 
   async clickAddToCartFirst(): Promise<void> {
@@ -108,10 +114,6 @@ export class InventoryPage extends BasePage {
       expect(priceFirst).toBeGreaterThanOrEqual(priceSecond);
     }
   }
-
-  // async expectSingleProductPage(title: string, desc: string, price: string, link: string): Promise<void> {
-  //   await this.invItem.expectSingleProductPage(title, desc, price, link);
-  // }
 
   async expectIncorrectImageOnProduct(link: string): Promise<void> {
     await this.toHaveURL(this.url);

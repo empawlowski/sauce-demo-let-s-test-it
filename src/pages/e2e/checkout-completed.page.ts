@@ -9,9 +9,9 @@ export class CheckoutCompletedPage extends BasePage {
   readonly bBackHome: Locator;
   constructor(page: Page) {
     super(page);
-    this.completeHeader = this.page.getByTestId('complete-header');
-    this.completeText = this.page.getByTestId('complete-text');
-    this.bBackHome = this.page.locator('#back-to-products');
+    this.completeHeader = page.getByTestId('complete-header');
+    this.completeText = page.getByTestId('complete-text');
+    this.bBackHome = page.locator('#back-to-products');
   }
 
   async clickBackHome(): Promise<InventoryPage> {

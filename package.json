@@ -20,6 +20,7 @@
   "author": "Marcin P.",
   "license": "ISC",
   "devDependencies": {
+    "@axe-core/playwright": "^4.9.0",
     "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.44.1",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
@@ -33,7 +34,6 @@
     "husky": "^9.0.11"
   },
   "dependencies": {
-    "@axe-core/playwright": "^4.9.0",
     "eslint-plugin-playwright": "^1.6.0",
     "npm": "^10.5.2"
   }
