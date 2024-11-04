@@ -1,0 +1,2 @@
+Running Empty Fist Name field
+Finished Empty Fist Name field with status passed
