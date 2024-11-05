@@ -3,8 +3,10 @@ import { BasePage } from '@_src/pages/e2e/base.page';
 import { Locator, Page, expect } from '@playwright/test';
 
 export class InventoryPage extends BasePage {
-  readonly url: string = inventoryData.url;
-  readonly urlItem: string = inventoryData.urlItem;
+  private readonly url: string = inventoryData.url;
+  private readonly urlItem: string = inventoryData.urlItem;
+  private readonly itemRegExp: RegExp = /add-to-cart-.+/;
+
   readonly fProductSort: Locator;
   readonly activeSortOption: Locator;
   readonly tableInventoryList: Locator;
@@ -14,41 +16,38 @@ export class InventoryPage extends BasePage {
   readonly price: Locator;
   readonly img: Locator;
   readonly bAddToCart: Locator;
+  readonly bAddToCartRegEx: Locator;
   readonly bRemove: Locator;
-
-  readonly titleFirst: Locator;
-  readonly titleSecond: Locator;
-  readonly priceFirst: Locator;
-  readonly priceSecond: Locator;
-
-  readonly linkBackToProducts: Locator = this.page.locator('#back-to-products');
-  readonly imgDetail: Locator = this.page.locator('.inventory_details_img');
 
   constructor(page: Page) {
     super(page);
-    this.fProductSort = this.page.getByTestId('product-sort-container');
-    this.activeSortOption = this.page.getByTestId('active-option');
-    this.tableInventoryList = this.page.getByTestId('inventory-list');
+    this.fProductSort = page.getByTestId('product-sort-container');
+    this.activeSortOption = page.getByTestId('active-option');
+    this.tableInventoryList = page.getByTestId('inventory-list');
 
-    this.title = this.page.getByTestId('inventory-item-name');
-    this.desc = this.page.getByTestId('inventory-item-desc');
-    this.price = this.page.getByTestId('inventory-item-price');
-    this.img = this.page.locator('img.inventory_item_img');
-    this.bAddToCart = this.page.getByRole('button', {
-      name: inventoryData.bAddToCart,
-      exact: true,
-    });
-    this.bRemove = this.page.getByRole('button', {
-      name: inventoryData.bRemove,
-      exact: true,
-    });
+    this.title = page.getByTestId('inventory-item-name');
+    this.desc = page.getByTestId('inventory-item-desc');
+    this.price = page.getByTestId('inventory-item-price');
+    this.img = page.locator('img.inventory_item_img');
+    this.bAddToCart = page.getByRole('button', { name: inventoryData.bAddToCart, exact: true });
+    this.bAddToCartRegEx = page.getByTestId(this.itemRegExp);
+    this.bRemove = page.getByRole('button', { name: inventoryData.bRemove, exact: true });
+  }
 
-    this.titleFirst = this.title.first();
-    this.titleSecond = this.title.nth(1);
-    this.priceFirst = this.price.first();
-    this.priceSecond = this.price.nth(1);
+  getFirstTitle(): Locator {
+    return this.title.first();
+  }
 
-    this.imgDetail = this.page.locator('.inventory_details_img');
+  getSecondTitle(): Locator {
+    return this.title.nth(1);
+  }
+
+  getFirstPrice(): Locator {
+    return this.price.first();
+  }
+
+  getSecondPrice(): Locator {
+    return this.price.nth(1);
   }
 
   getProductTitle(name: string): Locator {
@@ -61,7 +60,7 @@ export class InventoryPage extends BasePage {
   }
 
   async clickOnProductTitleFirst(): Promise<void> {
-    await this.titleFirst.click();
+    await this.getFirstTitle().click();
   }
 
   async clickOnProductTitleName(name: string): Promise<void> {
@@ -91,27 +90,24 @@ export class InventoryPage extends BasePage {
     await expect(this.tableInventoryList).toBeVisible();
   }
 
-  async expectSortProductByName(): Promise<void> {
-    const titleFirst = await this.titleFirst.innerText();
-    const titleSecond = await this.titleSecond.innerText();
-
+  async expectSortProductByName(titleFirst: string, titleSecond: string): Promise<void> {
     if (await this.activeSortOption.getByText(inventoryData.az).isVisible()) {
-      expect(titleFirst.localeCompare(titleSecond)).toBeLessThanOrEqual(0);
+      await expect(titleFirst.localeCompare(titleSecond)).toBeLessThanOrEqual(0);
     }
     if (await this.activeSortOption.getByText(inventoryData.za).isVisible()) {
-      expect(titleFirst.localeCompare(titleSecond)).toBeGreaterThanOrEqual(0);
+      await expect(titleFirst.localeCompare(titleSecond)).toBeGreaterThanOrEqual(0);
     }
   }
 
-  async expectSortProductByPrice(): Promise<void> {
-    const priceFirst = parseFloat((await this.priceFirst.innerText()).slice(1));
-    const priceSecond = parseFloat((await this.priceSecond.innerText()).slice(1));
+  async expectSortProductByPrice(priceFirst: string, priceSecond: string): Promise<void> {
+    const reducePriceFirst = parseFloat(priceFirst.slice(1));
+    const reducePriceSecond = parseFloat(priceSecond.slice(1));
 
     if (await this.activeSortOption.getByText(inventoryData.lowHi).isVisible()) {
-      expect(priceFirst).toBeLessThanOrEqual(priceSecond);
+      await expect(reducePriceFirst).toBeLessThanOrEqual(reducePriceSecond);
     }
     if (await this.activeSortOption.getByText(inventoryData.hiLow).isVisible()) {
-      expect(priceFirst).toBeGreaterThanOrEqual(priceSecond);
+      await expect(reducePriceFirst).toBeGreaterThanOrEqual(reducePriceSecond);
     }
   }
 
