@@ -8,7 +8,7 @@ const { allure } = require('allure-playwright');
 
 //? Based on: https://playwright.dev/docs/accessibility-testing
 
-test.describe('Accessability tests', { tag: report.tags.accessibility }, () => {
+test.describe('Accessability tests', { tag: [report.tags.regression, report.tags.accessibility] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.accessibility);

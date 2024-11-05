@@ -4,7 +4,7 @@ import { test } from '@_src/fixtures/base.fixture';
 
 const { allure } = require('allure-playwright');
 
-test.describe.skip('Load tests', { tag: [report.tags.load] }, async () => {
+test.describe.skip('Load tests', { tag: [report.tags.regression, report.tags.load] }, async () => {
   for (let i = 0; i < 25; i++) {
     test(`Simple login to page - Run ${i + 1}`, async ({ login, header }) => {
       await allure.epic(report.epic.performance);

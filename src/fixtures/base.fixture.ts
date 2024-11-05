@@ -5,4 +5,4 @@ import { mergeTests } from '@playwright/test';
 
 export const test = mergeTests(pages, builders, components);
 
-export { expect } from '@playwright/test';
+export { expect, Locator } from '@playwright/test';

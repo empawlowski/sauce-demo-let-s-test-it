@@ -27,7 +27,7 @@ test.describe('Footer', { tag: [report.tags.regression] }, () => {
     await base.closePage();
   });
 
-  test('Check footer visibility', async ({ base, footer }) => {
+  test('Check footer visibility', { tag: report.tags.smoke }, async ({ base, footer }) => {
     // Arrange
     // Act
     await base.scrollDown();

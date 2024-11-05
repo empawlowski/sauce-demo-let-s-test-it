@@ -40,8 +40,8 @@ test.describe('Cart', { tag: [report.tags.regression, report.tags.user] }, () =>
       await allure.owner(report.owner.mrp);
       // Arrange
       //Act
-      await inventory.titleFirst.isVisible();
-      const title = (await inventory.titleFirst.innerText()).replaceAll(' ', '-').toLowerCase();
+      await inventory.getFirstTitle().isVisible();
+      const title = await inventory.getFirstTitle().innerText();
       await inventory.addToCart(title);
       // Assert
       await header.isBadgeVisible();

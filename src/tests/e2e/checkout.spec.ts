@@ -88,9 +88,9 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
 
       await test.step('Step 1: Add products to basket', async () => {
         // Arrange
-        const titleOne = await inventory.titleFirst.innerText();
-        const titleTwo = await inventory.titleSecond.innerText();
-        const titles = [titleOne, titleTwo];
+        const firstTitle = await inventory.getFirstTitle().innerText();
+        const secondTitle = await inventory.getSecondTitle().innerText();
+        const titles = [firstTitle, secondTitle];
         // Act
         for (const title of titles) {
           await inventory.addToCart(title);
@@ -119,9 +119,9 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
 
       await test.step('Step 1: Add products to basket', async () => {
         // Arrange
-        const titleOne = await inventory.titleFirst.innerText();
-        const titleTwo = await inventory.titleSecond.innerText();
-        const titles = [titleOne, titleTwo];
+        const firstTitle = await inventory.getFirstTitle().innerText();
+        const secondTitle = await inventory.getSecondTitle().innerText();
+        const titles = [firstTitle, secondTitle];
         // Act
         for (const title of titles) {
           await inventory.addToCart(title);

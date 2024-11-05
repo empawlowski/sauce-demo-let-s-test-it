@@ -5,7 +5,7 @@ import { test } from '@_src/fixtures/base.fixture';
 
 const { allure } = require('allure-playwright');
 
-test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, async () => {
+test.describe('Visual screenshot for pages', { tag: [report.tags.regression, report.tags.visual] }, async () => {
   test.beforeEach('Login method', async ({ login, header }) => {
     await allure.epic(report.epic.application);
     await allure.epic(report.feature.ui);

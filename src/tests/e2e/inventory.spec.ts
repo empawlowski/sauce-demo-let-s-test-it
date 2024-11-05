@@ -3,7 +3,7 @@ import { inventoryData } from '@_src/assets/data/e2e/inventory.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { visualData } from '@_src/assets/data/ui/visual.data';
 import { Configuration } from '@_src/config/configuration';
-import { test } from '@_src/fixtures/base.fixture';
+import { Locator, expect, test } from '@_src/fixtures/base.fixture';
 
 const { allure } = require('allure-playwright');
 
@@ -38,41 +38,52 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     test('Sort by Name (A to Z)', async ({ inventory }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      const sort = inventoryData.az;
+      const sort: string = inventoryData.az;
       // Act
       await inventory.sortProduct(sort);
+      const titleFirst: string = await inventory.getFirstTitle().innerText();
+      const titleSecond: string = await inventory.getSecondTitle().innerText();
+
       // Assert
-      await inventory.expectSortProductByName();
+      await inventory.expectSortProductByName(titleFirst, titleSecond);
     });
 
     test('Sort by Name (Z to A)', async ({ inventory }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      const sort = inventoryData.za;
+      const sort: string = inventoryData.za;
+
       // Act
       await inventory.sortProduct(sort);
+      const titleFirst: string = await inventory.getFirstTitle().innerText();
+      const titleSecond: string = await inventory.getSecondTitle().innerText();
+
       // Assert
-      await inventory.expectSortProductByName();
+      await inventory.expectSortProductByName(titleFirst, titleSecond);
     });
 
     test('Sort by Price (low to high)', async ({ inventory }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      const sort = inventoryData.lowHi;
+      const sort: string = inventoryData.lowHi;
       // Act
       await inventory.sortProduct(sort);
+      const priceFirst: string = await inventory.getFirstPrice().innerText();
+      const priceSecond: string = await inventory.getSecondPrice().innerText();
       // Assert
-      await inventory.expectSortProductByPrice();
+      await inventory.expectSortProductByPrice(priceFirst, priceSecond);
     });
 
     test('Sort by Price (high to low)', async ({ inventory }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      const sort = inventoryData.hiLow;
+      const sort: string = inventoryData.hiLow;
       // Act
       await inventory.sortProduct(sort);
+      const priceFirst: string = await inventory.getFirstPrice().innerText();
+      const priceSecond: string = await inventory.getSecondPrice().innerText();
       // Assert
-      await inventory.expectSortProductByPrice();
+      await inventory.expectSortProductByPrice(priceFirst, priceSecond);
     });
   });
 
@@ -103,7 +114,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
       await header.expectBadgeWithNumber(1);
     });
 
-    test('Adding by button "Add to cart" - all', async ({ header, inventory }) => {
+    test('Adding by button "Add to cart" - count', async ({ header, inventory }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
       const products: number = await inventory.bAddToCart.count();
@@ -147,6 +158,31 @@ test.describe('Inventory with errors', { tag: [report.tags.regression, report.ta
     await base.resetApp();
     await base.logoutFromApp();
     await base.closePage();
+  });
+
+  test('Adding by button "Add to cart" - all', async ({ login, inventory, header }) => {
+    await allure.owner(report.owner.mrp);
+    // Arrange
+    let productAdded: number = 0;
+    await login.logIn(Configuration.user, Configuration.password);
+
+    const productList: number = await inventory.bAddToCart.count();
+    const products: Locator[] = await inventory.bAddToCartRegEx.all();
+
+    // Act
+    for (const product of products) {
+      if ((await product.isVisible()) && (await product.isEnabled())) {
+        await product.click();
+        productAdded++;
+      } else {
+        console.warn('Button not visible or enabled', product);
+      }
+    }
+
+    // Assert
+    await header.expectBadgeWithNumber(productAdded);
+    //? Assert for console warning
+    await expect.soft(productAdded).toBeLessThanOrEqual(productList);
   });
 
   test('Wrong image link for product', async ({ login, inventory }) => {

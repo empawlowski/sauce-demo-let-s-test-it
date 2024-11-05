@@ -5,7 +5,7 @@ playwright-report
 playwright-results
 test-results
 test-report
-src/output/test-results
-src/output/test-reports
 src/output/allure-results
 src/output/allure-reports
+src/output/test-results
+src/output/test-reports
