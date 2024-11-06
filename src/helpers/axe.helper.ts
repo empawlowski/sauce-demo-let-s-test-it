@@ -2,7 +2,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { Page } from '@playwright/test';
 
 export const AxeBuilderHelper = (page: Page) => {
-  return () =>
+  return (): AxeBuilder =>
     new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).withRules([
       'accesskeys',
       'area-alt',

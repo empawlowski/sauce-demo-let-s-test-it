@@ -181,7 +181,7 @@ test.describe('Inventory with errors', { tag: [report.tags.regression, report.ta
     // Assert
     await header.expectBadgeWithNumber(productAdded);
     //? Assert for console warning
-    await expect.soft(productAdded).toBeLessThanOrEqual(productList);
+    expect.soft(productAdded).toBeLessThanOrEqual(productList);
   });
 
   test('Wrong image link for product', async ({ login, inventory }) => {

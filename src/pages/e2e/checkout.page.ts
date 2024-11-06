@@ -72,7 +72,7 @@ export class CheckoutPage extends BasePage {
     const sliceSub = parseFloat(sub.slice(13));
     const sliceTax = parseFloat(tax.slice(6));
     const sliceTotal = parseFloat(total.slice(8));
-    await expect(sliceSub + sliceTax).toEqual(sliceTotal);
+    expect(sliceSub + sliceTax).toBe(sliceTotal);
   }
 
   async clickFinish(): Promise<void> {

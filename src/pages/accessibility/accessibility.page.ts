@@ -6,7 +6,7 @@ export class AccessibilityPage {
   async expectGunningFoxIndex(describe: string): Promise<void> {
     const words = describe.split(/\W+/);
 
-    function countSyllables(word) {
+    function countSyllables(word): number {
       word = word.toLowerCase();
       if (word.length <= 3) return 1;
       word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');

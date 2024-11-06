@@ -4,7 +4,7 @@ import { Configuration } from '@_src/config/configuration';
 import { test } from '@_src/fixtures/base.fixture';
 import * as allure from 'allure-js-commons';
 
-test.describe('Visual screenshot for pages', { tag: [report.tags.regression, report.tags.visual] }, async () => {
+test.describe('Visual screenshot for pages', { tag: [report.tags.regression, report.tags.visual] }, () => {
   test.beforeEach('Login method', async ({ login, header }) => {
     await allure.epic(report.epic.application);
     await allure.epic(report.feature.ui);
