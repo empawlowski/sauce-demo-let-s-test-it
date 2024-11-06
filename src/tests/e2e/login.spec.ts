@@ -2,12 +2,11 @@ import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { Configuration } from '@_src/config/configuration';
 import { test } from '@_src/fixtures/base.fixture';
+import * as allure from 'allure-js-commons';
 import { Severity } from 'allure-js-commons';
 
-const { allure } = require('allure-playwright');
-
 test.describe('Login', { tag: [report.tags.regression] }, () => {
-  test.beforeEach('Add running test title', async ({}, testInfo) => {
+  test.beforeEach('Add running test title', async () => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.authentication);
     await allure.story(report.story.login);
@@ -16,7 +15,7 @@ test.describe('Login', { tag: [report.tags.regression] }, () => {
       'This test attempts to log into the website using a login and a password. Fails if any error happens.\n\nNote that this test does not test 2-Factor Authentication.',
     );
     await allure.owner(report.owner.mrp);
-    console.log(`Running ${testInfo.title}`);
+    console.log(`Running ${test.info().title}`);
   });
 
   test.afterEach('Close the page', async ({ base }, testInfo) => {
@@ -71,13 +70,13 @@ test.describe('Login', { tag: [report.tags.regression] }, () => {
   });
 
   test.describe('Login with error status', () => {
-    test.beforeEach('Add running test title', async ({}, testInfo) => {
+    test.beforeEach('Add running test title', async () => {
       await allure.epic(report.epic.application);
       await allure.feature(report.feature.authentication);
       await allure.story(report.story.login);
       await allure.owner(report.owner.mrp);
 
-      console.log(`Running ${testInfo.title}`);
+      console.log(`Running ${test.info().title}`);
     });
 
     test('Missing credentials', async ({ login, base }) => {

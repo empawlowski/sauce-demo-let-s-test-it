@@ -3,8 +3,7 @@ import * as report from '@_src/assets/data/report/allure.data.json';
 import { Configuration } from '@_src/config/configuration';
 import { expect, test } from '@_src/fixtures/base.fixture';
 import AxeBuilder from '@axe-core/playwright';
-
-const { allure } = require('allure-playwright');
+import * as allure from 'allure-js-commons';
 
 //? Based on: https://playwright.dev/docs/accessibility-testing
 

@@ -2,8 +2,7 @@ import { footerData } from '@_src/assets/data/e2e/footer.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { Configuration } from '@_src/config/configuration';
 import { expect, test } from '@_src/fixtures/base.fixture';
-
-const { allure } = require('allure-playwright');
+import * as allure from 'allure-js-commons';
 
 test.describe('Footer', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {

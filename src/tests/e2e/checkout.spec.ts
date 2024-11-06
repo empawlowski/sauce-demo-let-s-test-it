@@ -5,8 +5,7 @@ import { Configuration } from '@_src/config/configuration';
 import { createCheckoutUser } from '@_src/factories/user.factory';
 import { test } from '@_src/fixtures/base.fixture';
 import { faker } from '@faker-js/faker';
-
-const { allure } = require('allure-playwright');
+import * as allure from 'allure-js-commons';
 
 test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
@@ -153,7 +152,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     test('Checkout process with Success', async ({ header, inventory, cart, checkout, completed }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      let products: number = await inventory.bAddToCart.count();
+      const products: number = await inventory.bAddToCart.count();
 
       await test.step('Step 1: Add products to basket', async () => {
         // Act
@@ -192,7 +191,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     test('Checkout process with payment verification', async ({ header, inventory, cart, checkout }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      let products: number = await inventory.bAddToCart.count();
+      const products: number = await inventory.bAddToCart.count();
 
       await test.step('Step 1: Add products to basket', async () => {
         // Act
@@ -233,11 +232,11 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
 });
 
 test.describe('Checkout with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
-  test.beforeEach('Add running test title', async ({}, testInfo) => {
+  test.beforeEach('Add running test title', async () => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.checkout);
 
-    console.log(`Running ${testInfo.title}`);
+    console.log(`Running ${test.info().title}`);
   });
   test.afterEach('Close the page', async ({ base }, testInfo) => {
     console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);

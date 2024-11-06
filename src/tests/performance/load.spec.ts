@@ -1,8 +1,7 @@
 import { authData } from '@_src/assets/data/e2e/auth.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { test } from '@_src/fixtures/base.fixture';
-
-const { allure } = require('allure-playwright');
+import * as allure from 'allure-js-commons';
 
 test.describe.skip('Load tests', { tag: [report.tags.regression, report.tags.load] }, async () => {
   for (let i = 0; i < 25; i++) {

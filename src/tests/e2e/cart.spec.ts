@@ -2,8 +2,7 @@ import * as report from '@_src/assets/data/report/allure.data.json';
 import { visualData } from '@_src/assets/data/ui/visual.data';
 import { Configuration } from '@_src/config/configuration';
 import { test } from '@_src/fixtures/base.fixture';
-
-const { allure } = require('allure-playwright');
+import * as allure from 'allure-js-commons';
 
 test.describe('Cart', { tag: [report.tags.regression, report.tags.user] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
@@ -67,11 +66,11 @@ test.describe('Cart', { tag: [report.tags.regression, report.tags.user] }, () =>
 });
 
 test.describe('Cart with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
-  test.beforeEach('Add running test title', async ({}, testInfo) => {
+  test.beforeEach('Add running test title', async () => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.cart);
 
-    console.log(`Running ${testInfo.title}`);
+    console.log(`Running ${test.info().title}`);
   });
   test.afterEach('Close the page', async ({ base }, testInfo) => {
     console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
