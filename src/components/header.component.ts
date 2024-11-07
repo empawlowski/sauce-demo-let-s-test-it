@@ -1,14 +1,19 @@
 import { baseData } from '@_src/assets/data/e2e/base.data';
 import { CartPage } from '@_src/pages/e2e/cart.page';
-import { Page, expect } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class HeaderComponent {
-  constructor(private page: Page) {}
+  readonly bSideBarMenu: Locator;
+  readonly appLogo: Locator;
+  readonly bShoppingCart: Locator;
+  readonly badgeShoppingCart: Locator;
 
-  bSideBarMenu = this.page.locator('#react-burger-menu-btn');
-  appLogo = this.page.locator('.app_logo');
-  bShoppingCart = this.page.locator('#shopping_cart_container');
-  badgeShoppingCart = this.page.getByTestId('shopping-cart-badge');
+  constructor(private page: Page) {
+    this.bSideBarMenu = this.page.locator('#react-burger-menu-btn');
+    this.appLogo = this.page.locator('.app_logo');
+    this.bShoppingCart = this.page.locator('#shopping_cart_container');
+    this.badgeShoppingCart = this.page.getByTestId('shopping-cart-badge');
+  }
 
   async clickSideBarMenu(): Promise<void> {
     await this.bSideBarMenu.click();

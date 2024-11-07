@@ -1,10 +1,9 @@
 import { authData } from '@_src/assets/data/e2e/auth.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { test } from '@_src/fixtures/base.fixture';
+import * as allure from 'allure-js-commons';
 
-const { allure } = require('allure-playwright');
-
-test.describe.skip('Load tests', { tag: [report.tags.regression, report.tags.load] }, async () => {
+test.describe.skip('Load tests', { tag: [report.tags.regression, report.tags.load] }, () => {
   for (let i = 0; i < 25; i++) {
     test(`Simple login to page - Run ${i + 1}`, async ({ login, header }) => {
       await allure.epic(report.epic.performance);

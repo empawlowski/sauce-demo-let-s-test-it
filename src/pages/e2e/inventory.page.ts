@@ -1,6 +1,6 @@
 import { inventoryData } from '@_src/assets/data/e2e/inventory.data';
 import { BasePage } from '@_src/pages/e2e/base.page';
-import { Locator, Page, expect } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class InventoryPage extends BasePage {
   private readonly url: string = inventoryData.url;
@@ -92,10 +92,10 @@ export class InventoryPage extends BasePage {
 
   async expectSortProductByName(titleFirst: string, titleSecond: string): Promise<void> {
     if (await this.activeSortOption.getByText(inventoryData.az).isVisible()) {
-      await expect(titleFirst.localeCompare(titleSecond)).toBeLessThanOrEqual(0);
+      expect(titleFirst.localeCompare(titleSecond)).toBeLessThanOrEqual(0);
     }
     if (await this.activeSortOption.getByText(inventoryData.za).isVisible()) {
-      await expect(titleFirst.localeCompare(titleSecond)).toBeGreaterThanOrEqual(0);
+      expect(titleFirst.localeCompare(titleSecond)).toBeGreaterThanOrEqual(0);
     }
   }
 
@@ -104,10 +104,10 @@ export class InventoryPage extends BasePage {
     const reducePriceSecond = parseFloat(priceSecond.slice(1));
 
     if (await this.activeSortOption.getByText(inventoryData.lowHi).isVisible()) {
-      await expect(reducePriceFirst).toBeLessThanOrEqual(reducePriceSecond);
+      expect(reducePriceFirst).toBeLessThanOrEqual(reducePriceSecond);
     }
     if (await this.activeSortOption.getByText(inventoryData.hiLow).isVisible()) {
-      await expect(reducePriceFirst).toBeGreaterThanOrEqual(reducePriceSecond);
+      expect(reducePriceFirst).toBeGreaterThanOrEqual(reducePriceSecond);
     }
   }
 

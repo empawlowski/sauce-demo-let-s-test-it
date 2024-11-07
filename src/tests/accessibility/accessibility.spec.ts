@@ -3,8 +3,7 @@ import * as report from '@_src/assets/data/report/allure.data.json';
 import { Configuration } from '@_src/config/configuration';
 import { expect, test } from '@_src/fixtures/base.fixture';
 import AxeBuilder from '@axe-core/playwright';
-
-const { allure } = require('allure-playwright');
+import * as allure from 'allure-js-commons';
 
 //? Based on: https://playwright.dev/docs/accessibility-testing
 
@@ -46,7 +45,7 @@ test.describe('Accessability tests', { tag: [report.tags.regression, report.tags
       // const accessibilityScanResults = await new AxeBuilder({ page }).exclude('#element-with-known-issue').analyze();
       // const accessibilityScanResults = await new AxeBuilder({ page }).disableRules(['duplicate-id']).analyze();
 
-      await test.step('Step 1: Exporting scan results as a test attachment', async () => {
+      await test.step('Thread 1: Exporting scan results as a test attachment', async () => {
         //? simple method by console log
         // console.log(accessibilityScanResults);
 
@@ -56,7 +55,7 @@ test.describe('Accessability tests', { tag: [report.tags.regression, report.tags
         });
       });
 
-      await test.step('Step 2: Check a11y assertions', async () => {
+      await test.step('Thread 2: Check a11y assertions', async () => {
         expect.soft(accessibilityScanResults.violations.length).toEqual(1);
       });
     });
@@ -66,14 +65,14 @@ test.describe('Accessability tests', { tag: [report.tags.regression, report.tags
     test('Full scan results for page', async ({ a11y }, testInfo) => {
       const accessibilityScanResults = await a11y().analyze();
 
-      await test.step('Step 1: Exporting scan results as a test attachment', async () => {
+      await test.step('Thread 1: Exporting scan results as a test attachment - full', async () => {
         await testInfo.attach('accessibility-scan-results', {
           body: JSON.stringify(accessibilityScanResults, null, 2),
           contentType: 'application/json',
         });
       });
 
-      await test.step('Step 2: Check a11y assertions', async () => {
+      await test.step('Thread 2: Check a11y assertions - full', async () => {
         expect.soft(accessibilityScanResults.violations.length).toEqual(2);
       });
     });
@@ -81,14 +80,14 @@ test.describe('Accessability tests', { tag: [report.tags.regression, report.tags
     test('Violations results for page', async ({ a11y }, testInfo) => {
       const { violations } = await a11y().analyze();
 
-      await test.step('Step 1: Exporting scan results as a test attachment', async () => {
+      await test.step('Thread 1: Exporting scan results as a test attachment - violations', async () => {
         await testInfo.attach('accessibility-scan-results', {
           body: JSON.stringify(violations, null, 2),
           contentType: 'application/json',
         });
       });
 
-      await test.step('Step 2: Check a11y assertions', async () => {
+      await test.step('Thread 2: Check a11y assertions - violations', async () => {
         expect.soft(violations).toHaveLength(2);
       });
     });

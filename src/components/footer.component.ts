@@ -1,13 +1,18 @@
 import { footerData } from '@_src/assets/data/e2e/footer.data';
-import { Page, expect } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class FooterComponent {
-  constructor(private page: Page) {}
+  readonly linkTwitter: Locator;
+  readonly linkFacebook: Locator;
+  readonly linkLinkedIn: Locator;
+  readonly copyFooter: Locator;
 
-  linkTwitter = this.page.getByTestId('social-twitter');
-  linkFacebook = this.page.getByTestId('social-facebook');
-  linkLinkedIn = this.page.getByTestId('social-linkedin');
-  copyFooter = this.page.getByTestId('footer-copy');
+  constructor(private page: Page) {
+    this.linkTwitter = this.page.getByTestId('social-twitter');
+    this.linkFacebook = this.page.getByTestId('social-facebook');
+    this.linkLinkedIn = this.page.getByTestId('social-linkedin');
+    this.copyFooter = this.page.getByTestId('footer-copy');
+  }
 
   async expectFooter(): Promise<void> {
     await expect(this.linkTwitter).toBeVisible();

@@ -1,7 +1,7 @@
 import { inventoryData } from '@_src/assets/data/e2e/inventory.data';
 import { SingleProductModel } from '@_src/models/inventory.model';
 import { BasePage } from '@_src/pages/e2e/base.page';
-import { Locator, Page, expect } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class InventoryItemPage extends BasePage {
   readonly url: string = inventoryData.urlItem;

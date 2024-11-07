@@ -4,8 +4,7 @@ import * as report from '@_src/assets/data/report/allure.data.json';
 import { visualData } from '@_src/assets/data/ui/visual.data';
 import { Configuration } from '@_src/config/configuration';
 import { Locator, expect, test } from '@_src/fixtures/base.fixture';
-
-const { allure } = require('allure-playwright');
+import * as allure from 'allure-js-commons';
 
 test.describe('Inventory', { tag: report.tags.regression }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
@@ -91,7 +90,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     test('Adding by Title - all', async ({ header, inventory }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      let products: number = await inventory.title.count();
+      const products: number = await inventory.title.count();
 
       // Act
       for (let i = 0; i < products; i++) {
@@ -146,11 +145,11 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
 });
 
 test.describe('Inventory with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
-  test.beforeEach('Add running test title', async ({}, testInfo) => {
+  test.beforeEach('Add running test title', async () => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.inventory);
 
-    console.log(`Running ${testInfo.title}`);
+    console.log(`Running ${test.info().title}`);
   });
   test.afterEach('Close the page', async ({ base }, testInfo) => {
     console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
@@ -182,7 +181,7 @@ test.describe('Inventory with errors', { tag: [report.tags.regression, report.ta
     // Assert
     await header.expectBadgeWithNumber(productAdded);
     //? Assert for console warning
-    await expect.soft(productAdded).toBeLessThanOrEqual(productList);
+    expect.soft(productAdded).toBeLessThanOrEqual(productList);
   });
 
   test('Wrong image link for product', async ({ login, inventory }) => {

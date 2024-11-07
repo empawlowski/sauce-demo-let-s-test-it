@@ -3,7 +3,7 @@ import { CheckoutUserModel } from '@_src/models/user.model';
 import { BasePage } from '@_src/pages/e2e/base.page';
 import { CartPage } from '@_src/pages/e2e/cart.page';
 import { InventoryPage } from '@_src/pages/e2e/inventory.page';
-import { Locator, Page, expect } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {
   readonly fieldFirstName: Locator;
@@ -14,8 +14,6 @@ export class CheckoutPage extends BasePage {
   readonly labelSubTotalValue: Locator;
   readonly labelTaxValue: Locator;
   readonly labelTotalValue: Locator;
-  readonly completeHeader: Locator;
-  readonly completeText: Locator;
 
   readonly bCancel: Locator;
   readonly bContinue: Locator;
@@ -72,7 +70,7 @@ export class CheckoutPage extends BasePage {
     const sliceSub = parseFloat(sub.slice(13));
     const sliceTax = parseFloat(tax.slice(6));
     const sliceTotal = parseFloat(total.slice(8));
-    await expect(sliceSub + sliceTax).toEqual(sliceTotal);
+    expect(sliceSub + sliceTax).toBe(sliceTotal);
   }
 
   async clickFinish(): Promise<void> {

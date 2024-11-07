@@ -1,59 +1,52 @@
-import eslintJsPlugin from '@eslint/js';
-import typeScriptEsLintPlugin from '@typescript-eslint/eslint-plugin';
-import typescriptParser from '@typescript-eslint/parser';
-import eslintConfigPrettier from 'eslint-config-prettier';
-import playwright from 'eslint-plugin-playwright';
-import prettier from 'eslint-plugin-prettier';
+import pluginJs from '@eslint/js';
+import eslintPluginPlaywright from 'eslint-plugin-playwright';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
+/** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    languageOptions: {
-      globals: {
-        ...globals.node,
-      },
-    },
-  },
-  {
-    files: ['**/*.ts', '**/*.tsx'],
     ignores: [
+      'allure-report/**',
+      'allure-results/**',
       'package-lock.json',
       'playwright-report/**',
+      'playwright-results/**',
       'test-results/**',
-      'test-download/**',
-      'test-upload/**',
-      'src/assets/documents/**',
-      'src/assets/images/**',
-      'src/download/**',
-      'src/upload/**',
+      'test-report/**',
       'src/output/**',
     ],
-
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      parser: typescriptParser,
-      parserOptions: {
-        warnOnUnsupportedTypeScriptVersion: false,
-      },
-    },
-    plugins: {
-      prettier,
-      playwright,
-      '@typescript-eslint': typeScriptEsLintPlugin,
-      typeScriptEsLintPlugin,
-    },
+  },
+  { files: ['**/*.ts'] },
+  { languageOptions: { globals: globals.node } },
+  pluginJs.configs.recommended,
+  {
     rules: {
-      ...eslintJsPlugin.configs.recommended.rules,
-      'no-console': 'warn',
-      'no-unused-vars': 'off',
-      ...typeScriptEsLintPlugin.configs['eslint-recommended'].rules,
-      'typeScriptEsLintPlugin/explicit-function-return-type': 'error',
-      'typeScriptEsLintPlugin/no-unused-vars': 'error',
-      ...playwright.configs.recommended.rules,
-      'playwright/no-nested-step': 'off',
-      ...prettier.configs.recommended.rules,
-      ...eslintConfigPrettier.rules,
+      'no-console': ['off', { allow: ['warn', 'error'] }],
     },
   },
+  ...tseslint.configs.recommended,
+  {
+    rules: {
+      '@typescript-eslint/explicit-function-return-type': 'error',
+    },
+  },
+  eslintPluginPlaywright.configs['flat/recommended'],
+  {
+    rules: {
+      'playwright/no-nested-step': 'off',
+      'playwright/expect-expect': 'off',
+      'playwright/no-skipped-test': 'off',
+      'playwright/no-conditional-in-test': 'off',
+    },
+    // settings: {
+    //   playwright: {
+    //     globalAliases: {
+    //       test: ['setup'],
+    //     },
+    //   },
+    // },
+  },
+  eslintPluginPrettierRecommended,
 ];
