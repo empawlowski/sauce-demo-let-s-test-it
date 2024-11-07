@@ -8,3 +8,13 @@
 - setup 🎭 Playwright framework `npx playwright install`
 - setup husky `npx husky`
 - (optional) install Visual Studio Code extensions
+
+### How to run tests
+
+Run all tests:
+
+```
+npx playwright test
+```
+
+For more usage cases look in `package.json` scripts.
