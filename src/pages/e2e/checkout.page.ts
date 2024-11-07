@@ -14,8 +14,6 @@ export class CheckoutPage extends BasePage {
   readonly labelSubTotalValue: Locator;
   readonly labelTaxValue: Locator;
   readonly labelTotalValue: Locator;
-  readonly completeHeader: Locator;
-  readonly completeText: Locator;
 
   readonly bCancel: Locator;
   readonly bContinue: Locator;

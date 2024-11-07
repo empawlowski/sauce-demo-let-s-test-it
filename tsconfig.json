@@ -3,9 +3,10 @@
     "lib": ["ES2021", "dom"],
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    // "target": "ES2021",
-    // "module": "CommonJS",
-    // "sourceMap": true
+    "strict": true,
+    "sourceMap": true,
+    "target": "ESNext",
+    "module": "CommonJS",
     "baseUrl": ".",
     "paths": { "@_src/*": ["src/*"] }
   }
