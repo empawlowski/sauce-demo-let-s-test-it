@@ -5,5 +5,14 @@
     "source.organizeImports": "explicit"
   },
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "cSpell.words": ["accesskeys", "commandline", "roledescription", "treeitem", "trivago", "tseslint", "wcag"]
+  "cSpell.words": [
+    "accesskeys",
+    "commandline",
+    "linkedin",
+    "roledescription",
+    "treeitem",
+    "trivago",
+    "tseslint",
+    "wcag"
+  ]
 }
