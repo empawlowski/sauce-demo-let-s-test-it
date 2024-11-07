@@ -1,5 +1,5 @@
 import { footerData } from '@_src/assets/data/e2e/footer.data';
-import { Page, expect } from '@playwright/test';
+import { type Page, expect } from '@playwright/test';
 
 export class FooterComponent {
   constructor(private page: Page) {}

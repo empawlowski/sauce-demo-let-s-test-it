@@ -3,7 +3,7 @@ import { CheckoutUserModel } from '@_src/models/user.model';
 import { BasePage } from '@_src/pages/e2e/base.page';
 import { CartPage } from '@_src/pages/e2e/cart.page';
 import { InventoryPage } from '@_src/pages/e2e/inventory.page';
-import { Locator, Page, expect } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {
   readonly fieldFirstName: Locator;

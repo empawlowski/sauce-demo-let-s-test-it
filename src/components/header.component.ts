@@ -1,6 +1,6 @@
 import { baseData } from '@_src/assets/data/e2e/base.data';
 import { CartPage } from '@_src/pages/e2e/cart.page';
-import { Page, expect } from '@playwright/test';
+import { type Page, expect } from '@playwright/test';
 
 export class HeaderComponent {
   constructor(private page: Page) {}

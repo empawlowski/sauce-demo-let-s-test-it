@@ -2,7 +2,7 @@ import { cartData } from '@_src/assets/data/e2e/cart.data';
 import { BasePage } from '@_src/pages/e2e/base.page';
 import { CheckoutPage } from '@_src/pages/e2e/checkout.page';
 import { InventoryPage } from '@_src/pages/e2e/inventory.page';
-import { Locator, Page, expect } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CartPage extends BasePage {
   url = cartData.url;

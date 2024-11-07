@@ -1,5 +1,5 @@
 import { InventoryPage } from '@_src/pages/e2e/inventory.page';
-import { Locator, Page } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 
 export class LoginPage {
   readonly fieldUsername: Locator;

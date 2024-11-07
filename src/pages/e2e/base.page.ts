@@ -1,7 +1,7 @@
 import { HeaderComponent } from '@_src/components/header.component';
 import { SideBarComponent } from '@_src/components/sidebar.component';
 import { screenshotPath } from '@_src/utils/screenshotPath.util';
-import { Locator, Page, expect } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class BasePage {
   readonly headerComponent: HeaderComponent;
