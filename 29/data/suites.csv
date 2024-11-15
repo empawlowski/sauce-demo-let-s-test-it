@@ -1,0 +1,98 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Nov 15 15:07:43 GMT 2024","Fri Nov 15 15:07:43 GMT 2024","640","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Visual user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:47 GMT 2024","1014","Chromium","ui/visual-screenshots.spec.ts","Visual screenshot for pages","","","Inventory",""
+"passed","Fri Nov 15 15:07:34 GMT 2024","Fri Nov 15 15:07:37 GMT 2024","3140","Chromium","e2e/inventory.spec.ts","Inventory with errors","","","Wrong image link for product",""
+"passed","Fri Nov 15 15:07:28 GMT 2024","Fri Nov 15 15:07:31 GMT 2024","3331","Chromium","e2e/inventory.spec.ts","Inventory > Add products - different methods","","","Adding by Title - one",""
+"passed","Fri Nov 15 15:07:38 GMT 2024","Fri Nov 15 15:07:39 GMT 2024","615","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Locked user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Fri Nov 15 15:07:39 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","6136","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Performance user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Fri Nov 15 15:06:36 GMT 2024","Fri Nov 15 15:06:39 GMT 2024","2401","Chromium","accessibility/accessibility.spec.ts","Accessability tests > Gunning fog index","","","Inventory - product describe",""
+"passed","Fri Nov 15 15:06:36 GMT 2024","Fri Nov 15 15:06:40 GMT 2024","3849","Chromium","accessibility/accessibility.spec.ts","Accessability tests > Accessability tests - fixture","","","Violations results for page",""
+"passed","Fri Nov 15 15:07:24 GMT 2024","Fri Nov 15 15:07:28 GMT 2024","3221","Chromium","e2e/inventory.spec.ts","Inventory > Products sorting","","","Sort by Price (high to low)",""
+"passed","Fri Nov 15 15:06:52 GMT 2024","Fri Nov 15 15:06:55 GMT 2024","2826","Chromium","e2e/checkout.spec.ts","Checkout > Checkout process","","","Continue process from Checkout",""
+"passed","Fri Nov 15 15:06:51 GMT 2024","Fri Nov 15 15:06:54 GMT 2024","3233","Chromium","e2e/checkout.spec.ts","Checkout > Empty fields - error validation","","","Empty Postal Code field",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 22",""
+"passed","Fri Nov 15 15:07:37 GMT 2024","Fri Nov 15 15:07:38 GMT 2024","820","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Standard user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 16",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 5",""
+"passed","Fri Nov 15 15:07:45 GMT 2024","Fri Nov 15 15:07:45 GMT 2024","618","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Incorrect credentials","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 12",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 25",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 4",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 9",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 21",""
+"passed","Fri Nov 15 15:06:46 GMT 2024","Fri Nov 15 15:06:49 GMT 2024","3108","Chromium","e2e/checkout.spec.ts","Checkout","","","Validation Checkout page",""
+"passed","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","676","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Incorrect password","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Fri Nov 15 15:06:31 GMT 2024","Fri Nov 15 15:06:35 GMT 2024","4445","Chromium","accessibility/accessibility.spec.ts","Accessability tests > Accessability tests - without fixture","","","Full scan results for page",""
+"passed","Fri Nov 15 15:07:45 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","601","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Incorrect username","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Fri Nov 15 15:06:31 GMT 2024","Fri Nov 15 15:06:35 GMT 2024","4210","Chromium","accessibility/accessibility.spec.ts","Accessability tests > Accessability tests - fixture","","","Full scan results for page",""
+"passed","Fri Nov 15 15:06:49 GMT 2024","Fri Nov 15 15:06:52 GMT 2024","3169","Chromium","e2e/checkout.spec.ts","Checkout > Empty fields - error validation","","","Empty Last Name field",""
+"passed","Fri Nov 15 15:06:43 GMT 2024","Fri Nov 15 15:06:47 GMT 2024","3848","Chromium","e2e/cart.spec.ts","Cart with errors","","","Visual effect for page",""
+"passed","Fri Nov 15 15:06:48 GMT 2024","Fri Nov 15 15:06:51 GMT 2024","3236","Chromium","e2e/checkout.spec.ts","Checkout > Empty fields - error validation","","","Empty Fist Name field",""
+"passed","Fri Nov 15 15:07:39 GMT 2024","Fri Nov 15 15:07:39 GMT 2024","653","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Problem user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Fri Nov 15 15:07:05 GMT 2024","Fri Nov 15 15:07:11 GMT 2024","5653","Chromium","e2e/footer.spec.ts","Footer > Open the footer links","","","Open ""Facebook"" page",""
+"passed","Fri Nov 15 15:07:16 GMT 2024","Fri Nov 15 15:07:20 GMT 2024","3600","Chromium","e2e/inventory.spec.ts","Inventory","","","Validation Inventory page",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 19",""
+"passed","Fri Nov 15 15:07:47 GMT 2024","Fri Nov 15 15:07:48 GMT 2024","795","Chromium","ui/visual-screenshots.spec.ts","Visual screenshot for pages","","","Checkout",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 11",""
+"passed","Fri Nov 15 15:07:42 GMT 2024","Fri Nov 15 15:07:43 GMT 2024","642","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Error user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 6",""
+"passed","Fri Nov 15 15:07:23 GMT 2024","Fri Nov 15 15:07:27 GMT 2024","3272","Chromium","e2e/inventory.spec.ts","Inventory > Products sorting","","","Sort by Price (low to high)",""
+"passed","Fri Nov 15 15:06:55 GMT 2024","Fri Nov 15 15:06:59 GMT 2024","3968","Chromium","e2e/checkout.spec.ts","Checkout > Checkout process","","","Checkout process with Success",""
+"passed","Fri Nov 15 15:06:42 GMT 2024","Fri Nov 15 15:06:45 GMT 2024","3103","Chromium","e2e/cart.spec.ts","Cart > Function with product","","","Remove product from basket",""
+"passed","Fri Nov 15 15:07:43 GMT 2024","Fri Nov 15 15:07:44 GMT 2024","452","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Missing credentials","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 2",""
+"passed","Fri Nov 15 15:07:27 GMT 2024","Fri Nov 15 15:07:30 GMT 2024","3404","Chromium","e2e/inventory.spec.ts","Inventory > Add products - different methods","","","Adding by Title - all",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 20",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 17",""
+"passed","Fri Nov 15 15:06:59 GMT 2024","Fri Nov 15 15:07:03 GMT 2024","4167","Chromium","e2e/checkout.spec.ts","Checkout with errors","","","Visual effect for page",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 13",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 10",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 14",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 24",""
+"passed","Fri Nov 15 15:07:30 GMT 2024","Fri Nov 15 15:07:34 GMT 2024","3415","Chromium","e2e/inventory.spec.ts","Inventory > Add products - different methods","","","Adding by button ""Add to cart"" - count",""
+"passed","Fri Nov 15 15:07:37 GMT 2024","Fri Nov 15 15:07:42 GMT 2024","4846","Chromium","e2e/inventory.spec.ts","Inventory with errors","","","Visual effect for page",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 7",""
+"passed","Fri Nov 15 15:07:02 GMT 2024","Fri Nov 15 15:07:05 GMT 2024","3376","Chromium","e2e/footer.spec.ts","Footer","","","Check footer visibility",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 15",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 8",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 3",""
+"passed","Fri Nov 15 15:07:31 GMT 2024","Fri Nov 15 15:07:34 GMT 2024","3253","Chromium","e2e/inventory.spec.ts","Inventory","","","Single product view",""
+"passed","Fri Nov 15 15:07:11 GMT 2024","Fri Nov 15 15:07:16 GMT 2024","5336","Chromium","e2e/footer.spec.ts","Footer > Open the footer links","","","Open ""LinkedIn"" page",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 1",""
+"passed","Fri Nov 15 15:07:34 GMT 2024","Fri Nov 15 15:07:37 GMT 2024","3357","Chromium","e2e/inventory.spec.ts","Inventory with errors","","","Adding by button ""Add to cart"" - all",""
+"passed","Fri Nov 15 15:06:40 GMT 2024","Fri Nov 15 15:06:43 GMT 2024","3112","Chromium","e2e/cart.spec.ts","Cart > Function with product","","","Add product to basket",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","0","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 23",""
+"passed","Fri Nov 15 15:07:44 GMT 2024","Fri Nov 15 15:07:45 GMT 2024","481","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Missing password","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:47 GMT 2024","945","Chromium","ui/visual-screenshots.spec.ts","Visual screenshot for pages","","","Cart",""
+"passed","Fri Nov 15 15:07:21 GMT 2024","Fri Nov 15 15:07:24 GMT 2024","3401","Chromium","e2e/inventory.spec.ts","Inventory > Products sorting","","","Sort by Name (Z to A)",""
+"passed","Fri Nov 15 15:07:20 GMT 2024","Fri Nov 15 15:07:23 GMT 2024","3426","Chromium","e2e/inventory.spec.ts","Inventory > Products sorting","","","Sort by Name (A to Z)",""
+"skipped","Fri Nov 15 15:07:46 GMT 2024","Fri Nov 15 15:07:46 GMT 2024","1","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 18",""
+"passed","Fri Nov 15 15:06:54 GMT 2024","Fri Nov 15 15:06:58 GMT 2024","3748","Chromium","e2e/checkout.spec.ts","Checkout > Checkout process","","","Checkout process with Cancel",""
+"passed","Fri Nov 15 15:06:58 GMT 2024","Fri Nov 15 15:07:02 GMT 2024","3743","Chromium","e2e/checkout.spec.ts","Checkout > Checkout process","","","Checkout process with payment verification",""
+"passed","Fri Nov 15 15:06:39 GMT 2024","Fri Nov 15 15:06:42 GMT 2024","3211","Chromium","e2e/cart.spec.ts","Cart","","","Validation Cart page",""
+"passed","Fri Nov 15 15:07:14 GMT 2024","Fri Nov 15 15:07:21 GMT 2024","6501","Chromium","e2e/footer.spec.ts","Footer > Open the footer links","","","Open ""Twitter"" page",""
+"passed","Fri Nov 15 15:07:44 GMT 2024","Fri Nov 15 15:07:44 GMT 2024","489","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Missing username","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."

@@ -1,0 +1,3 @@
+Button not visible or enabled getByTestId(/add-to-cart-.+/).nth(3)
+Button not visible or enabled getByTestId(/add-to-cart-.+/).nth(4)
+Button not visible or enabled getByTestId(/add-to-cart-.+/).nth(5)
