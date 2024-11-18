@@ -40,7 +40,7 @@
     "visual": "@visual",
     "api": "@api",
     "env": "@env",
-    "user": "@user"
+    "setup": "@setup"
   },
   "owner": { "mrp": "Marcin P" },
   "link": { "story": "Story" }

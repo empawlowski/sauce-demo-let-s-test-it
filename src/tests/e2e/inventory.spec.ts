@@ -1,12 +1,13 @@
 import * as product from '@_src/assets/data/e2e/inventory-item.data.json';
 import { inventoryData } from '@_src/assets/data/e2e/inventory.data';
+import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { visualData } from '@_src/assets/data/ui/visual.data';
 import { Configuration } from '@_src/config/configuration';
-import { Locator, expect, test } from '@_src/fixtures/base.fixture';
+import { type Locator, expect, test } from '@_src/fixtures/base.fixture';
 import * as allure from 'allure-js-commons';
 
-test.describe('Inventory', { tag: report.tags.regression }, () => {
+test.describe('Inventory', { tag: [report.tags.regression, report.tags.setup] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.inventory);
@@ -14,7 +15,7 @@ test.describe('Inventory', { tag: report.tags.regression }, () => {
     // Arrange
     console.log(`Running ${testInfo.title}`);
     // Act
-    await login.logIn(Configuration.user, Configuration.password);
+    await login.goTo(loginData.inventoryURL);
     // Assert
     await header.expectLogo();
   });

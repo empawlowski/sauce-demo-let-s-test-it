@@ -9,3 +9,4 @@
 /playwright-results/  
 /playwright/.cache/
 /.env
+/.auth

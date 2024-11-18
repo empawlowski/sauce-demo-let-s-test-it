@@ -1,10 +1,10 @@
 import { footerData } from '@_src/assets/data/e2e/footer.data';
+import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
-import { Configuration } from '@_src/config/configuration';
 import { expect, test } from '@_src/fixtures/base.fixture';
 import * as allure from 'allure-js-commons';
 
-test.describe('Footer', { tag: [report.tags.regression] }, () => {
+test.describe('Footer', { tag: [report.tags.regression, report.tags.setup] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.footer);
@@ -13,7 +13,7 @@ test.describe('Footer', { tag: [report.tags.regression] }, () => {
     // Arrange
     console.log(`Running ${testInfo.title}`);
     // Act
-    await login.logIn(Configuration.user, Configuration.password);
+    await login.goTo(loginData.inventoryURL);
     // Assert
     await header.expectLogo();
   });
@@ -43,8 +43,8 @@ test.describe('Footer', { tag: [report.tags.regression] }, () => {
       await footer.clickLinkTwitter();
       const newPage = await pagePromise;
       // Assert
-      await expect(newPage).toHaveTitle(footerData.titleTwitter);
       await expect(newPage).toHaveURL(footerData.linkTwitter);
+      await expect(newPage).toHaveTitle(footerData.titleTwitter);
       await newPage.close();
     });
 
@@ -56,8 +56,8 @@ test.describe('Footer', { tag: [report.tags.regression] }, () => {
       await footer.clickLinkFacebook();
       const newPage = await pagePromise;
       // Assert
-      await expect(newPage).toHaveTitle(footerData.titleFacebook);
       await expect(newPage).toHaveURL(footerData.linkFacebook);
+      await expect(newPage).toHaveTitle(footerData.titleFacebook);
       await newPage.close();
     });
 
@@ -69,8 +69,8 @@ test.describe('Footer', { tag: [report.tags.regression] }, () => {
       await footer.clickLinkLinkedIn();
       const newPage = await pagePromise;
       // Assert
-      await expect(newPage).toHaveTitle(footerData.titleLinkedIn);
       await expect(newPage).toHaveURL(footerData.linkLinkedIn);
+      await expect(newPage).toHaveTitle(footerData.titleLinkedIn);
       await newPage.close();
     });
   });

@@ -87,31 +87,44 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'Chromium',
-      // grepInvert: /@user/,
+      name: 'setup',
       use: { ...devices['Desktop Chrome'] },
+      testMatch: /.*\.setup\.ts/,
     },
     // {
-    //   name: 'setup',
-    //   testMatch: '*.setup.ts',
-    // },
-    // {
-    //   name: 'user',
-    //   grep: /@user/,
+    //   name: 'Chromium - setup',
+    //   grep: /@setup/,
+    //   use: {
+    //     ...devices['Desktop Chrome'],
+    //     storageState: '.auth/user.json',
+    //   },
     //   dependencies: ['setup'],
-    //   use: { ...devices['Desktop Chrome'] },
     // },
 
     // {
+    //   name: 'Chromium - without setup',
+    //   grepInvert: /@setup/,
+    //   use: {
+    //     ...devices['Desktop Chrome'],
+    //   },
+    // },
+
+    {
+      name: 'Chromium',
+      use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json' },
+      dependencies: ['setup'],
+    },
+
+    // {
     //   name: 'Firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    //   dependencies: ['Chromium'],
+    //   use: { ...devices['Desktop Firefox'], storageState: '.auth/user.json' },
+    //   dependencies: ['setup'],
     // },
 
     // {
     //   name: 'Webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    //   dependencies: ['Firefox'],
+    //   use: { ...devices['Desktop Safari'], storageState: '.auth/user.json' },
+    //   dependencies: ['setup'],
     // },
 
     /* Test against mobile viewports. */
@@ -128,6 +141,7 @@ export default defineConfig({
     // {
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    //   dependencies: ['Webkit'],
     // },
     // {
     //   name: 'Google Chrome',

@@ -3,10 +3,11 @@ import { BasePage } from '@_src/pages/e2e/base.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class InventoryPage extends BasePage {
-  private readonly url: string = inventoryData.url;
-  private readonly urlItem: string = inventoryData.urlItem;
-  private readonly itemRegExp: RegExp = /add-to-cart-.+/;
+  private readonly url: string;
+  private readonly urlItem: string;
+  private readonly itemRegExp: RegExp;
 
+  protected readonly page: Page;
   readonly fProductSort: Locator;
   readonly activeSortOption: Locator;
   readonly tableInventoryList: Locator;
@@ -21,6 +22,11 @@ export class InventoryPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
+    this.url = inventoryData.url;
+    this.urlItem = inventoryData.urlItem;
+    this.itemRegExp = /add-to-cart-.+/;
+
+    this.page = page;
     this.fProductSort = page.getByTestId('product-sort-container');
     this.activeSortOption = page.getByTestId('active-option');
     this.tableInventoryList = page.getByTestId('inventory-list');
@@ -85,7 +91,7 @@ export class InventoryPage extends BasePage {
 
   async expectInventoryPage(): Promise<void> {
     await this.toHaveURL(this.url);
-    await expect(this.header).toContainText(inventoryData.header);
+    await expect(this.headerTitle).toContainText(inventoryData.header);
     await expect(this.fProductSort).toBeVisible();
     await expect(this.tableInventoryList).toBeVisible();
   }
