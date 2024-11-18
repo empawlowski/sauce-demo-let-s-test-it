@@ -1,10 +1,11 @@
+import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { visualData } from '@_src/assets/data/ui/visual.data';
 import { Configuration } from '@_src/config/configuration';
 import { test } from '@_src/fixtures/base.fixture';
 import * as allure from 'allure-js-commons';
 
-test.describe('Cart', { tag: [report.tags.regression, report.tags.user] }, () => {
+test.describe('Cart', { tag: [report.tags.regression, report.tags.setup] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.cart);
@@ -12,7 +13,7 @@ test.describe('Cart', { tag: [report.tags.regression, report.tags.user] }, () =>
     // Arrange
     console.log(`Running ${testInfo.title}`);
     // Act
-    await login.logIn(Configuration.user, Configuration.password);
+    await login.goTo(loginData.inventoryURL);
     // Assert
     await header.expectLogo();
   });

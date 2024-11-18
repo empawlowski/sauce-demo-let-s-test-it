@@ -6,6 +6,7 @@ import { InventoryPage } from '@_src/pages/e2e/inventory.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {
+  protected readonly page: Page;
   readonly fieldFirstName: Locator;
   readonly fieldLastName: Locator;
   readonly fieldPostalCode: Locator;
@@ -23,6 +24,7 @@ export class CheckoutPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
+    this.page = page;
     this.fieldFirstName = this.page.locator('#first-name');
     this.fieldLastName = this.page.locator('#last-name');
     this.fieldPostalCode = this.page.locator('#postal-code');
@@ -79,7 +81,7 @@ export class CheckoutPage extends BasePage {
 
   async expectCheckoutPage(url: string): Promise<void> {
     await this.toHaveURL(url);
-    await expect(this.header).toContainText(checkoutData.header);
+    await expect(this.headerTitle).toContainText(checkoutData.header);
     await expect(this.fieldFirstName).toBeVisible();
     await expect(this.fieldLastName).toBeEditable();
     await expect(this.fieldPostalCode).toBeEditable();
@@ -89,7 +91,7 @@ export class CheckoutPage extends BasePage {
 
   async expectCheckoutStepTwoPage(url: string): Promise<void> {
     await this.toHaveURL(url);
-    await expect(this.header).toContainText(checkoutData.headerStepTwo);
+    await expect(this.headerTitle).toContainText(checkoutData.headerStepTwo);
     await expect(this.labelPaymentValue).toContainText(checkoutData.paymentInformation);
     await expect(this.labelShippingValue).toContainText(checkoutData.shippingInformation);
     await expect(this.labelSubTotalValue).toContainText(checkoutData.priceTotal);

@@ -4,20 +4,25 @@ import { screenshotPath } from '@_src/utils/screenshotPath.util';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class BasePage {
-  readonly headerComponent: HeaderComponent;
-  readonly sidebarComponent: SideBarComponent;
+  protected readonly page: Page;
+  readonly header: HeaderComponent;
+  readonly sidebar: SideBarComponent;
 
-  readonly header: Locator;
+  readonly headerTitle: Locator;
   readonly error: Locator;
 
-  constructor(protected page: Page) {
+  constructor(page: Page) {
     this.page = page;
-    this.headerComponent = new HeaderComponent(this.page);
-    this.sidebarComponent = new SideBarComponent(this.page);
+    this.header = new HeaderComponent(this.page);
+    this.sidebar = new SideBarComponent(this.page);
     //* Header
-    this.header = this.page.getByTestId('title');
+    this.headerTitle = this.page.getByTestId('title');
     //* Error
     this.error = this.page.getByTestId('error');
+  }
+
+  async goTo(url: string = '/'): Promise<void> {
+    await this.page.goto(url);
   }
 
   async toHaveURL(url: string | RegExp): Promise<void> {
@@ -56,14 +61,14 @@ export class BasePage {
   //* Sidebar
 
   async resetApp(): Promise<void> {
-    await this.headerComponent.clickSideBarMenu();
-    await this.sidebarComponent.clickLinkResetAppState();
-    await this.sidebarComponent.clickButtonCrossMenu();
+    await this.header.clickSideBarMenu();
+    await this.sidebar.clickLinkResetAppState();
+    await this.sidebar.clickButtonCrossMenu();
   }
 
   async logoutFromApp(): Promise<void> {
-    await this.headerComponent.clickSideBarMenu();
-    await this.sidebarComponent.clickLinkLogout();
+    await this.header.clickSideBarMenu();
+    await this.sidebar.clickLinkLogout();
   }
 
   async closePage(): Promise<void> {

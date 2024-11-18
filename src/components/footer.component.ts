@@ -2,12 +2,14 @@ import { footerData } from '@_src/assets/data/e2e/footer.data';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class FooterComponent {
+  private readonly page: Page;
   readonly linkTwitter: Locator;
   readonly linkFacebook: Locator;
   readonly linkLinkedIn: Locator;
   readonly copyFooter: Locator;
 
-  constructor(private page: Page) {
+  constructor(page: Page) {
+    this.page = page;
     this.linkTwitter = this.page.getByTestId('social-twitter');
     this.linkFacebook = this.page.getByTestId('social-facebook');
     this.linkLinkedIn = this.page.getByTestId('social-linkedin');

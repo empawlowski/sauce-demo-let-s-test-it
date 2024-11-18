@@ -1,13 +1,15 @@
 import { type Locator, type Page } from '@playwright/test';
 
 export class SideBarComponent {
+  private readonly page: Page;
   readonly bCrossMenu: Locator;
   readonly linkAllItems: Locator;
   readonly linkAbout: Locator;
   readonly linkLogout: Locator;
   readonly linkResetAppState: Locator;
 
-  constructor(private page: Page) {
+  constructor(page: Page) {
+    this.page = page;
     this.bCrossMenu = this.page.locator('#react-burger-cross-btn');
     this.linkAllItems = this.page.locator('#inventory_sidebar_link');
     this.linkAbout = this.page.locator('#about_sidebar_link');

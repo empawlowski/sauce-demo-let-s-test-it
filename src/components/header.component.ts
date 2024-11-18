@@ -3,12 +3,14 @@ import { CartPage } from '@_src/pages/e2e/cart.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class HeaderComponent {
+  private readonly page: Page;
   readonly bSideBarMenu: Locator;
   readonly appLogo: Locator;
   readonly bShoppingCart: Locator;
   readonly badgeShoppingCart: Locator;
 
-  constructor(private page: Page) {
+  constructor(page: Page) {
+    this.page = page;
     this.bSideBarMenu = this.page.locator('#react-burger-menu-btn');
     this.appLogo = this.page.locator('.app_logo');
     this.bShoppingCart = this.page.locator('#shopping_cart_container');
