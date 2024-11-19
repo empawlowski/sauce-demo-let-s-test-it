@@ -91,29 +91,29 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
       testMatch: /.*\.setup\.ts/,
     },
-    // {
-    //   name: 'Chromium - setup',
-    //   grep: /@setup/,
-    //   use: {
-    //     ...devices['Desktop Chrome'],
-    //     storageState: '.auth/user.json',
-    //   },
-    //   dependencies: ['setup'],
-    // },
-
-    // {
-    //   name: 'Chromium - without setup',
-    //   grepInvert: /@setup/,
-    //   use: {
-    //     ...devices['Desktop Chrome'],
-    //   },
-    // },
-
     {
-      name: 'Chromium',
-      use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json' },
+      name: 'Chromium - setup',
+      grep: /@setup/,
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: '.auth/user.json',
+      },
       dependencies: ['setup'],
     },
+
+    {
+      name: 'Chromium - without setup',
+      grepInvert: /@setup/,
+      use: {
+        ...devices['Desktop Chrome'],
+      },
+    },
+
+    // {
+    //   name: 'Chromium',
+    //   use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json' },
+    //   dependencies: ['setup'],
+    // },
 
     // {
     //   name: 'Firefox',
