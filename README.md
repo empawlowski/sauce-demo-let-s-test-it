@@ -11,10 +11,20 @@
 
 ### How to run tests
 
-Run all tests:
+- run all tests:
 
 ```
 npx playwright test
 ```
 
 For more usage cases look in `package.json` scripts section.
+
+### Update package with audit and additional update of web browsers
+
+```
+npm update --save
+npm update --save-dev
+npm audit
+npm audit fix
+npx playwright install
+```
