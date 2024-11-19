@@ -1,3 +1,0 @@
-Running Checkout process with payment verification
-Item total: $129.94 + Tax: $10.4 = Total: $140.34
-Finished Checkout process with payment verification with status passed
