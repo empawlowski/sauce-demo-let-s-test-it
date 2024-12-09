@@ -92,28 +92,13 @@ export default defineConfig({
       testMatch: /.*\.setup\.ts/,
     },
     {
-      name: 'Chromium - setup',
-      grep: /@setup/,
+      name: 'Chromium',
       use: {
         ...devices['Desktop Chrome'],
         storageState: '.auth/user.json',
       },
       dependencies: ['setup'],
     },
-
-    {
-      name: 'Chromium - without setup',
-      grepInvert: /@setup/,
-      use: {
-        ...devices['Desktop Chrome'],
-      },
-    },
-
-    // {
-    //   name: 'Chromium',
-    //   use: { ...devices['Desktop Chrome'], storageState: '.auth/user.json' },
-    //   dependencies: ['setup'],
-    // },
 
     // {
     //   name: 'Firefox',
@@ -130,22 +115,22 @@ export default defineConfig({
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'] },
+    //   use: { ...devices['Pixel 5'], storageState: '.auth/user.json' },
     // },
     // {
     //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'] },
+    //   use: { ...devices['iPhone 12'], storageState: '.auth/user.json' },
     // },
 
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge', storageState: '.auth/user.json' },
     //   dependencies: ['Webkit'],
     // },
     // {
     //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+    //   use: { ...devices['Desktop Chrome'], channel: 'chrome', storageState: '.auth/user.json' },
     // },
   ],
 

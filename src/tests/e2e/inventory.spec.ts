@@ -7,7 +7,7 @@ import { Configuration } from '@_src/config/configuration';
 import { type Locator, expect, test } from '@_src/fixtures/base.fixture';
 import * as allure from 'allure-js-commons';
 
-test.describe('Inventory', { tag: [report.tags.regression, report.tags.setup] }, () => {
+test.describe('Inventory', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.inventory);
@@ -146,6 +146,7 @@ test.describe('Inventory', { tag: [report.tags.regression, report.tags.setup] },
 });
 
 test.describe('Inventory with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
   test.beforeEach('Add running test title', async () => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.inventory);

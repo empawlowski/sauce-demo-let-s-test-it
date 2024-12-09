@@ -8,7 +8,7 @@ import { test } from '@_src/fixtures/base.fixture';
 import { faker } from '@faker-js/faker';
 import * as allure from 'allure-js-commons';
 
-test.describe('Checkout', { tag: [report.tags.regression, report.tags.setup] }, () => {
+test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.checkout);
@@ -233,6 +233,7 @@ test.describe('Checkout', { tag: [report.tags.regression, report.tags.setup] }, 
 });
 
 test.describe('Checkout with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
   test.beforeEach('Add running test title', async () => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.checkout);

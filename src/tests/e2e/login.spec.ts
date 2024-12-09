@@ -6,6 +6,7 @@ import * as allure from 'allure-js-commons';
 import { Severity } from 'allure-js-commons';
 
 test.describe('Login', { tag: [report.tags.regression] }, () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
   test.beforeEach('Add running test title', async () => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.authentication);
