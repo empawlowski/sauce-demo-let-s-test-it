@@ -4,7 +4,7 @@ import * as report from '@_src/assets/data/report/allure.data.json';
 import { expect, test } from '@_src/fixtures/base.fixture';
 import * as allure from 'allure-js-commons';
 
-test.describe('Footer', { tag: [report.tags.regression, report.tags.setup] }, () => {
+test.describe('Footer', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.footer);

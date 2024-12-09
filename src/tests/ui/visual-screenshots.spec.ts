@@ -4,7 +4,7 @@ import { visualData } from '@_src/assets/data/ui/visual.data';
 import { test } from '@_src/fixtures/base.fixture';
 import * as allure from 'allure-js-commons';
 
-test.describe('Visual screenshot for pages', { tag: [report.tags.setup, report.tags.visual] }, () => {
+test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, () => {
   test.beforeEach('Login method', async ({ login, header }) => {
     await allure.epic(report.epic.application);
     await allure.epic(report.feature.ui);

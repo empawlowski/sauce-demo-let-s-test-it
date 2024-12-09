@@ -5,7 +5,7 @@ import { Configuration } from '@_src/config/configuration';
 import { test } from '@_src/fixtures/base.fixture';
 import * as allure from 'allure-js-commons';
 
-test.describe('Cart', { tag: [report.tags.regression, report.tags.setup] }, () => {
+test.describe('Cart', { tag: [report.tags.regression] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.cart);
@@ -67,6 +67,7 @@ test.describe('Cart', { tag: [report.tags.regression, report.tags.setup] }, () =
 });
 
 test.describe('Cart with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
   test.beforeEach('Add running test title', async () => {
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.cart);
