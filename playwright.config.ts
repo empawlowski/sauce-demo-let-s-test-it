@@ -5,7 +5,7 @@ import * as os from 'os';
 import * as path from 'path';
 
 dotenv.config();
-dotenv.config({ path: path.resolve(__dirname, `.env.${process.env.ENV}`) });
+dotenv.config({ path: path.resolve(__dirname, `.env`) });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -16,6 +16,7 @@ export default defineConfig({
   // snapshotPathTemplate: '{testDir}/ui/{arg}{ext}',
   snapshotPathTemplate: './src/assets/images/ui/{arg}{ext}',
   globalSetup: './src/config/global-setup.ts',
+  tsconfig: './tsconfig.json',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
