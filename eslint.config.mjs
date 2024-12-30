@@ -40,13 +40,13 @@ export default [
       'playwright/no-skipped-test': 'off',
       'playwright/no-conditional-in-test': 'off',
     },
-    // settings: {
-    //   playwright: {
-    //     globalAliases: {
-    //       test: ['setup'],
-    //     },
-    //   },
-    // },
+    settings: {
+      playwright: {
+        globalAliases: {
+          test: ['setup'],
+        },
+      },
+    },
   },
   eslintPluginPrettierRecommended,
 ];
