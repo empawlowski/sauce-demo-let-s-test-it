@@ -1,0 +1,2 @@
+Running Visual effect for inventory
+Finished Visual effect for inventory with status failed
