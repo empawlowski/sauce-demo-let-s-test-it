@@ -9,7 +9,7 @@ import * as allure from 'allure-js-commons';
 
 test.describe('Accessability tests', { tag: [report.tags.regression, report.tags.accessibility] }, () => {
   test.beforeEach('Login method', async ({ login, header }, testInfo) => {
-    await allure.epic(report.epic.application);
+    await allure.epic(report.epic.accessibility);
     await allure.feature(report.feature.accessibility);
     await allure.owner(report.owner.mrp);
 

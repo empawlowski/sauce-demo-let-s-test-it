@@ -1,8 +1,10 @@
 {
   "epic": {
+    "accessibility": "Accessibility",
     "api": "API",
-    "application": "Application",
-    "performance": "Performance"
+    "application": "End to end",
+    "performance": "Performance",
+    "ui": "UI"
   },
   "feature": {
     "accessibility": "Accessibility",

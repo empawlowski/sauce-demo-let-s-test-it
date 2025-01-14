@@ -8,7 +8,7 @@ import * as allure from 'allure-js-commons';
 test.describe('Pages with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
   test.use({ storageState: { cookies: [], origins: [] } });
   test.beforeEach('Add running test title', async () => {
-    await allure.epic(report.epic.application);
+    await allure.epic(report.epic.ui);
 
     console.log(`Running ${test.info().title}`);
   });
