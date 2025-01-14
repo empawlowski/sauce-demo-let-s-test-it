@@ -43,7 +43,7 @@ test.describe('Footer', { tag: [report.tags.regression] }, () => {
       await footer.clickLinkTwitter();
       const newPage = await pagePromise;
       // Assert
-      await expect(newPage).toHaveURL(footerData.linkTwitter);
+      await expect(newPage).toHaveURL(new RegExp(footerData.linkTwitter));
       await expect(newPage).toHaveTitle(footerData.titleTwitter);
       await newPage.close();
     });

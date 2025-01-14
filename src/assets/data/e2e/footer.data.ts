@@ -1,5 +1,5 @@
 export const footerData = {
-  footer: '© 2024 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy',
+  footer: '© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy',
 
   linkTwitter: 'https://x.com/saucelabs',
   titleTwitter: 'Sauce Labs (@saucelabs) / X',
