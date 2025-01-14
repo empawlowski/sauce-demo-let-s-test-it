@@ -1,3 +1,4 @@
+import * as product from '@_src/assets/data/e2e/inventory-item.data.json';
 import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { visualData } from '@_src/assets/data/ui/visual.data';
@@ -24,6 +25,16 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, () =
     // Arrange
     const screenshot = visualData.inventory;
     // Act
+    // Assert
+    await base.takeScreenshot(screenshot);
+  });
+
+  test('Single product view', async ({ inventory, base }) => {
+    await allure.owner(report.owner.mrp);
+    // Arrange
+    const screenshot = visualData.product;
+    // Act
+    await inventory.clickOnProductTitleName(product[5].title);
     // Assert
     await base.takeScreenshot(screenshot);
   });

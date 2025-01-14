@@ -2,7 +2,6 @@ import * as product from '@_src/assets/data/e2e/inventory-item.data.json';
 import { inventoryData } from '@_src/assets/data/e2e/inventory.data';
 import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
-import { visualData } from '@_src/assets/data/ui/visual.data';
 import { Configuration } from '@_src/config/configuration';
 import { type Locator, expect, test } from '@_src/fixtures/base.fixture';
 import * as allure from 'allure-js-commons';
@@ -194,17 +193,5 @@ test.describe('Inventory with errors', { tag: [report.tags.regression, report.ta
     await login.logIn(Configuration.userProblem, Configuration.password);
     // Assert
     await inventory.expectIncorrectImageOnProduct(link);
-  });
-
-  test('Visual effect for page', async ({ login, base }) => {
-    await allure.owner(report.owner.mrp);
-    // Arrange
-    test.fail(); //? added to not create a failure report
-    console.warn('This test will finish with status failed');
-    const screenshot = visualData.inventory;
-    // Act
-    await login.logIn(Configuration.userVisual, Configuration.password);
-    // Assert
-    await base.expectHaveScreenshot(screenshot);
   });
 });
