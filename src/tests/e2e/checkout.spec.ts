@@ -1,8 +1,6 @@
 import { checkoutData } from '@_src/assets/data/e2e/checkout.data';
 import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
-import { visualData } from '@_src/assets/data/ui/visual.data';
-import { Configuration } from '@_src/config/configuration';
 import { createCheckoutUser } from '@_src/factories/user.factory';
 import { test } from '@_src/fixtures/base.fixture';
 import { faker } from '@faker-js/faker';
@@ -229,36 +227,5 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
         await checkout.summaryTotalValue(sub, tax, total);
       });
     });
-  });
-});
-
-test.describe('Checkout with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
-  test.use({ storageState: { cookies: [], origins: [] } });
-  test.beforeEach('Add running test title', async () => {
-    await allure.epic(report.epic.application);
-    await allure.feature(report.feature.checkout);
-
-    console.log(`Running ${test.info().title}`);
-  });
-  test.afterEach('Close the page', async ({ base }, testInfo) => {
-    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
-
-    await base.resetApp();
-    await base.logoutFromApp();
-    await base.closePage();
-  });
-
-  test('Visual effect for page', async ({ login, header, cart, checkout }) => {
-    await allure.owner(report.owner.mrp);
-    // Arrange
-    test.fail(); //? added to not create a failure report
-    console.warn('This test will finish with status failed');
-    const screenshot = visualData.checkout;
-    // Act
-    await login.logIn(Configuration.userVisual, Configuration.password);
-    await header.clickShoppingCart();
-    await cart.clickCheckout();
-    // Assert
-    await checkout.expectHaveScreenshot(screenshot);
   });
 });

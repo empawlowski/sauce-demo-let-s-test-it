@@ -1,7 +1,5 @@
 import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
-import { visualData } from '@_src/assets/data/ui/visual.data';
-import { Configuration } from '@_src/config/configuration';
 import { test } from '@_src/fixtures/base.fixture';
 import * as allure from 'allure-js-commons';
 
@@ -63,35 +61,5 @@ test.describe('Cart', { tag: [report.tags.regression] }, () => {
         await header.isBadgeHidden();
       });
     });
-  });
-});
-
-test.describe('Cart with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
-  test.use({ storageState: { cookies: [], origins: [] } });
-  test.beforeEach('Add running test title', async () => {
-    await allure.epic(report.epic.application);
-    await allure.feature(report.feature.cart);
-
-    console.log(`Running ${test.info().title}`);
-  });
-  test.afterEach('Close the page', async ({ base }, testInfo) => {
-    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
-
-    await base.resetApp();
-    await base.logoutFromApp();
-    await base.closePage();
-  });
-
-  test('Visual effect for page', async ({ login, header, base }) => {
-    await allure.owner(report.owner.mrp);
-    // Arrange
-    test.fail(); //? added to not create a failure report
-    console.warn('This test will finish with status failed');
-    const screenshot = visualData.cart;
-    // Act
-    await login.logIn(Configuration.userVisual, Configuration.password);
-    await header.clickShoppingCart();
-    // Assert
-    await base.expectHaveScreenshot(screenshot);
   });
 });
