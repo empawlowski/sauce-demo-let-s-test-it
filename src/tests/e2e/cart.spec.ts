@@ -86,6 +86,7 @@ test.describe('Cart with errors', { tag: [report.tags.regression, report.tags.vi
     await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
+    console.warn('This test will finish with status failed');
     const screenshot = visualData.cart;
     // Act
     await login.logIn(Configuration.userVisual, Configuration.password);

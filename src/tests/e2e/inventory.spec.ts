@@ -200,6 +200,7 @@ test.describe('Inventory with errors', { tag: [report.tags.regression, report.ta
     await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
+    console.warn('This test will finish with status failed');
     const screenshot = visualData.inventory;
     // Act
     await login.logIn(Configuration.userVisual, Configuration.password);
