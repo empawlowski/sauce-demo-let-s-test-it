@@ -252,6 +252,7 @@ test.describe('Checkout with errors', { tag: [report.tags.regression, report.tag
     await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
+    console.warn('This test will finish with status failed');
     const screenshot = visualData.checkout;
     // Act
     await login.logIn(Configuration.userVisual, Configuration.password);
