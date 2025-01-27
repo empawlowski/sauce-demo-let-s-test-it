@@ -1,10 +1,8 @@
-import { Page } from '@playwright/test';
+import { logger } from '@_src/helpers/logger.helper';
 
 export class AccessibilityPage {
-  constructor(private page: Page) {}
-
   async expectGunningFoxIndex(describe: string): Promise<void> {
-    const words = describe.split(/\W+/);
+    const words: string[] = describe.split(/\W+/);
 
     function countSyllables(word: string): number {
       word = word.toLowerCase();
@@ -27,19 +25,19 @@ export class AccessibilityPage {
       totalWords += words.length;
     });
 
-    const averageWordsPerSentence = totalWords / sentences.length;
+    const averageWordsPerSentence: number = totalWords / sentences.length;
 
-    const gunningFoxIndex = (averageWordsPerSentence + threeSyllableWords.length) * 0.4;
-    console.log('Gunning Fox Index:', gunningFoxIndex);
+    const gunningFoxIndex: number = (averageWordsPerSentence + threeSyllableWords.length) * 0.4;
+    logger.info('Gunning Fox Index:', gunningFoxIndex);
 
     if (gunningFoxIndex >= 18) {
-      console.log('The index is too big');
+      logger.error('The index is too big');
     }
     if (gunningFoxIndex >= 12 && gunningFoxIndex < 18) {
-      console.log('The index is quite high, the text is quite difficult to understand');
+      logger.warn('The index is quite high, the text is quite difficult to understand');
     }
     if (gunningFoxIndex < 12) {
-      console.log('The index is low, the text is easy to read and understand.');
+      logger.info('The index is low, the text is easy to read and understand.');
     }
   }
 }
