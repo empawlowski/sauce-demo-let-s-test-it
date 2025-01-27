@@ -42,7 +42,7 @@ export const pages = pagesTest.extend<Pages>({
   completed: async ({ page }, use) => {
     await use(new CheckoutCompletedPage(page));
   },
-  accessibility: async ({ page }, use) => {
-    await use(new AccessibilityPage(page));
+  accessibility: async ({}, use) => {
+    await use(new AccessibilityPage());
   },
 });

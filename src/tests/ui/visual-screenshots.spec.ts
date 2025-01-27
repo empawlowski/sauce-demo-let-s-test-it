@@ -1,7 +1,6 @@
 import * as product from '@_src/assets/data/e2e/inventory-item.data.json';
 import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
-import { visualData } from '@_src/assets/data/ui/visual.data';
 import { test } from '@_src/fixtures/base.fixture';
 import * as allure from 'allure-js-commons';
 
@@ -23,7 +22,7 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, () =
   test('Inventory', async ({ base }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const screenshot = visualData.inventory;
+    const screenshot: string = 'inventory.png';
     // Act
     // Assert
     await base.takeScreenshot(screenshot);
@@ -32,7 +31,7 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, () =
   test('Single product view', async ({ inventory, base }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const screenshot = visualData.product;
+    const screenshot: string = 'product.png';
     // Act
     await inventory.clickOnProductTitleName(product[5].title);
     // Assert
@@ -42,7 +41,7 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, () =
   test('Cart', async ({ base, header }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const screenshot = visualData.cart;
+    const screenshot: string = 'cart.png';
     // Act
     await header.clickShoppingCart();
     // Assert
@@ -52,7 +51,7 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, () =
   test('Checkout', async ({ base, header, cart }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const screenshot = visualData.checkout;
+    const screenshot: string = 'checkout.png';
     // Act
     await header.clickShoppingCart();
     await cart.clickCheckout();

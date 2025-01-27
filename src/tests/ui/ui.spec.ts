@@ -1,8 +1,8 @@
 import * as product from '@_src/assets/data/e2e/inventory-item.data.json';
 import * as report from '@_src/assets/data/report/allure.data.json';
-import { visualData } from '@_src/assets/data/ui/visual.data';
 import { Configuration } from '@_src/config/configuration';
 import { test } from '@_src/fixtures/base.fixture';
+import { logger } from '@_src/helpers/logger.helper';
 import * as allure from 'allure-js-commons';
 
 test.describe('Pages with errors', { tag: [report.tags.regression, report.tags.visual] }, () => {
@@ -10,10 +10,10 @@ test.describe('Pages with errors', { tag: [report.tags.regression, report.tags.v
   test.beforeEach('Add running test title', async () => {
     await allure.epic(report.epic.ui);
 
-    console.log(`Running ${test.info().title}`);
+    logger.info(`Running ${test.info().title}`);
   });
   test.afterEach('Close the page', async ({ base }, testInfo) => {
-    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+    logger.info(`Finished ${testInfo.title} with status ${testInfo.status}`);
 
     await base.resetApp();
     await base.logoutFromApp();
@@ -25,8 +25,8 @@ test.describe('Pages with errors', { tag: [report.tags.regression, report.tags.v
     await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
-    console.warn('This test will finish with status failed');
-    const screenshot: string = visualData.cart;
+    logger.warn('This test will finish with status failed');
+    const screenshot: string = 'cart.png';
     // Act
     await login.logIn(Configuration.userVisual, Configuration.password);
     await header.clickShoppingCart();
@@ -39,8 +39,8 @@ test.describe('Pages with errors', { tag: [report.tags.regression, report.tags.v
     await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
-    console.warn('This test will finish with status failed');
-    const screenshot: string = visualData.checkout;
+    logger.warn('This test will finish with status failed');
+    const screenshot: string = 'checkout.png';
     // Act
     await login.logIn(Configuration.userVisual, Configuration.password);
     await header.clickShoppingCart();
@@ -54,8 +54,8 @@ test.describe('Pages with errors', { tag: [report.tags.regression, report.tags.v
     await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
-    console.warn('This test will finish with status failed');
-    const screenshot: string = visualData.inventory;
+    logger.warn('This test will finish with status failed');
+    const screenshot: string = 'inventory.png';
     // Act
     await login.logIn(Configuration.userVisual, Configuration.password);
     // Assert
@@ -67,8 +67,8 @@ test.describe('Pages with errors', { tag: [report.tags.regression, report.tags.v
     await allure.owner(report.owner.mrp);
     // Arrange
     test.fail(); //? added to not create a failure report
-    console.warn('This test will finish with status failed');
-    const screenshot: string = visualData.product;
+    logger.warn('This test will finish with status failed');
+    const screenshot: string = 'product.png';
     // Act
     await login.logIn(Configuration.userProblem, Configuration.password);
     await inventory.clickOnProductTitleName(product[5].title);
