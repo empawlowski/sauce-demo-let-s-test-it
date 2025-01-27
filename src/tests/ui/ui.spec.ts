@@ -26,7 +26,7 @@ test.describe('Pages with errors', { tag: [report.tags.regression, report.tags.v
     // Arrange
     test.fail(); //? added to not create a failure report
     logger.warn('This test will finish with status failed');
-    const screenshot: string = 'cart.png';
+    const screenshot: string = 'cart';
     // Act
     await login.logIn(Configuration.userVisual, Configuration.password);
     await header.clickShoppingCart();
@@ -40,7 +40,7 @@ test.describe('Pages with errors', { tag: [report.tags.regression, report.tags.v
     // Arrange
     test.fail(); //? added to not create a failure report
     logger.warn('This test will finish with status failed');
-    const screenshot: string = 'checkout.png';
+    const screenshot: string = 'checkout';
     // Act
     await login.logIn(Configuration.userVisual, Configuration.password);
     await header.clickShoppingCart();
@@ -55,7 +55,7 @@ test.describe('Pages with errors', { tag: [report.tags.regression, report.tags.v
     // Arrange
     test.fail(); //? added to not create a failure report
     logger.warn('This test will finish with status failed');
-    const screenshot: string = 'inventory.png';
+    const screenshot: string = 'inventory';
     // Act
     await login.logIn(Configuration.userVisual, Configuration.password);
     // Assert
@@ -68,7 +68,7 @@ test.describe('Pages with errors', { tag: [report.tags.regression, report.tags.v
     // Arrange
     test.fail(); //? added to not create a failure report
     logger.warn('This test will finish with status failed');
-    const screenshot: string = 'product.png';
+    const screenshot: string = 'product';
     // Act
     await login.logIn(Configuration.userProblem, Configuration.password);
     await inventory.clickOnProductTitleName(product[5].title);
