@@ -1,2 +1,0 @@
-Running Add product to basket
-Finished Add product to basket with status passed
