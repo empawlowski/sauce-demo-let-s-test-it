@@ -1,2 +1,0 @@
-Running Adding by button "Add to cart" - count
-Finished Adding by button "Add to cart" - count with status passed

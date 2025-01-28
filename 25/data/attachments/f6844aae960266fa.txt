@@ -1,2 +1,0 @@
-Running Violations results for page
-Finished Violations results for page with status passed
