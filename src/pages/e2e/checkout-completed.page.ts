@@ -4,14 +4,12 @@ import { InventoryPage } from '@_src/pages/e2e/inventory.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CheckoutCompletedPage extends BasePage {
-  protected readonly page: Page;
   readonly completeHeader: Locator;
   readonly completeText: Locator;
   readonly bBackHome: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
     this.completeHeader = page.getByTestId('complete-header');
     this.completeText = page.getByTestId('complete-text');
     this.bBackHome = page.locator('#back-to-products');

@@ -6,7 +6,6 @@ import { InventoryPage } from '@_src/pages/e2e/inventory.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {
-  protected readonly page: Page;
   readonly fieldFirstName: Locator;
   readonly fieldLastName: Locator;
   readonly fieldPostalCode: Locator;
@@ -24,19 +23,18 @@ export class CheckoutPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
-    this.fieldFirstName = this.page.locator('#first-name');
-    this.fieldLastName = this.page.locator('#last-name');
-    this.fieldPostalCode = this.page.locator('#postal-code');
-    this.labelPaymentValue = this.page.getByTestId('payment-info-value');
-    this.labelShippingValue = this.page.getByTestId('shipping-info-value');
-    this.labelSubTotalValue = this.page.getByTestId('subtotal-label');
-    this.labelTaxValue = this.page.getByTestId('tax-label');
-    this.labelTotalValue = this.page.getByTestId('total-label');
-    this.bCancel = this.page.locator('#cancel');
-    this.bContinue = this.page.locator('#continue');
-    this.bFinish = this.page.locator('#finish');
-    this.error = this.page.getByTestId('error');
+    this.fieldFirstName = page.locator('#first-name');
+    this.fieldLastName = page.locator('#last-name');
+    this.fieldPostalCode = page.locator('#postal-code');
+    this.labelPaymentValue = page.getByTestId('payment-info-value');
+    this.labelShippingValue = page.getByTestId('shipping-info-value');
+    this.labelSubTotalValue = page.getByTestId('subtotal-label');
+    this.labelTaxValue = page.getByTestId('tax-label');
+    this.labelTotalValue = page.getByTestId('total-label');
+    this.bCancel = page.locator('#cancel');
+    this.bContinue = page.locator('#continue');
+    this.bFinish = page.locator('#finish');
+    this.error = page.getByTestId('error');
   }
 
   async fillFieldFirstName(firstName: string): Promise<void> {

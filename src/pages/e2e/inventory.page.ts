@@ -7,7 +7,6 @@ export class InventoryPage extends BasePage {
   private readonly urlItem: string;
   private readonly itemRegExp: RegExp;
 
-  protected readonly page: Page;
   readonly fProductSort: Locator;
   readonly activeSortOption: Locator;
   readonly tableInventoryList: Locator;
@@ -26,7 +25,6 @@ export class InventoryPage extends BasePage {
     this.urlItem = inventoryData.urlItem;
     this.itemRegExp = /add-to-cart-.+/;
 
-    this.page = page;
     this.fProductSort = page.getByTestId('product-sort-container');
     this.activeSortOption = page.getByTestId('active-option');
     this.tableInventoryList = page.getByTestId('inventory-list');
@@ -61,7 +59,7 @@ export class InventoryPage extends BasePage {
   }
 
   getTestIdReduceTitle(title: string): Locator {
-    const reduceTitle = title.replaceAll(' ', '-').replace(/[(.)]/g, '\\$&').toLowerCase();
+    const reduceTitle: string = title.replaceAll(' ', '-').replace(/[(.)]/g, '\\$&').toLowerCase();
     return this.page.locator(`#add-to-cart-${reduceTitle}`);
   }
 
@@ -106,8 +104,8 @@ export class InventoryPage extends BasePage {
   }
 
   async expectSortProductByPrice(priceFirst: string, priceSecond: string): Promise<void> {
-    const reducePriceFirst = parseFloat(priceFirst.slice(1));
-    const reducePriceSecond = parseFloat(priceSecond.slice(1));
+    const reducePriceFirst: number = parseFloat(priceFirst.slice(1));
+    const reducePriceSecond: number = parseFloat(priceSecond.slice(1));
 
     if (await this.activeSortOption.getByText(inventoryData.lowHi).isVisible()) {
       expect(reducePriceFirst).toBeLessThanOrEqual(reducePriceSecond);

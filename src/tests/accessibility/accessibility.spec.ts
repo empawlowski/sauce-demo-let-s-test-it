@@ -2,6 +2,7 @@ import * as product from '@_src/assets/data/e2e/inventory-item.data.json';
 import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { expect, test } from '@_src/fixtures/base.fixture';
+import { logger } from '@_src/helpers/logger.helper';
 import AxeBuilder from '@axe-core/playwright';
 import * as allure from 'allure-js-commons';
 
@@ -14,7 +15,7 @@ test.describe('Accessability tests', { tag: [report.tags.regression, report.tags
     await allure.owner(report.owner.mrp);
 
     // Arrange
-    console.log(`Running ${testInfo.title}`);
+    logger.info(`Running ${testInfo.title}`);
     // Act
     await login.goTo(loginData.inventoryURL);
     // Assert
@@ -22,7 +23,7 @@ test.describe('Accessability tests', { tag: [report.tags.regression, report.tags
   });
 
   test.afterEach('Close the page', async ({ base }, testInfo) => {
-    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+    logger.info(`Finished ${testInfo.title} with status ${testInfo.status}`);
 
     await base.resetApp();
     await base.logoutFromApp();
@@ -98,10 +99,10 @@ test.describe('Accessability tests', { tag: [report.tags.regression, report.tags
       await allure.story(report.story.gunning);
       await allure.owner(report.owner.mrp);
       // Arrange
-      const title = product[3].title;
+      const title: string = product[3].title;
       // Act
       await inventory.clickOnProductTitleName(title);
-      const describe = await inventory.desc.innerText();
+      const describe: string = await inventory.desc.innerText();
 
       // Assert
       await accessibility.expectGunningFoxIndex(describe);

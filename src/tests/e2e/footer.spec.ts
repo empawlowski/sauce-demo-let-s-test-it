@@ -2,6 +2,7 @@ import { footerData } from '@_src/assets/data/e2e/footer.data';
 import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { expect, test } from '@_src/fixtures/base.fixture';
+import { logger } from '@_src/helpers/logger.helper';
 import * as allure from 'allure-js-commons';
 
 test.describe('Footer', { tag: [report.tags.regression] }, () => {
@@ -11,7 +12,7 @@ test.describe('Footer', { tag: [report.tags.regression] }, () => {
     await allure.owner(report.owner.mrp);
 
     // Arrange
-    console.log(`Running ${testInfo.title}`);
+    logger.info(`Running ${testInfo.title}`);
     // Act
     await login.goTo(loginData.inventoryURL);
     // Assert
@@ -19,7 +20,7 @@ test.describe('Footer', { tag: [report.tags.regression] }, () => {
   });
 
   test.afterEach('Close the page', async ({ base }, testInfo) => {
-    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+    logger.info(`Finished ${testInfo.title} with status ${testInfo.status}`);
 
     await base.resetApp();
     await base.logoutFromApp();

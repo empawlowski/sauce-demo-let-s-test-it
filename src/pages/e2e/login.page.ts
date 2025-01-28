@@ -3,17 +3,15 @@ import { InventoryPage } from '@_src/pages/e2e/inventory.page';
 import { type Locator, type Page } from '@playwright/test';
 
 export class LoginPage extends BasePage {
-  protected readonly page: Page;
   readonly fieldUsername: Locator;
   readonly fieldPassword: Locator;
   readonly bLogin: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
-    this.fieldUsername = this.page.locator('#user-name');
-    this.fieldPassword = this.page.locator('#password');
-    this.bLogin = this.page.locator('#login-button');
+    this.fieldUsername = page.locator('#user-name');
+    this.fieldPassword = page.locator('#password');
+    this.bLogin = page.locator('#login-button');
   }
 
   async fillUsername(user: string): Promise<void> {

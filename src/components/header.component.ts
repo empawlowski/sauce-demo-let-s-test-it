@@ -11,10 +11,10 @@ export class HeaderComponent {
 
   constructor(page: Page) {
     this.page = page;
-    this.bSideBarMenu = this.page.locator('#react-burger-menu-btn');
-    this.appLogo = this.page.locator('.app_logo');
-    this.bShoppingCart = this.page.locator('#shopping_cart_container');
-    this.badgeShoppingCart = this.page.getByTestId('shopping-cart-badge');
+    this.bSideBarMenu = page.locator('#react-burger-menu-btn');
+    this.appLogo = page.locator('.app_logo');
+    this.bShoppingCart = page.locator('#shopping_cart_container');
+    this.badgeShoppingCart = page.getByTestId('shopping-cart-badge');
   }
 
   async clickSideBarMenu(): Promise<void> {

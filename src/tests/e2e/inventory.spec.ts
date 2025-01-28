@@ -4,6 +4,8 @@ import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { Configuration } from '@_src/config/configuration';
 import { type Locator, expect, test } from '@_src/fixtures/base.fixture';
+import { logger } from '@_src/helpers/logger.helper';
+import { SingleProductModel } from '@_src/models/inventory.model';
 import * as allure from 'allure-js-commons';
 
 test.describe('Inventory', { tag: [report.tags.regression] }, () => {
@@ -12,7 +14,7 @@ test.describe('Inventory', { tag: [report.tags.regression] }, () => {
     await allure.feature(report.feature.inventory);
 
     // Arrange
-    console.log(`Running ${testInfo.title}`);
+    logger.info(`Running ${testInfo.title}`);
     // Act
     await login.goTo(loginData.inventoryURL);
     // Assert
@@ -20,8 +22,9 @@ test.describe('Inventory', { tag: [report.tags.regression] }, () => {
   });
 
   test.afterEach('Close the page', async ({ base }, testInfo) => {
-    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
-
+    // Arrange
+    logger.info(`Finished ${testInfo.title} with status ${testInfo.status}`);
+    // Act
     await base.resetApp();
     await base.logoutFromApp();
     await base.closePage();
@@ -94,7 +97,7 @@ test.describe('Inventory', { tag: [report.tags.regression] }, () => {
 
       // Act
       for (let i = 0; i < products; i++) {
-        const title = await inventory.title.nth(i).innerText();
+        const title: string = await inventory.title.nth(i).innerText();
         await inventory.addToCart(title);
       }
 
@@ -105,7 +108,7 @@ test.describe('Inventory', { tag: [report.tags.regression] }, () => {
     test('Adding by Title - one', async ({ header, inventory }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      const name = 'Test.allTheThings() T-Shirt (Red)';
+      const name: string = 'Test.allTheThings() T-Shirt (Red)';
       // Act
       await inventory.addToCart(name);
 
@@ -130,7 +133,7 @@ test.describe('Inventory', { tag: [report.tags.regression] }, () => {
   test('Single product view', async ({ inventory, item }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const singleProduct = {
+    const singleProduct: SingleProductModel = {
       title: product[4].title,
       desc: product[4].desc,
       price: product[4].price,
@@ -150,10 +153,11 @@ test.describe('Inventory with errors', { tag: [report.tags.regression, report.ta
     await allure.epic(report.epic.application);
     await allure.feature(report.feature.inventory);
 
-    console.log(`Running ${test.info().title}`);
+    logger.info(`Running ${test.info().title}`);
   });
+
   test.afterEach('Close the page', async ({ base }, testInfo) => {
-    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+    logger.info(`Finished ${testInfo.title} with status ${testInfo.status}`);
 
     await base.resetApp();
     await base.logoutFromApp();
@@ -175,7 +179,7 @@ test.describe('Inventory with errors', { tag: [report.tags.regression, report.ta
         await product.click();
         productAdded++;
       } else {
-        console.warn('Button not visible or enabled', product);
+        logger.warn('Button not visible or enabled', product);
       }
     }
 
@@ -188,7 +192,7 @@ test.describe('Inventory with errors', { tag: [report.tags.regression, report.ta
   test('Wrong image link for product', async ({ login, inventory }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const link = product[6].link;
+    const link: string = product[6].link;
     // Act
     await login.logIn(Configuration.userProblem, Configuration.password);
     // Assert
