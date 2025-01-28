@@ -1,6 +1,6 @@
 import { HeaderComponent } from '@_src/components/header.component';
 import { SideBarComponent } from '@_src/components/sidebar.component';
-import { screenshotPath } from '@_src/utils/screenshotPath.util';
+import { ScreenshotPath } from '@_src/utils/paths.util';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class BasePage {
@@ -64,7 +64,7 @@ export class BasePage {
   //* Screenshot
   async takeScreenshot(screenshot: string): Promise<void> {
     await this.page.screenshot({
-      path: `${screenshotPath}${screenshot}.png`,
+      path: `${ScreenshotPath}${screenshot}.png`,
       fullPage: true,
     });
   }
