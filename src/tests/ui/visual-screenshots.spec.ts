@@ -22,7 +22,7 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, () =
   test('Inventory', async ({ base }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const screenshot: string = 'inventory.png';
+    const screenshot: string = 'inventory';
     // Act
     // Assert
     await base.takeScreenshot(screenshot);
@@ -31,7 +31,7 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, () =
   test('Single product view', async ({ inventory, base }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const screenshot: string = 'product.png';
+    const screenshot: string = 'product';
     // Act
     await inventory.clickOnProductTitleName(product[5].title);
     // Assert
@@ -41,7 +41,7 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, () =
   test('Cart', async ({ base, header }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const screenshot: string = 'cart.png';
+    const screenshot: string = 'cart';
     // Act
     await header.clickShoppingCart();
     // Assert
@@ -51,7 +51,7 @@ test.describe('Visual screenshot for pages', { tag: [report.tags.visual] }, () =
   test('Checkout', async ({ base, header, cart }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const screenshot: string = 'checkout.png';
+    const screenshot: string = 'checkout';
     // Act
     await header.clickShoppingCart();
     await cart.clickCheckout();

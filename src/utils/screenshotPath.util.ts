@@ -1,5 +1,5 @@
 import * as path from 'path';
 
-const screenshotPath: string = path.join(__dirname, '../assets/images/ui/');
+const screenshotPath: string = path.join(__dirname, '../../src/output/assets/images/ui/');
 
 export { screenshotPath };

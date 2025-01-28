@@ -55,7 +55,7 @@ export class BasePage {
   }
 
   async expectHaveScreenshot(screenshot: string): Promise<void> {
-    await expect(this.page).toHaveScreenshot(screenshot, { fullPage: true });
+    await expect(this.page).toHaveScreenshot(`${screenshot}.png`, { fullPage: true });
   }
 
   //* Sidebar
