@@ -10,11 +10,11 @@ export class SideBarComponent {
 
   constructor(page: Page) {
     this.page = page;
-    this.bCrossMenu = this.page.locator('#react-burger-cross-btn');
-    this.linkAllItems = this.page.locator('#inventory_sidebar_link');
-    this.linkAbout = this.page.locator('#about_sidebar_link');
-    this.linkLogout = this.page.locator('#logout_sidebar_link');
-    this.linkResetAppState = this.page.locator('#reset_sidebar_link');
+    this.bCrossMenu = page.locator('#react-burger-cross-btn');
+    this.linkAllItems = page.locator('#inventory_sidebar_link');
+    this.linkAbout = page.locator('#about_sidebar_link');
+    this.linkLogout = page.locator('#logout_sidebar_link');
+    this.linkResetAppState = page.locator('#reset_sidebar_link');
   }
 
   async clickButtonCrossMenu(): Promise<void> {

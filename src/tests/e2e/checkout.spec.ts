@@ -3,7 +3,8 @@ import { loginData } from '@_src/assets/data/e2e/login.data';
 import * as report from '@_src/assets/data/report/allure.data.json';
 import { createCheckoutUser } from '@_src/factories/user.factory';
 import { test } from '@_src/fixtures/base.fixture';
-import { faker } from '@faker-js/faker';
+import { logger } from '@_src/helpers/logger.helper';
+import { CheckoutUserModel } from '@_src/models/user.model';
 import * as allure from 'allure-js-commons';
 
 test.describe('Checkout', { tag: [report.tags.regression] }, () => {
@@ -12,7 +13,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     await allure.feature(report.feature.checkout);
 
     // Arrange
-    console.log(`Running ${testInfo.title}`);
+    logger.info(`Running ${testInfo.title}`);
     // Act
     await login.goTo(loginData.inventoryURL);
     // Assert
@@ -20,7 +21,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   });
 
   test.afterEach('Close the page', async ({ base }, testInfo) => {
-    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+    logger.info(`Finished ${testInfo.title} with status ${testInfo.status}`);
 
     await base.resetApp();
     await base.logoutFromApp();
@@ -30,7 +31,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
   test('Validation Checkout page', { tag: [report.tags.smoke] }, async ({ header, cart, checkout }) => {
     await allure.owner(report.owner.mrp);
     // Arrange
-    const url = checkoutData.urlStepOne;
+    const url: string = checkoutData.urlStepOne;
     // Act
     await header.clickShoppingCart();
     await cart.clickCheckout();
@@ -47,7 +48,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     test('Empty Fist Name field', async ({ checkout, base }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      const error = checkoutData.errorFirstName;
+      const error: string = checkoutData.errorFirstName;
       // Act
       await checkout.clickContinue();
       // Assert
@@ -56,10 +57,10 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     test('Empty Last Name field', async ({ checkout, base }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      const firstName = faker.person.firstName();
-      const error = checkoutData.errorLastName;
+      const userData: CheckoutUserModel = createCheckoutUser();
+      const error: string = checkoutData.errorLastName;
       // Act
-      await checkout.fillFieldFirstName(firstName);
+      await checkout.fillFieldFirstName(userData.firstName);
       await checkout.clickContinue();
       // Assert
       await base.catchError(error);
@@ -68,12 +69,11 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
     test('Empty Postal Code field', async ({ checkout, base }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      const firstName = faker.person.firstName();
-      const lastName = faker.person.lastName();
-      const error = checkoutData.errorPostalCode;
+      const userData: CheckoutUserModel = createCheckoutUser();
+      const error: string = checkoutData.errorPostalCode;
       // Act
-      await checkout.fillFieldFirstName(firstName);
-      await checkout.fillFielLastName(lastName);
+      await checkout.fillFieldFirstName(userData.firstName);
+      await checkout.fillFielLastName(userData.lastName);
       await checkout.clickContinue();
       // Assert
       await base.catchError(error);
@@ -86,9 +86,9 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
 
       await test.step('Thread 1: Add products to basket', async () => {
         // Arrange
-        const firstTitle = await inventory.getFirstTitle().innerText();
-        const secondTitle = await inventory.getSecondTitle().innerText();
-        const titles = [firstTitle, secondTitle];
+        const firstTitle: string = await inventory.getFirstTitle().innerText();
+        const secondTitle: string = await inventory.getSecondTitle().innerText();
+        const titles: string[] = [firstTitle, secondTitle];
         // Act
         for (const title of titles) {
           await inventory.addToCart(title);
@@ -117,9 +117,9 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
 
       await test.step('Thread 1: Add products to basket', async () => {
         // Arrange
-        const firstTitle = await inventory.getFirstTitle().innerText();
-        const secondTitle = await inventory.getSecondTitle().innerText();
-        const titles = [firstTitle, secondTitle];
+        const firstTitle: string = await inventory.getFirstTitle().innerText();
+        const secondTitle: string = await inventory.getSecondTitle().innerText();
+        const titles: string[] = [firstTitle, secondTitle];
         // Act
         for (const title of titles) {
           await inventory.addToCart(title);
@@ -136,7 +136,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
 
       await test.step('Thread 3: Fill checkout step one', async () => {
         // Arrange
-        const userCheckoutModel = createCheckoutUser('female');
+        const userCheckoutModel: CheckoutUserModel = createCheckoutUser('female');
 
         // Act
         await checkout.fillCheckoutFields(userCheckoutModel);
@@ -167,7 +167,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
       });
       await test.step('Thread 3: Fill checkout step one', async () => {
         // Arrange
-        const userCheckoutModel = createCheckoutUser();
+        const userCheckoutModel: CheckoutUserModel = createCheckoutUser();
 
         // Act
         await checkout.fillCheckoutFields(userCheckoutModel);
@@ -208,21 +208,20 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
 
       await test.step('Thread 3: Fill checkout step one', async () => {
         // Arrange
-        const firstName = faker.person.firstName();
-        const lastName = faker.person.lastName();
-        const code = faker.location.zipCode();
+        const userData: CheckoutUserModel = createCheckoutUser();
+
         // Act
-        await checkout.fillFieldFirstName(firstName);
-        await checkout.fillFielLastName(lastName);
-        await checkout.fillFieldPostalCode(code);
+        await checkout.fillFieldFirstName(userData.firstName);
+        await checkout.fillFielLastName(userData.lastName);
+        await checkout.fillFieldPostalCode(userData.postalCode);
         await checkout.clickContinue();
       });
 
       await test.step('Thread 4: Verify the payment', async () => {
         // Arrange
-        const sub = await checkout.labelSubTotalValue.innerText();
-        const tax = await checkout.labelTaxValue.innerText();
-        const total = await checkout.labelTotalValue.innerText();
+        const sub: string = await checkout.labelSubTotalValue.innerText();
+        const tax: string = await checkout.labelTaxValue.innerText();
+        const total: string = await checkout.labelTotalValue.innerText();
         // Assert
         await checkout.summaryTotalValue(sub, tax, total);
       });

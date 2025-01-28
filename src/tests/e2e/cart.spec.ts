@@ -40,7 +40,7 @@ test.describe('Cart', { tag: [report.tags.regression] }, () => {
       // Arrange
       //Act
       await inventory.getFirstTitle().isVisible();
-      const title = await inventory.getFirstTitle().innerText();
+      const title: string = await inventory.getFirstTitle().innerText();
       await inventory.addToCart(title);
       // Assert
       await header.isBadgeVisible();

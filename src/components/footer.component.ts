@@ -10,10 +10,10 @@ export class FooterComponent {
 
   constructor(page: Page) {
     this.page = page;
-    this.linkTwitter = this.page.getByTestId('social-twitter');
-    this.linkFacebook = this.page.getByTestId('social-facebook');
-    this.linkLinkedIn = this.page.getByTestId('social-linkedin');
-    this.copyFooter = this.page.getByTestId('footer-copy');
+    this.linkTwitter = page.getByTestId('social-twitter');
+    this.linkFacebook = page.getByTestId('social-facebook');
+    this.linkLinkedIn = page.getByTestId('social-linkedin');
+    this.copyFooter = page.getByTestId('footer-copy');
   }
 
   async expectFooter(): Promise<void> {

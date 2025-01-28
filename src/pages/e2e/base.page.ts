@@ -15,10 +15,9 @@ export class BasePage {
     this.page = page;
     this.header = new HeaderComponent(this.page);
     this.sidebar = new SideBarComponent(this.page);
-    //* Header
-    this.headerTitle = this.page.getByTestId('title');
-    //* Error
-    this.error = this.page.getByTestId('error');
+
+    this.headerTitle = page.getByTestId('title');
+    this.error = page.getByTestId('error');
   }
 
   async goTo(url: string = '/'): Promise<void> {
@@ -33,33 +32,7 @@ export class BasePage {
     await expect(this.error).toContainText(error);
   }
 
-  async scrollDown(): Promise<void> {
-    await this.page.evaluate(() => {
-      window.scrollTo(0, document.body.scrollHeight);
-    });
-  }
-
-  async scrollUp(): Promise<void> {
-    await this.page.evaluate(() => {
-      window.scrollTo(0, 0);
-    });
-  }
-
-  //* Screenshot
-
-  async takeScreenshot(screenshot: string): Promise<void> {
-    await this.page.screenshot({
-      path: `${screenshotPath}${screenshot}.png`,
-      fullPage: true,
-    });
-  }
-
-  async expectHaveScreenshot(screenshot: string): Promise<void> {
-    await expect(this.page).toHaveScreenshot(`${screenshot}.png`, { fullPage: true });
-  }
-
   //* Sidebar
-
   async resetApp(): Promise<void> {
     await this.header.clickSideBarMenu();
     await this.sidebar.clickLinkResetAppState();
@@ -73,5 +46,30 @@ export class BasePage {
 
   async closePage(): Promise<void> {
     await this.page.close();
+  }
+
+  //* Scrolls
+  async scrollDown(): Promise<void> {
+    await this.page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+  }
+
+  async scrollUp(): Promise<void> {
+    await this.page.evaluate(() => {
+      window.scrollTo(0, 0);
+    });
+  }
+
+  //* Screenshot
+  async takeScreenshot(screenshot: string): Promise<void> {
+    await this.page.screenshot({
+      path: `${screenshotPath}${screenshot}.png`,
+      fullPage: true,
+    });
+  }
+
+  async expectHaveScreenshot(screenshot: string): Promise<void> {
+    await expect(this.page).toHaveScreenshot(`${screenshot}.png`, { fullPage: true });
   }
 }
