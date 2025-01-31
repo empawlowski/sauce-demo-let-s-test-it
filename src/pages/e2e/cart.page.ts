@@ -5,16 +5,13 @@ import { InventoryPage } from '@_src/pages/e2e/inventory.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CartPage extends BasePage {
-  private readonly url: string;
-  protected readonly page: Page;
+  private readonly url: string = cartData.url;
   readonly cartList: Locator;
   readonly bContinueShopping: Locator;
   readonly bCheckout: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.page = page;
-    this.url = cartData.url;
     this.cartList = page.getByTestId('cart-list');
     this.bContinueShopping = page.locator('#continue-shopping');
     this.bCheckout = page.locator('#checkout');
@@ -31,7 +28,7 @@ export class CartPage extends BasePage {
   }
 
   async expectCartPage(): Promise<void> {
-    await this.toHaveURL(this.url);
+    await expect(this.page).toHaveURL(this.url);
     await expect(this.headerTitle).toContainText(cartData.header);
     await expect(this.cartList).toBeVisible();
     await expect(this.bContinueShopping).toBeVisible();
