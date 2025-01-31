@@ -1,0 +1,2 @@
+ [LOGGER]  25-01-31 14:08:20  info : Running Validation Checkout page
+ [LOGGER]  25-01-31 14:08:21  info : Finished Validation Checkout page with status passed
