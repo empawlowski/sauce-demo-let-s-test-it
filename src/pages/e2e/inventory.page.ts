@@ -3,9 +3,8 @@ import { BasePage } from '@_src/pages/e2e/base.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class InventoryPage extends BasePage {
-  private readonly url: string;
-  private readonly urlItem: string;
-  private readonly itemRegExp: RegExp;
+  private readonly url: string = inventoryData.url;
+  private readonly itemRegExp: RegExp = /add-to-cart-.+/;
 
   readonly fProductSort: Locator;
   readonly activeSortOption: Locator;
@@ -21,10 +20,6 @@ export class InventoryPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.url = inventoryData.url;
-    this.urlItem = inventoryData.urlItem;
-    this.itemRegExp = /add-to-cart-.+/;
-
     this.fProductSort = page.getByTestId('product-sort-container');
     this.activeSortOption = page.getByTestId('active-option');
     this.tableInventoryList = page.getByTestId('inventory-list');
@@ -116,7 +111,7 @@ export class InventoryPage extends BasePage {
   }
 
   async expectIncorrectImageOnProduct(link: string): Promise<void> {
-    await this.toHaveURL(this.url);
+    await expect(this.page).toHaveURL(this.url);
     await expect(this.img.first()).toHaveAttribute('src', link);
   }
 }
