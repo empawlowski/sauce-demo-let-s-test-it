@@ -28,7 +28,7 @@ export class CartPage extends BasePage {
   }
 
   async expectCartPage(): Promise<void> {
-    await expect(this.page).toHaveURL(this.url);
+    await this.toHaveUrl(this.url);
     await expect(this.headerTitle).toContainText(cartData.header);
     await expect(this.cartList).toBeVisible();
     await expect(this.bContinueShopping).toBeVisible();

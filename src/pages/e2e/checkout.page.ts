@@ -78,7 +78,7 @@ export class CheckoutPage extends BasePage {
   }
 
   async expectCheckoutPage(url: string): Promise<void> {
-    await this.toHaveURL(url);
+    await this.toHaveUrl(url);
     await expect(this.headerTitle).toContainText(checkoutData.header);
     await expect(this.fieldFirstName).toBeVisible();
     await expect(this.fieldLastName).toBeEditable();
@@ -88,7 +88,7 @@ export class CheckoutPage extends BasePage {
   }
 
   async expectCheckoutStepTwoPage(url: string): Promise<void> {
-    await this.toHaveURL(url);
+    await this.toHaveUrl(url);
     await expect(this.headerTitle).toContainText(checkoutData.headerStepTwo);
     await expect(this.labelPaymentValue).toContainText(checkoutData.paymentInformation);
     await expect(this.labelShippingValue).toContainText(checkoutData.shippingInformation);

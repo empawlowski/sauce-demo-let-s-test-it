@@ -24,7 +24,7 @@ export class BasePage {
     await this.page.goto(url);
   }
 
-  async toHaveURL(url: string | RegExp): Promise<void> {
+  async toHaveUrl(url: string | RegExp): Promise<void> {
     await expect(this.page).toHaveURL(url);
   }
 
