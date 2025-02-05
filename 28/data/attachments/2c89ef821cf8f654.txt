@@ -1,2 +1,0 @@
-Running Single product view
-Finished Single product view with status passed
