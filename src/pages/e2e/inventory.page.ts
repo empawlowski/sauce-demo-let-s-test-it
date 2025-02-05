@@ -83,7 +83,7 @@ export class InventoryPage extends BasePage {
   }
 
   async expectInventoryPage(): Promise<void> {
-    await this.toHaveURL(this.url);
+    await this.toHaveUrl(this.url);
     await expect(this.headerTitle).toContainText(inventoryData.header);
     await expect(this.fProductSort).toBeVisible();
     await expect(this.tableInventoryList).toBeVisible();
@@ -111,7 +111,7 @@ export class InventoryPage extends BasePage {
   }
 
   async expectIncorrectImageOnProduct(link: string): Promise<void> {
-    await expect(this.page).toHaveURL(this.url);
+    await this.toHaveUrl(this.url);
     await expect(this.img.first()).toHaveAttribute('src', link);
   }
 }

@@ -25,7 +25,7 @@ export class InventoryItemPage extends BasePage {
   }
 
   async expectSingleProductPage(product: SingleProductModel): Promise<void> {
-    await expect(this.page).toHaveURL(new RegExp(this.url));
+    await this.toHaveUrl(new RegExp(this.url));
     await expect(this.linkBackToProducts).toBeVisible();
     await expect(this.title).toContainText(product.title);
     await expect(this.desc).toContainText(product.desc);

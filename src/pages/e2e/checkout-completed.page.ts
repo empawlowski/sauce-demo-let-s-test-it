@@ -21,7 +21,7 @@ export class CheckoutCompletedPage extends BasePage {
   }
 
   async expectCheckoutCompletePage(url: string): Promise<void> {
-    await this.toHaveURL(url);
+    await this.toHaveUrl(url);
     await expect(this.headerTitle).toContainText(checkoutData.headerComplete);
     await expect(this.completeHeader).toContainText(checkoutData.completeHeader);
     await expect(this.completeText).toContainText(checkoutData.completeText);
