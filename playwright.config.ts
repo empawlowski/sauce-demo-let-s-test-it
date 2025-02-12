@@ -27,12 +27,13 @@ export default defineConfig({
   workers: undefined,
 
   timeout: 45 * 1000, //? default: 30 * 1000,
+  reportSlowTests: { max: 5, threshold: 35_000 },
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000,
+    timeout: 5_000,
 
     /* Based on: https://playwright.dev/docs/test-snapshots#options */
     toHaveScreenshot: {
