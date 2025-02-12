@@ -1,2 +1,0 @@
-Running Sort by Price (low to high)
-Finished Sort by Price (low to high) with status passed

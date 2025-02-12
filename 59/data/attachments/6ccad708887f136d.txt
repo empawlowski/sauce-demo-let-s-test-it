@@ -1,0 +1,2 @@
+ [LOGGER]  25-02-12 15:25:22  info : Running Checkout process with Cancel
+ [LOGGER]  25-02-12 15:25:22  info : Finished Checkout process with Cancel with status passed

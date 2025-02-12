@@ -1,0 +1,2 @@
+ [LOGGER]  25-02-12 15:25:53  info : Running Problem user
+ [LOGGER]  25-02-12 15:25:54  info : Finished Problem user with status passed
