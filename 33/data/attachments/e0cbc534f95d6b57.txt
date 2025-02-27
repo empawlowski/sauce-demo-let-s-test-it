@@ -1,2 +1,0 @@
-Running Error user
-Finished Error user with status passed

@@ -1,0 +1,2 @@
+ [LOGGER]  25-02-27 10:44:03  info : Running Checkout process with payment verification
+ [LOGGER]  25-02-27 10:44:04  info : Finished Checkout process with payment verification with status passed
