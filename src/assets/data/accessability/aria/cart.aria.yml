@@ -1,0 +1,16 @@
+- button "Open Menu"
+- img "Open Menu"
+- text: Swag Labs Your Cart QTY Description
+- button "Go back Continue Shopping":
+  - img "Go back"
+  - text: Continue Shopping
+- button "Checkout"
+- contentinfo:
+  - list:
+    - listitem:
+      - link "Twitter"
+    - listitem:
+      - link "Facebook"
+    - listitem:
+      - link "LinkedIn"
+  - text: © 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy

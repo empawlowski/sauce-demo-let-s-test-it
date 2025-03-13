@@ -1,6 +1,9 @@
+# Lock files
+package-lock.json
+
+# Test results
 allure-report
 allure-results
-package-lock.json
 playwright-report
 playwright-results
 test-results
@@ -9,3 +12,6 @@ src/output/allure-results
 src/output/allure-reports
 src/output/test-results
 src/output/test-reports
+
+# ARIA files
+src/assets/data/accessability/aria/*.aria.yml
