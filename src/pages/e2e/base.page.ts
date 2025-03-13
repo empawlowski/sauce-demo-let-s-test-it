@@ -5,6 +5,7 @@ import { type Locator, type Page, expect } from '@playwright/test';
 
 export class BasePage {
   protected readonly page: Page;
+  private readonly rootLocator: Locator;
   readonly header: HeaderComponent;
   readonly sidebar: SideBarComponent;
 
@@ -13,6 +14,7 @@ export class BasePage {
 
   constructor(page: Page) {
     this.page = page;
+    this.rootLocator = page.locator('#root');
     this.header = new HeaderComponent(this.page);
     this.sidebar = new SideBarComponent(this.page);
 
@@ -71,5 +73,10 @@ export class BasePage {
 
   async expectHaveScreenshot(screenshot: string): Promise<void> {
     await expect(this.page).toHaveScreenshot(`${screenshot}.png`, { fullPage: true });
+  }
+
+  //* ARIA
+  async toMatchAriaSnapshot(aria: string): Promise<void> {
+    await expect(this.rootLocator).toMatchAriaSnapshot({ name: `${aria}.aria.yml` });
   }
 }

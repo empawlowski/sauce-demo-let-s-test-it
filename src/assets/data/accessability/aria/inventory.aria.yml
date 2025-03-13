@@ -1,0 +1,17 @@
+- button "Open Menu"
+- img "Open Menu"
+- text: Swag Labs Products Name (A to Z)
+- combobox:
+  - option "Name (A to Z)" [selected]
+  - option "Name (Z to A)"
+  - option "Price (low to high)"
+  - option "Price (high to low)"
+- contentinfo:
+  - list:
+    - listitem:
+      - link "Twitter"
+    - listitem:
+      - link "Facebook"
+    - listitem:
+      - link "LinkedIn"
+  - text: © 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy

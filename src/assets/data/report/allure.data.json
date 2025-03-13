@@ -8,6 +8,7 @@
   },
   "feature": {
     "accessibility": "Accessibility",
+    "aria": "ARIA",
     "authentication": "Authentication",
     "cart": "Cart",
     "checkout": "Checkout",
@@ -38,6 +39,7 @@
     "smoke": "@smoke",
     "regression": "@reg",
     "accessibility": "@accessibility",
+    "aria": "@aria",
     "load": "@load",
     "visual": "@visual",
     "api": "@api",

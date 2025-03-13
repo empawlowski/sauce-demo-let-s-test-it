@@ -40,6 +40,9 @@ export default defineConfig({
     toHaveScreenshot: {
       maxDiffPixels: 10,
     },
+
+    /* Based on: https://playwright.dev/docs/aria-snapshots#aria-snapshots */
+    toMatchAriaSnapshot: { pathTemplate: './src/assets/data/accessability/aria/{arg}{ext}' },
   },
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   /* Allure-Report configuration, see: https://allurereport.org/docs/playwright-configuration  */
