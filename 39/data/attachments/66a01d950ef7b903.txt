@@ -1,2 +1,0 @@
-Running Empty Postal Code field
-Finished Empty Postal Code field with status passed

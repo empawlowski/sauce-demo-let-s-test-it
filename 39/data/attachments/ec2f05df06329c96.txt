@@ -1,2 +1,0 @@
-Running Empty Last Name field
-Finished Empty Last Name field with status passed
