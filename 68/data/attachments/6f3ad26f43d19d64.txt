@@ -1,0 +1,3 @@
+ [LOGGER]  25-03-26 11:51:35  info : Running Visual effect for single product view
+ [LOGGER]  25-03-26 11:51:35  warn : This test will finish with status failed
+ [LOGGER]  25-03-26 11:51:36  info : Finished Visual effect for single product view with status failed

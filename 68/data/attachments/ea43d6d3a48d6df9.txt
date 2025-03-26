@@ -1,0 +1,208 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Pages with errors >> Visual effect for single product view
+- Location: /home/runner/work/sauce-demo-let-s-test-it/sauce-demo-let-s-test-it/src/tests/ui/ui.spec.ts:65:7
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected)
+
+  could not decode image as PNG.
+
+Expected: /home/runner/work/sauce-demo-let-s-test-it/sauce-demo-let-s-test-it/src/assets/images/ui/product.png
+
+Call log:
+  - expect.toHaveScreenshot(product.png) with timeout 5000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - could not decode image as PNG.
+
+    at BasePage.expectHaveScreenshot (/home/runner/work/sauce-demo-let-s-test-it/sauce-demo-let-s-test-it/src/pages/e2e/base.page.ts:75:29)
+    at /home/runner/work/sauce-demo-let-s-test-it/sauce-demo-let-s-test-it/src/tests/ui/ui.spec.ts:76:16
+```
+
+# Test source
+
+```ts
+   1 | import { HeaderComponent } from '@_src/components/header.component';
+   2 | import { SideBarComponent } from '@_src/components/sidebar.component';
+   3 | import { ScreenshotPath } from '@_src/utils/paths.util';
+   4 | import { type Locator, type Page, expect } from '@playwright/test';
+   5 |
+   6 | export class BasePage {
+   7 |   protected readonly page: Page;
+   8 |   private readonly rootLocator: Locator;
+   9 |   readonly header: HeaderComponent;
+  10 |   readonly sidebar: SideBarComponent;
+  11 |
+  12 |   readonly headerTitle: Locator;
+  13 |   readonly error: Locator;
+  14 |
+  15 |   constructor(page: Page) {
+  16 |     this.page = page;
+  17 |     this.rootLocator = page.locator('#root');
+  18 |     this.header = new HeaderComponent(this.page);
+  19 |     this.sidebar = new SideBarComponent(this.page);
+  20 |
+  21 |     this.headerTitle = page.getByTestId('title');
+  22 |     this.error = page.getByTestId('error');
+  23 |   }
+  24 |
+  25 |   async goTo(url: string = '/'): Promise<void> {
+  26 |     await this.page.goto(url);
+  27 |   }
+  28 |
+  29 |   async toHaveUrl(url: string | RegExp): Promise<void> {
+  30 |     await expect(this.page).toHaveURL(url);
+  31 |   }
+  32 |
+  33 |   async catchError(error: string): Promise<void> {
+  34 |     await expect(this.error).toContainText(error);
+  35 |   }
+  36 |
+  37 |   //* Sidebar
+  38 |   async resetApp(): Promise<void> {
+  39 |     await this.header.clickSideBarMenu();
+  40 |     await this.sidebar.clickLinkResetAppState();
+  41 |     await this.sidebar.clickButtonCrossMenu();
+  42 |   }
+  43 |
+  44 |   async logoutFromApp(): Promise<void> {
+  45 |     await this.header.clickSideBarMenu();
+  46 |     await this.sidebar.clickLinkLogout();
+  47 |   }
+  48 |
+  49 |   async closePage(): Promise<void> {
+  50 |     await this.page.close();
+  51 |   }
+  52 |
+  53 |   //* Scrolls
+  54 |   async scrollDown(): Promise<void> {
+  55 |     await this.page.evaluate(() => {
+  56 |       window.scrollTo(0, document.body.scrollHeight);
+  57 |     });
+  58 |   }
+  59 |
+  60 |   async scrollUp(): Promise<void> {
+  61 |     await this.page.evaluate(() => {
+  62 |       window.scrollTo(0, 0);
+  63 |     });
+  64 |   }
+  65 |
+  66 |   //* Screenshot
+  67 |   async takeScreenshot(screenshot: string): Promise<void> {
+  68 |     await this.page.screenshot({
+  69 |       path: `${ScreenshotPath}${screenshot}.png`,
+  70 |       fullPage: true,
+  71 |     });
+  72 |   }
+  73 |
+  74 |   async expectHaveScreenshot(screenshot: string): Promise<void> {
+> 75 |     await expect(this.page).toHaveScreenshot(`${screenshot}.png`, { fullPage: true });
+     |                             ^ Error: expect(page).toHaveScreenshot(expected)
+  76 |   }
+  77 |
+  78 |   //* ARIA
+  79 |   async toMatchAriaSnapshot(aria: string): Promise<void> {
+  80 |     await expect(this.rootLocator).toMatchAriaSnapshot({ name: `${aria}.aria.yml` });
+  81 |   }
+  82 | }
+  83 |
+```
+
+# Local changes
+
+```diff
+diff --git a/.vscode/extensions.json b/.vscode/extensions.json
+index dce1151..c0c0241 100644
+--- a/.vscode/extensions.json
++++ b/.vscode/extensions.json
+@@ -5,8 +5,8 @@
+     "dbaeumer.vscode-eslint",
+     "eamodio.gitlens",
+     "mhutchie.git-graph",
+-    "pkief.material-icon-theme",
++    "streetsidesoftware.code-spell-checker",
+     "aaron-bond.better-comments",
+-    "streetsidesoftware.code-spell-checker"
++    "pkief.material-icon-theme"
+   ]
+ }
+diff --git a/eslint.config.mjs b/eslint.config.mjs
+index aa1e09b..7c00652 100644
+--- a/eslint.config.mjs
++++ b/eslint.config.mjs
+@@ -19,14 +19,21 @@ export default [
+     ],
+   },
+   { files: ['**/*.ts'] },
+-  { languageOptions: { globals: globals.node } },
++  {
++    languageOptions: {
++      globals: globals.node,
++      parserOptions: {
++        warnOnUnsupportedTypeScriptVersion: false,
++      },
++    },
++  },
+   pluginJs.configs.recommended,
++  ...tseslint.configs.recommended,
+   {
+     rules: {
+       'no-console': ['warn', { allow: ['warn', 'error'] }],
+     },
+   },
+-  ...tseslint.configs.recommended,
+   {
+     rules: {
+       '@typescript-eslint/explicit-function-return-type': 'error',
+diff --git a/package-lock.json b/package-lock.json
+index 4c5d129..814b326 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -28,6 +28,7 @@
+         "globals": "^15.12.0",
+         "husky": "^9.1.7",
+         "prettier": "3.3.3",
++        "typescript": "^5.8.2",
+         "typescript-eslint": "^8.15.0",
+         "winston": "^3.17.0"
+       }
+@@ -5303,11 +5304,10 @@
+       }
+     },
+     "node_modules/typescript": {
+-      "version": "5.6.3",
+-      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.6.3.tgz",
+-      "integrity": "sha512-hjcS1mhfuyi4WW8IWtjP7brDrG2cuDZukyrYrSauoXGNgx0S7zceP07adYkJycEr56BOUTNPzbInooiN3fn1qw==",
++      "version": "5.8.2",
++      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.8.2.tgz",
++      "integrity": "sha512-aJn6wq13/afZp/jT9QZmwEjDqqvSGp1VT5GVg+f/t6/oVyrgXM6BY1h9BRh/O5p3PlUPAe+WuiEZOmb/49RqoQ==",
+       "dev": true,
+-      "peer": true,
+       "bin": {
+         "tsc": "bin/tsc",
+         "tsserver": "bin/tsserver"
+diff --git a/package.json b/package.json
+index 53ab8d5..7b5f218 100644
+--- a/package.json
++++ b/package.json
+@@ -39,6 +39,7 @@
+     "globals": "^15.12.0",
+     "husky": "^9.1.7",
+     "prettier": "3.3.3",
++    "typescript": "^5.8.2",
+     "typescript-eslint": "^8.15.0",
+     "winston": "^3.17.0"
+   },
+```
