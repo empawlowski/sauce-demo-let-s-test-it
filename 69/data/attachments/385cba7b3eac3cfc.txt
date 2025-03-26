@@ -1,0 +1,2 @@
+ [LOGGER]  25-03-26 11:51:31  info : Running Single product view
+ [LOGGER]  25-03-26 11:51:31  info : Finished Single product view with status passed

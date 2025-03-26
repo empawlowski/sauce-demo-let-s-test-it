@@ -1,0 +1,80 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Mar 26 11:51:18 GMT 2025","Wed Mar 26 11:51:21 GMT 2025","2893","Chromium","e2e/inventory.spec.ts","Inventory","","","Validation Inventory page",""
+"passed","Wed Mar 26 11:51:12 GMT 2025","Wed Mar 26 11:51:18 GMT 2025","6187","Chromium","e2e/footer.spec.ts","Footer > Open the footer links","","","Open ""Twitter"" page",""
+"passed","Wed Mar 26 11:51:39 GMT 2025","Wed Mar 26 11:51:40 GMT 2025","439","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Missing password","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:50:47 GMT 2025","Wed Mar 26 11:50:50 GMT 2025","2957","Chromium","accessibility/accessibility.spec.ts","Accessability tests > Gunning fog index","","","Inventory - product describe",""
+"passed","Wed Mar 26 11:50:52 GMT 2025","Wed Mar 26 11:50:55 GMT 2025","3075","Chromium","e2e/cart.spec.ts","Cart","","","Validation Cart page",""
+"passed","Wed Mar 26 11:51:25 GMT 2025","Wed Mar 26 11:51:28 GMT 2025","2830","Chromium","e2e/inventory.spec.ts","Inventory > Products sorting","","","Sort by Price (high to low)",""
+"passed","Wed Mar 26 11:50:59 GMT 2025","Wed Mar 26 11:51:02 GMT 2025","3181","Chromium","e2e/checkout.spec.ts","Checkout > Empty fields - error validation","","","Empty Fist Name field",""
+"passed","Wed Mar 26 11:51:42 GMT 2025","Wed Mar 26 11:51:43 GMT 2025","635","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 2",""
+"passed","Wed Mar 26 11:51:47 GMT 2025","Wed Mar 26 11:51:51 GMT 2025","3077","Chromium","ui/ui.spec.ts","Pages with errors","","","Visual effect for single product view",""
+"passed","Wed Mar 26 11:51:05 GMT 2025","Wed Mar 26 11:51:09 GMT 2025","3304","Chromium","e2e/checkout.spec.ts","Checkout > Checkout process","","","Checkout process with Cancel",""
+"passed","Wed Mar 26 11:51:47 GMT 2025","Wed Mar 26 11:51:50 GMT 2025","3103","Chromium","ui/ui.spec.ts","Pages with errors","","","Visual effect for inventory",""
+"passed","Wed Mar 26 11:51:41 GMT 2025","Wed Mar 26 11:51:41 GMT 2025","489","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Incorrect password","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:51:44 GMT 2025","Wed Mar 26 11:51:47 GMT 2025","3104","Chromium","ui/ui.spec.ts","Pages with errors","","","Visual effect for cart",""
+"passed","Wed Mar 26 11:51:44 GMT 2025","Wed Mar 26 11:51:47 GMT 2025","3238","Chromium","ui/ui.spec.ts","Pages with errors","","","Visual effect for checkout",""
+"passed","Wed Mar 26 11:51:27 GMT 2025","Wed Mar 26 11:51:30 GMT 2025","3020","Chromium","e2e/inventory.spec.ts","Inventory > Add products - different methods","","","Adding by Title - all",""
+"passed","Wed Mar 26 11:50:41 GMT 2025","Wed Mar 26 11:50:42 GMT 2025","690","setup","e2e/setup/login.setup.ts","","","","Log in to standard user account","This test attempts to log into the website using a login and a password. Authentication is saved to the storage state."
+"passed","Wed Mar 26 11:51:43 GMT 2025","Wed Mar 26 11:51:44 GMT 2025","788","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 5",""
+"passed","Wed Mar 26 11:50:51 GMT 2025","Wed Mar 26 11:50:52 GMT 2025","805","Chromium","accessibility/aria.spec.ts","ARIA Snapshots","","","ARIA for Cart page",""
+"passed","Wed Mar 26 11:51:17 GMT 2025","Wed Mar 26 11:51:22 GMT 2025","4631","Chromium","e2e/footer.spec.ts","Footer > Open the footer links","","","Open ""LinkedIn"" page",""
+"passed","Wed Mar 26 11:51:37 GMT 2025","Wed Mar 26 11:51:43 GMT 2025","6059","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Performance user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:51:38 GMT 2025","Wed Mar 26 11:51:39 GMT 2025","547","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Visual user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:51:34 GMT 2025","Wed Mar 26 11:51:37 GMT 2025","2963","Chromium","e2e/inventory.spec.ts","Inventory with errors","","","Wrong image link for product",""
+"passed","Wed Mar 26 11:51:06 GMT 2025","Wed Mar 26 11:51:09 GMT 2025","3604","Chromium","e2e/checkout.spec.ts","Checkout > Checkout process","","","Checkout process with Success",""
+"passed","Wed Mar 26 11:51:37 GMT 2025","Wed Mar 26 11:51:37 GMT 2025","650","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Problem user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:50:51 GMT 2025","Wed Mar 26 11:50:52 GMT 2025","801","Chromium","accessibility/aria.spec.ts","ARIA Snapshots","","","ARIA for Checkout page",""
+"passed","Wed Mar 26 11:51:31 GMT 2025","Wed Mar 26 11:51:34 GMT 2025","2952","Chromium","e2e/inventory.spec.ts","Inventory","","","Single product view",""
+"passed","Wed Mar 26 11:50:43 GMT 2025","Wed Mar 26 11:50:47 GMT 2025","3728","Chromium","accessibility/accessibility.spec.ts","Accessability tests > Accessability tests - fixture","","","Full scan results for page",""
+"passed","Wed Mar 26 11:50:55 GMT 2025","Wed Mar 26 11:50:58 GMT 2025","3159","Chromium","e2e/cart.spec.ts","Cart > Function with product","","","Remove product from basket",""
+"passed","Wed Mar 26 11:51:40 GMT 2025","Wed Mar 26 11:51:41 GMT 2025","497","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Incorrect username","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:51:28 GMT 2025","Wed Mar 26 11:51:31 GMT 2025","2855","Chromium","e2e/inventory.spec.ts","Inventory > Add products - different methods","","","Adding by Title - one",""
+"passed","Wed Mar 26 11:51:30 GMT 2025","Wed Mar 26 11:51:33 GMT 2025","3018","Chromium","e2e/inventory.spec.ts","Inventory > Add products - different methods","","","Adding by button ""Add to cart"" - count",""
+"passed","Wed Mar 26 11:51:39 GMT 2025","Wed Mar 26 11:51:39 GMT 2025","453","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Missing username","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:51:02 GMT 2025","Wed Mar 26 11:51:06 GMT 2025","3290","Chromium","e2e/checkout.spec.ts","Checkout > Checkout process","","","Continue process from Checkout",""
+"passed","Wed Mar 26 11:50:47 GMT 2025","Wed Mar 26 11:50:51 GMT 2025","3688","Chromium","accessibility/accessibility.spec.ts","Accessability tests > Accessability tests - fixture","","","Violations results for page",""
+"passed","Wed Mar 26 11:50:50 GMT 2025","Wed Mar 26 11:50:51 GMT 2025","640","Chromium","accessibility/aria.spec.ts","ARIA Snapshots","","","ARIA for Inventory page",""
+"passed","Wed Mar 26 11:51:09 GMT 2025","Wed Mar 26 11:51:12 GMT 2025","2977","Chromium","e2e/footer.spec.ts","Footer","","","Check footer visibility",""
+"passed","Wed Mar 26 11:51:33 GMT 2025","Wed Mar 26 11:51:36 GMT 2025","3029","Chromium","e2e/inventory.spec.ts","Inventory with errors","","","Adding by button ""Add to cart"" - all",""
+"passed","Wed Mar 26 11:51:37 GMT 2025","Wed Mar 26 11:51:37 GMT 2025","611","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Locked user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:50:59 GMT 2025","Wed Mar 26 11:51:02 GMT 2025","3099","Chromium","e2e/checkout.spec.ts","Checkout > Empty fields - error validation","","","Empty Last Name field",""
+"passed","Wed Mar 26 11:51:40 GMT 2025","Wed Mar 26 11:51:40 GMT 2025","483","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Incorrect credentials","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:51:36 GMT 2025","Wed Mar 26 11:51:37 GMT 2025","534","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Standard user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:50:56 GMT 2025","Wed Mar 26 11:50:59 GMT 2025","3110","Chromium","e2e/checkout.spec.ts","Checkout","","","Validation Checkout page",""
+"passed","Wed Mar 26 11:51:02 GMT 2025","Wed Mar 26 11:51:05 GMT 2025","3089","Chromium","e2e/checkout.spec.ts","Checkout > Empty fields - error validation","","","Empty Postal Code field",""
+"passed","Wed Mar 26 11:50:52 GMT 2025","Wed Mar 26 11:50:55 GMT 2025","3051","Chromium","e2e/cart.spec.ts","Cart > Function with product","","","Add product to basket",""
+"passed","Wed Mar 26 11:51:09 GMT 2025","Wed Mar 26 11:51:12 GMT 2025","3290","Chromium","e2e/checkout.spec.ts","Checkout > Checkout process","","","Checkout process with payment verification",""
+"passed","Wed Mar 26 11:51:43 GMT 2025","Wed Mar 26 11:51:44 GMT 2025","813","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 4",""
+"passed","Wed Mar 26 11:51:43 GMT 2025","Wed Mar 26 11:51:43 GMT 2025","753","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 3",""
+"passed","Wed Mar 26 11:51:39 GMT 2025","Wed Mar 26 11:51:39 GMT 2025","421","Chromium","e2e/login.spec.ts","Login > Login with error status","","","Missing credentials","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:51:37 GMT 2025","Wed Mar 26 11:51:38 GMT 2025","609","Chromium","e2e/login.spec.ts","Login > Login to specific user","","","Error user","This test attempts to log into the website using a login and a password. Fails if any error happens.
+
+Note that this test does not test 2-Factor Authentication."
+"passed","Wed Mar 26 11:51:12 GMT 2025","Wed Mar 26 11:51:17 GMT 2025","5069","Chromium","e2e/footer.spec.ts","Footer > Open the footer links","","","Open ""Facebook"" page",""
+"passed","Wed Mar 26 11:50:43 GMT 2025","Wed Mar 26 11:50:47 GMT 2025","3999","Chromium","accessibility/accessibility.spec.ts","Accessability tests > Accessability tests - without fixture","","","Full scan results for page",""
+"passed","Wed Mar 26 11:51:22 GMT 2025","Wed Mar 26 11:51:25 GMT 2025","2971","Chromium","e2e/inventory.spec.ts","Inventory > Products sorting","","","Sort by Name (Z to A)",""
+"passed","Wed Mar 26 11:51:21 GMT 2025","Wed Mar 26 11:51:24 GMT 2025","3075","Chromium","e2e/inventory.spec.ts","Inventory > Products sorting","","","Sort by Name (A to Z)",""
+"passed","Wed Mar 26 11:51:24 GMT 2025","Wed Mar 26 11:51:27 GMT 2025","2954","Chromium","e2e/inventory.spec.ts","Inventory > Products sorting","","","Sort by Price (low to high)",""
+"passed","Wed Mar 26 11:51:41 GMT 2025","Wed Mar 26 11:51:42 GMT 2025","655","Chromium","performance/load.spec.ts","Load tests","","","Simple login to page - Run 1",""
