@@ -5,8 +5,8 @@
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
     "mhutchie.git-graph",
-    "pkief.material-icon-theme",
+    "streetsidesoftware.code-spell-checker",
     "aaron-bond.better-comments",
-    "streetsidesoftware.code-spell-checker"
+    "pkief.material-icon-theme"
   ]
 }

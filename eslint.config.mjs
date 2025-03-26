@@ -19,14 +19,21 @@ export default [
     ],
   },
   { files: ['**/*.ts'] },
-  { languageOptions: { globals: globals.node } },
+  {
+    languageOptions: {
+      globals: globals.node,
+      parserOptions: {
+        warnOnUnsupportedTypeScriptVersion: false,
+      },
+    },
+  },
   pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
   {
     rules: {
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
-  ...tseslint.configs.recommended,
   {
     rules: {
       '@typescript-eslint/explicit-function-return-type': 'error',
