@@ -1,15 +1,8 @@
 import { Configuration } from './src/config/configuration';
 import { defineConfig, devices } from '@playwright/test';
-import * as dotenv from 'dotenv';
 import * as os from 'os';
-import * as path from 'path';
 
-dotenv.config();
-dotenv.config({ path: path.resolve(__dirname, `.env`) });
-
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
+/** Based on: https://playwright.dev/docs/test-configuration */
 export default defineConfig({
   captureGitInfo: { commit: true, diff: true },
   testDir: './src/tests',
@@ -47,6 +40,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   /* Allure-Report configuration, see: https://allurereport.org/docs/playwright-configuration  */
 
+  // reporter: 'dot',
   reporter: [
     ['line'],
     ['html', { open: 'on-failure', outputFolder: 'src/output/test-reports' }],
@@ -75,13 +69,12 @@ export default defineConfig({
     ],
   ],
 
-  // reporter: 'dot',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Set test ID attribute for project*/
     testIdAttribute: 'data-test',
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: Configuration.baseURL ?? 'https://www.saucedemo.com',
+    baseURL: Configuration.baseUrl ?? 'https://www.saucedemo.com',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     actionTimeout: 0,
