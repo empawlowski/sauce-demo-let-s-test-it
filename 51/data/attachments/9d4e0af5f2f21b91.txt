@@ -1,3 +1,0 @@
- [LOGGER]  25-01-27 16:11:31  info : Running Visual effect for cart
- [LOGGER]  25-01-27 16:11:31  warn : This test will finish with status failed
- [LOGGER]  25-01-27 16:11:32  info : Finished Visual effect for cart with status failed
