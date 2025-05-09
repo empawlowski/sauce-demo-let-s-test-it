@@ -1,7 +1,7 @@
 # Sauce Demo - Let's Test It!
 
 [E2E] Automation tests for Sauce Labs shop using 🎭 **Playwright** framework.
-Tests are written using **TypeScript** language and Page Object Structure (POM) design pattern.
+Tests are written using **TypeScript** language and Page Object Model (POM) design pattern.
 
 ## Table of Contents
 
