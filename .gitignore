@@ -1,12 +1,18 @@
+# Node
+/node_modules/
+
+# Playwright
 /allure-report/
 /allure-results/
 /blob-report/
-/node_modules/
 /test-results/
 /test-report/
-/src/output/**
-/playwright-report/  
+/playwright-report/
 /playwright-results/  
 /playwright/.cache/
-/.env
+/src/output/**
+
+# .env files and .auth folder
 /.auth
+.env.*
+!.env.template
