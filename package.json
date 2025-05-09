@@ -9,6 +9,7 @@
     "lint": "npx eslint . --max-warnings 0",
     "tsc:check": "npx tsc --noEmit --pretty --strict",
     "prepare": "husky || true",
+    "test:env:prod": "set ENV=prod && npx playwright test",
     "test": "npx playwright test",
     "test:ui": "npm run test -- --ui",
     "test:failed": "npm run test -- --last-failed",
