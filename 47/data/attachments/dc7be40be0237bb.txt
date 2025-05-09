@@ -1,2 +1,0 @@
-Running Visual effect for checkout
-Finished Visual effect for checkout with status failed

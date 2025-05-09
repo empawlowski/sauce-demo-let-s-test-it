@@ -1,2 +1,0 @@
-Running Visual effect for single product view
-Finished Visual effect for single product view with status failed
