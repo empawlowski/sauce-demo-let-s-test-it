@@ -1,0 +1,2 @@
+ [LOGGER]  25-05-09 13:16:26  info : Running Open "Facebook" page
+ [LOGGER]  25-05-09 13:16:28  info : Finished Open "Facebook" page with status passed

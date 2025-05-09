@@ -1,2 +1,0 @@
-Running Performance user
-Finished Performance user with status passed

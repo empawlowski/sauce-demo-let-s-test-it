@@ -1,0 +1,4 @@
+ [LOGGER]  25-05-09 13:16:02  info : Running Inventory - product describe
+ [LOGGER]  25-05-09 13:16:03  info : Gunning Fox Index:
+ [LOGGER]  25-05-09 13:16:03  info : The index is low, the text is easy to read and understand.
+ [LOGGER]  25-05-09 13:16:03  info : Finished Inventory - product describe with status passed
