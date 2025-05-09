@@ -1,2 +1,0 @@
-Running Check footer visibility
-Finished Check footer visibility with status failed
