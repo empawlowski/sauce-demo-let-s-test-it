@@ -8,9 +8,12 @@ Tests are written using **TypeScript** language and Page Object Structure (POM) 
 1. [Project Overview](#project-overview)
 2. [Installation and Setup](#installation-and-setup)
 3. [Folder Structure](#folder-structure)
-4. [How to Run Tests](#how-to-run-tests)
-5. [Contributing](#contributing)
-6. [License](#license)
+4. [Code Language and Framework](#code-language-and-framework)
+5. [Design Pattern: Page Object Model (POM)](#design-pattern-page-object-model-pom)
+6. [How to Run Tests](#how-to-run-tests)
+7. [Reporting with Allure Report](#reporting-with-allure-report)
+8. [Contributing](#contributing)
+9. [License](#license)
 
 ## Project Overview
 
@@ -70,6 +73,31 @@ npx playwright test
 ```
 
 For additional test commands, refer to the `scripts` section in `package.json`.
+
+## Reporting with Allure Report
+
+This project integrates **Allure Report** for generating detailed and interactive test reports. Allure Report provides insights into test execution, including:
+
+- Test case status (passed, failed, skipped).
+- Execution time and duration.
+- Attachments such as screenshots, logs, and videos.
+
+### How to Generate Allure Reports
+
+1. Run your tests with the following command to ensure results are generated:
+   ```bash
+   npx playwright test
+   ```
+2. Generate the Allure Report:
+   ```bash
+   npx allure generate src/output/allure-results -o src/output/allure-reports --clean
+   ```
+3. Serve the report locally to view it in a browser:
+   ```bash
+   npx allure open ./src/output/allure-reports
+   ```
+
+The generated report will be available in the `src/output/allure-reports` directory.
 
 ## Contributing
 
