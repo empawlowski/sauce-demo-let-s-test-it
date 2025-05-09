@@ -1,2 +1,0 @@
-Running Visual effect for cart
-Finished Visual effect for cart with status failed
