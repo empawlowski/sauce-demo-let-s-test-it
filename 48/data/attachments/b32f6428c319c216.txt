@@ -1,2 +1,0 @@
-Running Checkout process with Success
-Finished Checkout process with Success with status passed
