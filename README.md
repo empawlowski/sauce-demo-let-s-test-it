@@ -34,9 +34,9 @@ This repository contains end-to-end (E2E) automation tests for the Sauce Labs sh
    ```bash
    npx playwright install
    ```
-4. Set up Husky for Git hooks:
+4. Set up Husky for Git hooks [(husky docs)](https://typicode.github.io/husky/get-started.html):
    ```bash
-   npx husky install
+   npx husky init
    ```
 5. (Optional) Install recommended Visual Studio Code extensions.
 
