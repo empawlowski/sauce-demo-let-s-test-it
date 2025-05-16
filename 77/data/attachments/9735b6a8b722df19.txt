@@ -1,0 +1,2 @@
+ [LOGGER]  25-05-16 14:13:03  info : Running Standard user
+ [LOGGER]  25-05-16 14:13:03  info : Finished Standard user with status passed

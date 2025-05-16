@@ -1,0 +1,2 @@
+ [LOGGER]  25-05-16 14:12:30  info : Running Continue process from Checkout
+ [LOGGER]  25-05-16 14:12:31  info : Finished Continue process from Checkout with status passed

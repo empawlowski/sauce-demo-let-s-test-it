@@ -1,0 +1,2 @@
+ [LOGGER]  25-05-16 14:12:20  info : Running Add product to basket
+ [LOGGER]  25-05-16 14:12:20  info : Finished Add product to basket with status passed

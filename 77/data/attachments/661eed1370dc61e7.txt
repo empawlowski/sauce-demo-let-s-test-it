@@ -1,0 +1,2 @@
+ [LOGGER]  25-05-16 14:12:45  info : Running Validation Inventory page
+ [LOGGER]  25-05-16 14:12:45  info : Finished Validation Inventory page with status passed
