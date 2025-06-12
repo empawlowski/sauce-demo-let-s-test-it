@@ -1,2 +1,0 @@
- [LOGGER]  25-01-31 14:08:40  info : Running Open "LinkedIn" page
- [LOGGER]  25-01-31 14:08:42  info : Finished Open "LinkedIn" page with status passed
