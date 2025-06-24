@@ -1,0 +1,2 @@
+ [LOGGER]  25-06-24 13:28:03  info : Running Visual user
+ [LOGGER]  25-06-24 13:28:04  info : Finished Visual user with status passed
