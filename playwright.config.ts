@@ -125,7 +125,7 @@ export default defineConfig({
     // {
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge', storageState: '.auth/user.json' },
-    //   dependencies: ['Webkit'],
+    //   dependencies: ['setup'],
     // },
     // {
     //   name: 'Google Chrome',
