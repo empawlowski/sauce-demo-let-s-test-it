@@ -22,20 +22,22 @@ This repository contains end-to-end (E2E) automation tests for the Sauce Labs sh
 ## Installation and Setup
 
 1. **Clone the repository:**
+
    ```bash
-   git clone https://github.com/your-username/sauce-demo-let-s-test-it.git
+   git clone https://github.com/empawlowski/sauce-demo-let-s-test-it.git
    cd sauce-demo-let-s-test-it
    ```
-   *(Replace `https://github.com/your-username/sauce-demo-let-s-test-it.git` with the actual repository URL)*
 
 2. **Install dependencies:**
    This command will install all necessary dependencies listed in `package.json`.
+
    ```bash
    npm install
    ```
 
 3. **Install Playwright browsers:**
    This command downloads the browser binaries for Playwright (Chromium, Firefox, WebKit).
+
    ```bash
    npx playwright install
    ```
@@ -109,48 +111,57 @@ The following scripts are available in `package.json` to run tests:
 
 - **Run all tests:**
   This is the default command to execute all test files found in the `src/tests` directory.
+
   ```bash
   npm test
   ```
+
   or
+
   ```bash
   npx playwright test
   ```
 
 - **Run tests in UI Mode:**
   Opens the Playwright UI mode for a better debugging experience, allowing you to see test execution live and inspect failures.
+
   ```bash
   npm run test:ui
   ```
 
 - **Run tests for a specific environment (e.g., prod):**
   Sets the `ENV` variable to `prod` and then runs all tests. This allows for environment-specific configurations (see [Environment Configuration](#environment-configuration)).
+
   ```bash
   npm run test:env:prod
   ```
 
 - **Run only failed tests:**
   Executes only the tests that failed during the last run.
+
   ```bash
   npm run test:failed
   ```
 
 - **Run only changed tests:**
   Runs tests related to changed files, based on Git history. Useful for pre-commit checks or CI.
+
   ```bash
   npm run test:changed
   ```
 
 - **Run tests by tags:**
   Executes tests that are tagged with `@smoke` or `@reg` (regression).
+
   ```bash
   npm run test:tags
   ```
+
   To run only regression tests:
+
   ```bash
   npm run test:reg
   ```
-  *(You can define tags in your test descriptions, e.g., `it('should login successfully @smoke', async () => { ... });`)*
 
 - **Show Playwright's HTML report:**
   Opens the last generated Playwright HTML report.
@@ -179,10 +190,13 @@ Playwright is configured to automatically generate Allure results in `./src/outp
 
 2. **Generate the Allure Report:**
    This command processes the raw results and creates an HTML report. The `--clean` flag removes previous report data.
+
    ```bash
    npm run generate-report
    ```
+
    Alternatively, you can run the `npx allure` command directly:
+
    ```bash
    npx allure generate src/output/allure-results -o src/output/allure-reports --clean
    ```
@@ -204,6 +218,7 @@ The generated HTML report will be available in the `src/output/allure-reports/` 
 This project uses Prettier for code formatting and ESLint for static analysis to maintain code quality and consistency.
 
 - **Prettier:** An opinionated code formatter that ensures a consistent code style across the entire codebase.
+
   - Configuration: `.prettierrc.json`
   - Ignore file: `.prettierignore`
 
@@ -216,18 +231,21 @@ The following scripts are available in `package.json` for code quality checks:
 
 - **Format code with Prettier:**
   Automatically formats all supported files in the project.
+
   ```bash
   npm run format
   ```
 
 - **Check formatting with Prettier:**
   Checks if all files are formatted correctly without making changes. Useful for CI checks.
+
   ```bash
   npm run format:check
   ```
 
 - **Lint code with ESLint:**
   Analyzes the code for potential errors and style issues.
+
   ```bash
   npm run lint
   ```
@@ -256,9 +274,11 @@ You can run tests targeting a specific environment by setting the `ENV` variable
 ```bash
 npm run test:env:prod
 ```
+
 This command effectively runs `set ENV=prod && npx playwright test` (or the equivalent for your shell). The `configuration.ts` file will then load settings from `.env.prod`.
 
 To use a different environment (e.g., `staging`), you would typically:
+
 1. Create a `.env.staging` file with the appropriate settings.
 2. Update `src/config/configuration.ts` to recognize the `staging` environment.
 3. Run tests with `ENV=staging npx playwright test` (or create a new npm script).
