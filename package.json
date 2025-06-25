@@ -22,7 +22,7 @@
   },
   "keywords": [],
   "author": "Marcin P.",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@axe-core/playwright": "^4.10.1",
     "@eslint/js": "^9.14.0",
