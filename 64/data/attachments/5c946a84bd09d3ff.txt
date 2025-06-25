@@ -1,2 +1,0 @@
- [LOGGER]  25-03-13 09:07:40  info : Running Open "Twitter" page
- [LOGGER]  25-03-13 09:07:42  info : Finished Open "Twitter" page with status passed
