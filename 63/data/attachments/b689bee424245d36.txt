@@ -1,2 +1,0 @@
- [LOGGER]  25-03-04 11:24:57  info : Running Remove product from basket
- [LOGGER]  25-03-04 11:24:57  info : Finished Remove product from basket with status passed
