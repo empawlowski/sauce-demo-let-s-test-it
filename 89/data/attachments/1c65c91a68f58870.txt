@@ -1,0 +1,2 @@
+ [LOGGER]  25-06-25 08:47:49  info : Running Adding by button "Add to cart" - count
+ [LOGGER]  25-06-25 08:47:50  info : Finished Adding by button "Add to cart" - count with status passed

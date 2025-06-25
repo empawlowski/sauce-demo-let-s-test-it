@@ -1,2 +1,0 @@
- [LOGGER]  25-03-26 11:50:44  info : Running Full scan results for page
- [LOGGER]  25-03-26 11:50:45  info : Finished Full scan results for page with status passed
