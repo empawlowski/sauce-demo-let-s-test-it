@@ -2,6 +2,7 @@ import { checkoutData } from '@_src/assets/data/e2e/checkout.data';
 import { CheckoutUserModel } from '@_src/models/user.model';
 import { BasePage } from '@_src/pages/e2e/base.page';
 import { CartPage } from '@_src/pages/e2e/cart.page';
+import { CheckoutCompletedPage } from '@_src/pages/e2e/checkout-completed.page';
 import { InventoryPage } from '@_src/pages/e2e/inventory.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
@@ -41,7 +42,7 @@ export class CheckoutPage extends BasePage {
     await this.fieldFirstName.fill(firstName);
   }
 
-  async fillFielLastName(lastName: string): Promise<void> {
+  async fillFieldLastName(lastName: string): Promise<void> {
     await this.fieldLastName.fill(lastName);
   }
 
@@ -61,7 +62,7 @@ export class CheckoutPage extends BasePage {
 
   async fillCheckoutFields(userCheckout: CheckoutUserModel): Promise<void> {
     await this.fillFieldFirstName(userCheckout.firstName);
-    await this.fillFielLastName(userCheckout.lastName);
+    await this.fillFieldLastName(userCheckout.lastName);
     await this.fillFieldPostalCode(userCheckout.postalCode);
     await this.clickContinue();
   }
@@ -73,8 +74,9 @@ export class CheckoutPage extends BasePage {
     expect(sliceSub + sliceTax).toBe(sliceTotal);
   }
 
-  async clickFinish(): Promise<void> {
+  async clickFinish(): Promise<CheckoutCompletedPage> {
     await this.bFinish.click();
+    return new CheckoutCompletedPage(this.page);
   }
 
   async expectCheckoutPage(url: string): Promise<void> {

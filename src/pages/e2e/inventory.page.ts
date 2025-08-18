@@ -58,6 +58,10 @@ export class InventoryPage extends BasePage {
     return this.page.locator(`#add-to-cart-${reduceTitle}`);
   }
 
+  async isFirstProductVisible(): Promise<void> {
+    await expect(this.getFirstTitle()).toBeVisible();
+  }
+
   async clickOnProductTitleFirst(): Promise<void> {
     await this.getFirstTitle().click();
   }

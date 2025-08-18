@@ -19,7 +19,7 @@ test.describe('Cart', { tag: [report.tags.regression] }, () => {
 
   test.afterEach('Close the page', async ({ base }, testInfo) => {
     logger.info(`Finished ${testInfo.title} with status ${testInfo.status}`);
-
+    // Act
     await base.resetApp();
     await base.logoutFromApp();
     await base.closePage();
@@ -38,8 +38,8 @@ test.describe('Cart', { tag: [report.tags.regression] }, () => {
     test('Add product to basket', async ({ header, inventory }) => {
       await allure.owner(report.owner.mrp);
       // Arrange
-      //Act
-      await inventory.getFirstTitle().isVisible();
+      // Act
+      await inventory.isFirstProductVisible();
       const title: string = await inventory.getFirstTitle().innerText();
       await inventory.addToCart(title);
       // Assert
