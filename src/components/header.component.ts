@@ -35,7 +35,7 @@ export class HeaderComponent {
   }
 
   async expectBadgeWithNumber(number: number): Promise<void> {
-    await expect(this.badgeShoppingCart).toBeVisible();
+    await this.isBadgeVisible();
     await expect(this.badgeShoppingCart).toContainText(number.toString());
   }
 

@@ -73,7 +73,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
       const error: string = checkoutData.errorPostalCode;
       // Act
       await checkout.fillFieldFirstName(userData.firstName);
-      await checkout.fillFielLastName(userData.lastName);
+      await checkout.fillFieldLastName(userData.lastName);
       await checkout.clickContinue();
       // Assert
       await base.catchError(error);
@@ -212,7 +212,7 @@ test.describe('Checkout', { tag: [report.tags.regression] }, () => {
 
         // Act
         await checkout.fillFieldFirstName(userData.firstName);
-        await checkout.fillFielLastName(userData.lastName);
+        await checkout.fillFieldLastName(userData.lastName);
         await checkout.fillFieldPostalCode(userData.postalCode);
         await checkout.clickContinue();
       });
