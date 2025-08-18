@@ -1,2 +1,0 @@
- [LOGGER]  25-05-09 12:51:16  info : Running Wrong image link for product
- [LOGGER]  25-05-09 12:51:17  info : Finished Wrong image link for product with status passed
