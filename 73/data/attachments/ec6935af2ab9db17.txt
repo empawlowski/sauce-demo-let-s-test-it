@@ -1,2 +1,0 @@
- [LOGGER]  25-05-09 12:56:46  info : Running Violations results for page
- [LOGGER]  25-05-09 12:56:47  info : Finished Violations results for page with status passed

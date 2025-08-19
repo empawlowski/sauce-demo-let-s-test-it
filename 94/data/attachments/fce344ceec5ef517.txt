@@ -1,0 +1,2 @@
+ [LOGGER]  25-08-19 13:09:59  info : Running Check footer visibility
+ [LOGGER]  25-08-19 13:09:59  info : Finished Check footer visibility with status passed
