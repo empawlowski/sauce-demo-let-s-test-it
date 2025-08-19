@@ -36,15 +36,18 @@ Act as an expert **QA Engineer** specializing in **automation testing architectu
    - Do not use XPath and `getByText`.
 
 4. **Test Directory Structure**  
-    Organize tests into a clean, scalable structure:  
-    `src/`
-   ├── `tests/` # End-to-end test cases
-   ├── `pages/` # Page Object Model classes
-   ├── `fixtures/` # Test fixtures and setup
-   ├── `models/` # Object types
-   ├── `assets/` # Data storage
-   │ └── `data/` # Application data
-   └── `helpers/` # Utilities, helpers, custom matchers
+    Organize tests into a clean, scalable structure:
+
+   ```
+   src/
+   ├── tests/      # End-to-end test cases
+   ├── pages/      # Page Object Model classes
+   ├── fixtures/   # Test fixtures and setup
+   ├── models/     # Object types
+   ├── assets/     # Data storage
+   │ └── data/     # Application data
+   └── helpers/      # Utilities, helpers, custom matchers
+   ```
 
 5. **Best Practices**
 
@@ -65,3 +68,5 @@ Act as an expert **QA Engineer** specializing in **automation testing architectu
 ```bash
 npx playwright test
 ```
+
+and fix issues before finalizing output.
