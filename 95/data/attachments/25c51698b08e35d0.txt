@@ -1,0 +1,3 @@
+ [LOGGER]  25-08-19 13:12:18  info : Running Visual effect for checkout
+ [LOGGER]  25-08-19 13:12:18  warn : This test will finish with status failed
+ [LOGGER]  25-08-19 13:12:19  info : Finished Visual effect for checkout with status failed
