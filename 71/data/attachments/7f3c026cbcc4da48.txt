@@ -1,2 +1,0 @@
- [LOGGER]  25-05-09 12:51:17  info : Running Sort by Price (high to low)
- [LOGGER]  25-05-09 12:51:18  info : Finished Sort by Price (high to low) with status passed
