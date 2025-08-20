@@ -1,2 +1,0 @@
- [LOGGER]  25-05-09 13:12:51  info : Running Empty Fist Name field
- [LOGGER]  25-05-09 13:12:52  info : Finished Empty Fist Name field with status passed

@@ -1,0 +1,2 @@
+ [LOGGER]  25-08-20 10:28:24  info : Running Performance user
+ [LOGGER]  25-08-20 10:28:29  info : Finished Performance user with status passed
