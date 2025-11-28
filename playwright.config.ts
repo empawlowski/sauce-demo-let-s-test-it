@@ -5,7 +5,7 @@ import * as os from 'os';
 /* Allure-Report configuration, see: https://allurereport.org/docs/playwright-configuration  */
 const reporters = {
   github: ['github', {}] as const,
-  html: ['html', { open: 'never', outputFolder: 'src/output/test-report' }] as const,
+  html: ['html', { open: 'never', outputFolder: 'src/output/test-reports' }] as const,
   json: ['json', { open: 'never', outputFile: 'src/output/test-results/results.json' }] as const,
   junit: ['junit', { open: 'never', outputFile: 'src/output/test-results/results.xml' }] as const,
   allure: [
