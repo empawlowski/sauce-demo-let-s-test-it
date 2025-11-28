@@ -1,1 +1,0 @@
- [LOGGER]  25-08-19 10:42:21  info : Running ARIA for Inventory page

@@ -1,3 +1,0 @@
- [LOGGER]  25-06-12 15:09:42  info : Running Visual effect for single product view
- [LOGGER]  25-06-12 15:09:42  warn : This test will finish with status failed
- [LOGGER]  25-06-12 15:09:42  info : Finished Visual effect for single product view with status failed

@@ -1,2 +1,0 @@
- [LOGGER]  25-08-20 10:27:48  info : Running Empty Last Name field
- [LOGGER]  25-08-20 10:27:48  info : Finished Empty Last Name field with status passed

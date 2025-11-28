@@ -1,2 +1,0 @@
- [LOGGER]  25-08-19 13:11:39  info : Running Checkout process with Success
- [LOGGER]  25-08-19 13:11:40  info : Finished Checkout process with Success with status passed

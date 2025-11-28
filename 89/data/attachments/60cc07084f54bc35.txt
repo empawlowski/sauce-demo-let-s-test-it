@@ -1,2 +1,0 @@
- [LOGGER]  25-06-25 08:47:56  info : Running Error user
- [LOGGER]  25-06-25 08:47:57  info : Finished Error user with status passed

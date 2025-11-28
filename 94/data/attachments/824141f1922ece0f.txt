@@ -1,2 +1,0 @@
- [LOGGER]  25-08-19 13:10:16  info : Running Adding by Title - one
- [LOGGER]  25-08-19 13:10:16  info : Finished Adding by Title - one with status passed

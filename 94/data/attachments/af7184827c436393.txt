@@ -1,3 +1,0 @@
- [LOGGER]  25-08-19 13:10:34  info : Running Visual effect for inventory
- [LOGGER]  25-08-19 13:10:35  warn : This test will finish with status failed
- [LOGGER]  25-08-19 13:10:35  info : Finished Visual effect for inventory with status failed

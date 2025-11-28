@@ -1,2 +1,0 @@
- [LOGGER]  25-05-09 13:16:16  info : Running Empty Postal Code field
- [LOGGER]  25-05-09 13:16:17  info : Finished Empty Postal Code field with status passed

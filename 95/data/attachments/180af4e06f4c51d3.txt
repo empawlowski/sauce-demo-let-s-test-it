@@ -1,2 +1,0 @@
- [LOGGER]  25-08-19 13:12:14  info : Running Incorrect password
- [LOGGER]  25-08-19 13:12:15  info : Finished Incorrect password with status passed

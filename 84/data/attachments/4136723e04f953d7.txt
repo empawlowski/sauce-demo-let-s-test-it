@@ -1,2 +1,0 @@
- [LOGGER]  25-06-24 13:50:27  info : Running Incorrect username
- [LOGGER]  25-06-24 13:50:27  info : Finished Incorrect username with status passed

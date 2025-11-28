@@ -1,2 +1,0 @@
- [LOGGER]  25-06-24 13:28:03  info : Running Performance user
- [LOGGER]  25-06-24 13:28:08  info : Finished Performance user with status passed

@@ -1,1 +1,0 @@
- [LOGGER]  25-05-16 14:12:18  info : Running ARIA for Inventory page
