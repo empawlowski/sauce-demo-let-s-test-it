@@ -1,6 +1,50 @@
-import { Configuration } from './src/config/configuration';
-import { defineConfig, devices } from '@playwright/test';
+import { Configuration } from '@_src/config/configuration';
+import { type ReporterDescription, defineConfig, devices } from '@playwright/test';
 import * as os from 'os';
+
+/* Allure-Report configuration, see: https://allurereport.org/docs/playwright-configuration  */
+const reporters = {
+  github: ['github', {}] as const,
+  html: ['html', { open: 'never', outputFolder: 'src/output/test-report' }] as const,
+  json: ['json', { open: 'never', outputFile: 'src/output/test-results/results.json' }] as const,
+  junit: ['junit', { open: 'never', outputFile: 'src/output/test-results/results.xml' }] as const,
+  allure: [
+    'allure-playwright',
+    {
+      detail: true,
+      resultsDir: './src/output/allure-results',
+      outputFolder: './src/output/allure-reports',
+      suiteTitle: true,
+      categories: [
+        {
+          name: 'Outdated tests',
+          messageRegex: '.*FileNotFound.*',
+        },
+      ],
+      environmentInfo: {
+        framework: 'Sauce Demo Playwright',
+        os_platform: os.platform(),
+        os_release: os.release(),
+        os_version: os.version(),
+        os_architecture: os.arch(),
+        node_version: process.version,
+      },
+    },
+  ] as const,
+} satisfies Record<string, ReporterDescription>;
+
+const REPORTERS_CI: ReporterDescription[] = [
+  reporters.github,
+  reporters.html,
+  reporters.json,
+  reporters.junit,
+  reporters.allure,
+];
+
+const REPORTERS: ReporterDescription[] = [reporters.html, reporters.json, reporters.junit, reporters.allure];
+
+const STORAGE_STATE: string = '.auth/user.json';
+const DEPENDENCIES: string[] = ['setup'];
 
 /** Based on: https://playwright.dev/docs/test-configuration */
 export default defineConfig({
@@ -38,36 +82,7 @@ export default defineConfig({
     toMatchAriaSnapshot: { pathTemplate: './src/assets/data/accessability/aria/{arg}{ext}' },
   },
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  /* Allure-Report configuration, see: https://allurereport.org/docs/playwright-configuration  */
-
-  // reporter: 'dot',
-  reporter: [
-    ['line'],
-    ['html', { open: 'on-failure', outputFolder: 'src/output/test-reports' }],
-    [
-      'allure-playwright',
-      {
-        detail: true,
-        resultsDir: './src/output/allure-results',
-        outputFolder: './src/output/allure-reports',
-        suiteTitle: true,
-        categories: [
-          {
-            name: 'Outdated tests',
-            messageRegex: '.*FileNotFound.*',
-          },
-        ],
-        environmentInfo: {
-          framework: 'Sauce Demo Playwright',
-          os_platform: os.platform(),
-          os_release: os.release(),
-          os_version: os.version(),
-          os_architecture: os.arch(),
-          node_version: process.version,
-        },
-      },
-    ],
-  ],
+  reporter: process.env['CI'] ? REPORTERS_CI : REPORTERS,
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -94,42 +109,36 @@ export default defineConfig({
       name: 'Chromium',
       use: {
         ...devices['Desktop Chrome'],
-        storageState: '.auth/user.json',
+        storageState: STORAGE_STATE,
       },
-      dependencies: ['setup'],
+      dependencies: DEPENDENCIES,
     },
-
     // {
     //   name: 'Firefox',
-    //   use: { ...devices['Desktop Firefox'], storageState: '.auth/user.json' },
-    //   dependencies: ['setup'],
+    //   use: { ...devices['Desktop Firefox'], storageState: STORAGE_STATE },
+    //   dependencies: DEPENDENCIES,
     // },
-
     // {
     //   name: 'Webkit',
-    //   use: { ...devices['Desktop Safari'], storageState: '.auth/user.json' },
-    //   dependencies: ['setup'],
+    //   use: { ...devices['Desktop Safari'], storageState: STORAGE_STATE },
+    //   dependencies: DEPENDENCIES,
     // },
 
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
-    //   use: { ...devices['Pixel 5'], storageState: '.auth/user.json' },
+    //   use: { ...devices['Pixel 5'], storageState: STORAGE_STATE },
     // },
     // {
     //   name: 'Mobile Safari',
-    //   use: { ...devices['iPhone 12'], storageState: '.auth/user.json' },
+    //   use: { ...devices['iPhone 12'], storageState: STORAGE_STATE },
     // },
 
     /* Test against branded browsers. */
     // {
     //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge', storageState: '.auth/user.json' },
-    //   dependencies: ['setup'],
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome', storageState: '.auth/user.json' },
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge', storageState: STORAGE_STATE },
+    //   dependencies: DEPENDENCIES,
     // },
   ],
 
