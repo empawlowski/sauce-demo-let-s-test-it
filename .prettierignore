@@ -1,3 +1,6 @@
+# GitHub Chatmodes
+.github/chatmodes/**
+
 # Lock files
 package-lock.json
 
