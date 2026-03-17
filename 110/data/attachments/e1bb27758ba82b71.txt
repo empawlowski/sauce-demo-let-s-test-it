@@ -1,0 +1,2 @@
+ [LOGGER]  26-03-17 17:56:05  info : Running Sort by Name (Z to A)
+ [LOGGER]  26-03-17 17:56:06  info : Finished Sort by Name (Z to A) with status passed

@@ -1,0 +1,2 @@
+ [LOGGER]  26-03-17 17:56:00  info : Running Check footer visibility
+ [LOGGER]  26-03-17 17:56:07  info : Finished Check footer visibility with status failed

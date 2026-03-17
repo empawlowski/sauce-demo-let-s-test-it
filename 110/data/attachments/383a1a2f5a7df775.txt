@@ -1,0 +1,1 @@
+ [LOGGER]  26-03-17 17:55:21  info : Running ARIA for Checkout page

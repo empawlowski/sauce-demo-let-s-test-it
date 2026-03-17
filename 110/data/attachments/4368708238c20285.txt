@@ -1,0 +1,5 @@
+ [LOGGER]  26-03-17 17:56:20  info : Running Adding by button "Add to cart" - all
+ [LOGGER]  26-03-17 17:56:21  warn : Button not visible or enabled
+ [LOGGER]  26-03-17 17:56:21  warn : Button not visible or enabled
+ [LOGGER]  26-03-17 17:56:21  warn : Button not visible or enabled
+ [LOGGER]  26-03-17 17:56:21  info : Finished Adding by button "Add to cart" - all with status passed

@@ -1,0 +1,2 @@
+ [LOGGER]  26-03-17 17:56:37  info : Running Single product view
+ [LOGGER]  26-03-17 17:56:42  info : Finished Single product view with status failed
