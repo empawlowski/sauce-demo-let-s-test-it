@@ -7,10 +7,7 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    timeout-minutes: 60
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     permissions:
       contents: write
     steps:
@@ -18,12 +15,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Node.js
         uses: actions/setup-node@v4
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: '24.x'
           node-version: '24.x'
           cache: 'npm'
       - name: Install dependencies
@@ -34,20 +26,11 @@ jobs:
         with:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
-      - name: Cache Playwright browsers
-        id: playwright-cache
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
       - name: Install Playwright Browser
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps chromium
       - name: Run Playwright Regression tests
         run: npx playwright test --grep @reg
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
       - name: Upload test results
         uses: actions/upload-artifact@v4
         if: always()
