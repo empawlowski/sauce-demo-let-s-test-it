@@ -10,9 +10,12 @@
 - contentinfo:
   - list:
     - listitem:
-      - link "Twitter"
+      - link "Twitter":
+        - /url: https://twitter.com/saucelabs
     - listitem:
-      - link "Facebook"
+      - link "Facebook":
+        - /url: https://www.facebook.com/saucelabs
     - listitem:
-      - link "LinkedIn"
+      - link "LinkedIn":
+        - /url: https://www.linkedin.com/company/sauce-labs/
   - text: /© \d+ Sauce Labs\. All Rights Reserved\. Terms of Service \| Privacy Policy/
