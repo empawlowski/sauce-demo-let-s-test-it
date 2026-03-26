@@ -1,0 +1,2 @@
+ [LOGGER]  26-03-26 15:07:18  info : Running Locked user
+ [LOGGER]  26-03-26 15:07:18  info : Finished Locked user with status passed

@@ -1,0 +1,2 @@
+ [LOGGER]  26-03-26 15:05:53  info : Running Validation Cart page
+ [LOGGER]  26-03-26 15:05:53  info : Finished Validation Cart page with status passed
